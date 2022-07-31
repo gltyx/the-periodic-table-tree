@@ -833,6 +833,7 @@ var cnExcludePostfix = [
 var cnRegReplace = new Map([
     [/^([\d\.]+) hours ([\d\.]+) minutes ([\d\.]+) seconds$/, '$1 小时 $2 分钟 $3 秒'],
     [/^You are gaining (.+) elves per second$/, '你每秒获得 $1 精灵'],
+    [/^You have (.+) rocketships on standby./, '您有 $1 艘火箭飞船待命。'],
     [/^You have (.+) achievements$/, '您有 $1 项成就'],
     [/^You have (.+) Beryllium Plates$/, '您有 $1 铍板'],
     [/^You have (.+) Helium Gas$/, '您有 $1 氦气'],
