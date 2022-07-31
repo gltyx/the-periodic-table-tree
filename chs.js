@@ -782,7 +782,7 @@ var cnPostfix = {
     "\t\t\t\t": "\t\t\t\t",
     "\n\t\t": "\n\t\t",
     "\t": "\t",
-    "Rating: ": "评分：",
+    "Rating:": "评分：",
     "": "",
     "": "",
     "": "",
