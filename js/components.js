@@ -36,6 +36,14 @@ function loadVue() {
 			<img class="instant" v-bind:src= "data" v-bind:alt= "data">
 		`
 	})
+
+		// Displays an image, data is the URL
+		Vue.component('display-image1', {
+			props: ['layer', 'data'],
+			template: `
+				<img class="instant" v-bind:src= "data" v-bind:alt= "data"  style='width: 300px'>
+			`
+		})
 		
 	// data = an array of Components to be displayed in a row
 	Vue.component('row', {
@@ -376,11 +384,10 @@ function loadVue() {
 				if (player.B.State == 0 || !hasUpgrade('B', 21)) player.B.SDeg = player.B.SDeg.times(0), player.B.TicksMax = 0
 			},
 			stop() {
-				if (options.mobileMode == true){
 				clearInterval(this.interval)
 				this.interval = false
 			  	this.time = 0
-				if (player.B.State == 0 || !hasUpgrade('B', 21)) player.B.SDeg = player.B.SDeg.times(0), player.B.TicksMax = 0}
+				if (player.B.State == 0 || !hasUpgrade('B', 21)) player.B.SDeg = player.B.SDeg.times(0), player.B.TicksMax = 0
 			},
 		},
 	})
@@ -576,14 +583,6 @@ function loadVue() {
 	`
 	})
 
-
-	Vue.component('strict-text-input', {
-		props: ['layer', 'data', 'defaultValue'],
-		template: `
-			<input class="instant" :id="'input-' + layer + '-' + data" :value="player[layer][data].toString()" v-on:focus="focused(true)" v-on:blur="focused(false)"
-			v-on:change="player[layer][data] = document.getElementById('input-' + layer + '-' + data).value">
-		`
-	})
 	
 	// Updates the value in player[layer][data]
 	Vue.component('text-input', {
@@ -599,6 +598,16 @@ function loadVue() {
 		template: `
 			<input class="instant" :id="'input-' + layer + '-' + data" :value="player[layer][data].toString()" v-on:focus="focused(true)" v-on:blur="focused(false)"
 			v-on:change="player[layer][data] = document.getElementById('input-' + layer + '-' + data).value">
+		`
+	  })
+
+	  Vue.component('strict-text-input1', {
+		props: ['layer', 'data', 'defaultValue'],
+		template: `
+			<input class="instant" :id="'input-' + layer + '-' + data" :value="player[layer][data].toString()" style="font-size:18pt; width: 1000px; height: 50px;" v-on:focus="focused(true)" v-on:blur="focused(false)"
+			v-on:change="player[layer][data] = document.getElementById('input-' + layer + '-' + data).value"
+			v-on:change="getRandomWord()"
+			v-on:click="player.N.Otext = ''">
 		`
 	  })
 

@@ -48,8 +48,6 @@ function changeTreeQuality() {
 function toggleAuto(toggle) {
 	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
 	needCanvasUpdate=true
-	if(hasUpgrade('N', 15) && player.C.auto) player.C.Switch2 = 5, player.C.Mis1 = 1, player.C.Mis2 = 1, player.C.Mis3 = 1, player.C.Mis4 = 1, player.C.Mis5 = 1, player.C.ME5 = (player.C.ME5 + 400 * player.N.days * tmp.N.Five * temp['C'].bars['Persuasion'].effect) * ((player.N.complete * 20.5) + 1) / tmp.N.div, player.C.ME4 = (player.C.ME4 + 150 * tmp.N.Five * player.N.days * temp['C'].bars['Persuasion'].effect)  * ((player.N.complete * 20.5) + 1) / tmp.N.div, player.C.ME3 = (player.C.ME3 + 30 * tmp.N.Five * player.N.days * temp['C'].bars['Persuasion'].effect)  * ((player.N.complete * 20.5) + 1) / tmp.N.div, player.C.ME2 = (player.C.ME2 + 10 * tmp.N.Five * player.N.days * temp['C'].bars['Persuasion'].effect)  * ((player.N.complete * 20.5) + 1) / tmp.N.div, player.C.ME1 = (player.C.ME1 + 2 * tmp.N.Five * player.N.days * temp['C'].bars['Persuasion'].effect)  * ((player.N.complete * 20.5) + 1) / tmp.N.div
-	if(hasUpgrade('N', 15) && !player.C.auto) player.C.Switch2 = 1, player.C.Mis1 = 0, player.C.Mis2 = 0, player.C.Mis3 = 0, player.C.Mis4 = 0, player.C.Mis5 = 0, player.C.ME5 = 0, player.C.ME4 = 0, player.C.ME3 = 0, player.C.ME2 = 0, player.C.ME1 = 0
 }
 
 const MS_DISPLAYS = ["ALL", "LAST, AUTO, INCOMPLETE", "AUTOMATION, INCOMPLETE", "INCOMPLETE", "NONE"];

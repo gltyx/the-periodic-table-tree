@@ -13,11 +13,18 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.6.5",
-	name: "Nitrogen V1",
+	num: "1.7",
+	name: "Nitrogen V2",
 }
 
 let changelog = `<h1>Changelog:</h1><br><br>
+<h3>v1.7</h3><br>
+		- Added Organic Chemistry Naming To Latest Layer<br>
+		- Added Minigame To Latest Layer<br>
+		- Added Reviews<br>
+		- Fixed Bugs<br>
+<h3>v1.6.7</h3><br>
+		- Major bug fixes<br>
 <h3>v1.6.5</h3><br>
 		- Added new layer<br>
 		- Changed savefiles<br>
@@ -61,7 +68,7 @@ let changelog = `<h1>Changelog:</h1><br><br>
 		- Added new layers.<br>
 		- Fixed some performance and visual issues.`
 
-let winText = `Congratulations! You have reached the end and beaten this game, but what have you missed and what will you gain from going further in? Anyway, for now...`
+let winText = `Congratulations! You have reached the end and beaten this game, but what have you missed and what will you gain from going further in? Organic Chemistry Sure Wasn't Fun. Anyway, for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -96,7 +103,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	
+	if(hasMilestone('N', 8) && player.N.points.gt(1000)) return true
 }
 
 
