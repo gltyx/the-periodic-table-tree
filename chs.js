@@ -410,7 +410,7 @@ var cnItems = {
     "Reduce image scaling.": "减少图像缩放。",
     "Remove the exponent of the Helium effects but unlock more Hydrogen upgrades. Keep Cost.": "移除氦效应的指数，但解锁更多的氢升级。 保持成本。",
     "Softcap Helium boost to Hydrogen Exponged gain starting at 200 Helium.": "从 200 氦 开始，软上限氦 提升到 氢膨胀 增益。",
-    "Unlock a multiplier tank but 10x tank capacity. Hydrogen Multiplier starts at 0.1.": "解锁一个乘数坦克，但 10 倍坦克容量。 氢倍增器从 0.1 开始。",
+    "Unlock a multiplier tank but 10x tank capacity. Hydrogen Multiplier starts at 0.1.": "解锁一个倍增器，但罐子容量 x10。 氢倍增器从 0.1 开始。",
     "Unlock Hydrogen button automation. Gain 1 Helium from Jules Janssen.": "解锁氢气按钮自动化。 从朱尔斯·詹森处获得 1 个氦气。",
     "Unlock Hydrogen tank automation.": "解锁氢罐自动化。",
     "Unlock Lithium. Keep cost.": "解锁锂。 保持成本。",
