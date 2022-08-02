@@ -883,7 +883,7 @@ var cnRegReplace = new Map([
     [/^You have (.+) of Hydrogen from Lepoidolite \(10% more Lithium per L\).$/, '你有 $1 来自锂云石的氢气（每升 10% 的锂）。'],
     [/^You have (.+) of Fluorine from Lepoidolite.$/, '您有 $1 来自 Lepoidolite 的氟。'],
     [/^You have (.+) of Silicon from Lepoidolite.$/, '您有 $1 来自锂云石的硅。'],
-    [/^You have (.+) of Rubidium from Lepoidolite \(20% more Lithium and Hydrogen per g\).$/, '你有 $1 来自锂云石的铷（每克锂和氢增加 20%）。'],
+    [/^You have (.+) of Rubidium from Lepoidolite \(20% more Lithium and Hydrogen per g\).$/, '你有 $1 来自锂云石的铷（每克增加 锂和氢 20%）。'],
     [/^You have (.+) of Aluminum from Lepoidolite \(10x Potassium and Hydroxide per g\).$/, '您有 $1 来自锂云石的铝（每克 10 倍钾和氢氧化物）。'],
     [/^You have (.+) of Lithium from Lepoidolite \(Currency\).$/, '你有 $1 锂云石（货币）。'],
     [/^Current Effect: (.+) to Boron Multiplier before other effects$/, '当前效果：$1 到其他效果之前的硼倍增器'],
