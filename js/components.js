@@ -605,9 +605,15 @@ function loadVue() {
 		props: ['layer', 'data', 'defaultValue'],
 		template: `
 			<input class="instant" :id="'input-' + layer + '-' + data" :value="player[layer][data].toString()" style="font-size:18pt; width: 1000px; height: 50px;" v-on:focus="focused(true)" v-on:blur="focused(false)"
-			v-on:change="player[layer][data] = document.getElementById('input-' + layer + '-' + data).value"
-			v-on:change="getRandomWord()"
-			v-on:click="player.N.Otext = ''">
+			v-on:change="player[layer][data] = document.getElementById('input-' + layer + '-' + data).value">
+		`
+	  })
+	  
+	  Vue.component('strict-text-box', {
+		props: ['layer', 'data', 'defaultValue'],
+		template: `
+			<textarea class="instant" :id="'textarea-' + layer + '-' + data" :value="player[layer][data].toString()" style="font-size:18pt; width: 1000px; height: 50px;" v-on:focus="focused(true)" v-on:blur="focused(false)"
+			v-on:change="player[layer][data] = document.getElementById('textarea-' + layer + '-' + data).value">
 		`
 	  })
 

@@ -13,11 +13,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.7",
-	name: "Nitrogen V2",
+	num: "1.7.1",
+	name: "Nitrogen V2.1",
 }
 
 let changelog = `<h1>Changelog:</h1><br><br>
+<h3>v1.7.1</h3><br>
+		- Added Note Pad To Latest Layer<br>
+		- Added Submit Button To Latest Layer<br>
+		- Made Help Clearer On Latest Layer<br>
+		- Fixed Other Bugs<br>
 <h3>v1.7</h3><br>
 		- Added Organic Chemistry Naming To Latest Layer<br>
 		- Added Minigame To Latest Layer<br>
