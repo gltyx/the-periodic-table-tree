@@ -54,7 +54,7 @@ function loadVue() {
 				</img>
 			`,
 			methods: {
-				onClick() { if (player.Ch.One == 1 && player.Ch.Two == 1 && player.Ch.Three == 1 && player.Ch.Four == 1 && player.Ch.Five == 1 && player.Ch.Six == 1)  player.Ch.One = new Decimal(2), player.B.O = false},
+				onClick() { if (player.Ch.One == 1 && player.Ch.Two == 1 && player.Ch.Three == 1 && player.Ch.Four == 1 && player.Ch.Five == 1 && player.Ch.Six == 1)  player.Ch.One = new Decimal(2), goBack('V'), player.B.O = false},
 			},
 		})
 		
