@@ -7410,7 +7410,7 @@ addLayer("V", {
     challenges: {
         11: {
             name: "Chemical Change",
-            challengeDescription: "Resart the entire game. However, certain stats are multiplied by 100x or +100 and each star gained is a checkpoint.",
+            challengeDescription: "Resart the entire game. However, certain stats are multiplied by 100x or +100 and each star gained is a checkpoint. Each layer has a timer and once that timer runs out, you exit the challenge.",
             goalDescription: "Have a star on each element.",
             rewardDescription: "Beat the game.",
             canComplete: function() {return localStorage.getItem('1') === '7'},
