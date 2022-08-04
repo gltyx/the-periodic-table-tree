@@ -255,6 +255,7 @@ function startChallenge(layer, x) {
 	}	
 	doReset(layer, true)
 	if(enter) {
+	    if (player.tab == 'V') storeSave()
 		Vue.set(player[layer], "activeChallenge", x)
 		run(layers[layer].challenges[x].onEnter, layers[layer].challenges[x])
 	}
@@ -412,6 +413,20 @@ var interval = setInterval(function() {
 			diff += offlineDiff
 		}
 		if (!options.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
+	}
+	if (inChallenge('V', 11)) {
+		if (player.V.time > 0) {
+			let CtDiff = 0.05
+			player.V.time -= CtDiff
+			if (player.V.time <= 0) {player = Object.assign(getStartPlayer(), JSON.parse(atob(player.V.save)));
+		player.versionType = modInfo.id;
+		fixSave();
+		versionCheck();
+		NaNcheck(save)
+		save();
+		window.location.reload();}
+		}
+		
 	}
 	if (player.devSpeed) diff *= player.devSpeed
 	player.time = now

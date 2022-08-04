@@ -186,7 +186,6 @@ function fixData(defaultData, newData) {
 }
 function load() {
 	let get = localStorage.getItem(modInfo.id);
-
 	if (get === null || get === undefined) {
 		player = getStartPlayer();
 		options = getStartOptions();

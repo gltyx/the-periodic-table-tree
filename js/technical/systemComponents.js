@@ -112,9 +112,17 @@ var systemComponents = {
 			<br>Offline Time: {{formatTime(player.offTime.remain)}}<br>
 		</span>
 		<br>
-		<span v-if="player.points.lt('1e1000')"  class="overlayThing">You have </span>
+		<span v-if="player.points.lt('1e1000') && player.V.Yes == false"  class="overlayThing">You have </span>
 		<h2  class="overlayThing" id="points">{{formatWhole(player.E.points)}}</h2>
-		<span v-if="player.points.lt('1e1e6')"  class="overlayThing"> {{modInfo.pointsName}}</span>
+		<span v-if="player.points.lt('1e1e6') && player.V.Yes == false"  class="overlayThing"> {{modInfo.pointsName}}</span>
+		<br>
+		<span v-if="inChallenge('V', 11) && localStorage.getItem('1') != '6' && localStorage.getItem('1') != '7'"  class="overlayThing">
+			<br>Time Remaining: {{formatTime(player.V.time)}}<br>
+		</span>
+		<br>
+		<span v-if="inChallenge('V', 11) && localStorage.getItem('1') === '6'"  class="overlayThing">
+			<br>Time Remaining: Don't worry about it! Just get 10,000 Nitrogen.<br>
+		</span>
 		<br>
 		<span v-if="canGenPoints()"  class="overlayThing">({{tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OOM" + (tmp.other.oompsMag < 0 ? "^OOM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "s" : formatSmall(getPointGen())}}/sec)</span>
 		<div v-for="thing in tmp.displayThings" class="overlayThing"><span v-if="thing" v-html="thing"></span></div>

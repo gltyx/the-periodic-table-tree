@@ -13,11 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.7.1",
-	name: "Nitrogen V2.1",
+	num: "1.8",
+	name: "The Vault",
 }
 
 let changelog = `<h1>Changelog:</h1><br><br>
+<h3>v1.8</h3><br>
+		- Added a new layer<br>
+		- Added secrets<br>
 <h3>v1.7.1</h3><br>
 		- Added Note Pad To Latest Layer<br>
 		- Added Submit Button To Latest Layer<br>
@@ -73,7 +76,7 @@ let changelog = `<h1>Changelog:</h1><br><br>
 		- Added new layers.<br>
 		- Fixed some performance and visual issues.`
 
-let winText = `Congratulations! You have reached the end and beaten this game, but what have you missed and what will you gain from going further in? Organic Chemistry Sure Wasn't Fun. Anyway, for now...`
+let winText = `Congratulations! RG8gbm90IGNsaWNrIGF3YXksIGtlZXAgZ29pbmcuIFlvdSdyZSBtaXNzaW5nIHNvbWV0aGluZy4gVGhlcmUgaXMgYSBsYXllciwgYSBzZWNyZXQgbGF5ZXIgdGhhdCB5b3UgbXVzdCBmaW5kLiBUaGlzLi4uIGxheWVyIGlzIG9ubHkgYWNjZXNpYmxlIHdpdGggTG93IFF1YWxpdHkgTW9kZSB0dXJuZWQgb24sIGFzIHdlbGwgU2luZ2xlLVRhYiBNb2RlLiBUdXJuIG9mZiB0aGUgc2VlbWluZ2x5IHVzZWxlc3MgIkVYIiBidXR0b24gYW5kIHlvdSBzaG91bGQgc2VlIHRoZSBhbnN3ZXIgYXBlYXIgd2hlcmUgeW91ciBFbGVtZW50cyBhcmUgY291bnRlZC4gVXNlIHRoYXQgYW5zd2VyIGFuZCB0eXBlIGl0IGludG8gdGhlIGlucHV0IGJveCBsb2NhdGVkIGluIHRoZSBIZWxpdW0gbGF5ZXIsIGp1c3QgcmVtZW1iZXIgdGhhdCB0aGF0IGlzIG9ubHkgYWNjZXNzaWJsZSB1bmRlciBzaW1pbGFyIGNvbmRpdGlvbnMgKGhhdmluZyB0aGUgRXggYnV0dG9uIHR1cm5lZCBvZmYpLiBHb29kLCBsdWNrLg== You have reached the end and beaten this game. Go, `
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -108,7 +111,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	if(hasMilestone('N', 8) && player.N.points.gt(1000)) return true
+
 }
 
 
