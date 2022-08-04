@@ -7420,7 +7420,8 @@ addLayer("V", {
                 if (localStorage.getItem('1') == '0' && localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return player.E.points = new Decimal(0), layerDataReset('N'), layerDataReset('C'), layerDataReset('B'), layerDataReset('Be'), layerDataReset('Li'), layerDataReset('He'), layerDataReset('p'), player.V.M = new Decimal(100), player.V.time = 30
                 if (localStorage.getItem('1') !== '0' && localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return AImport()},
             onExit() { 
-                if (localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return forceImport(), player.V.M = new Decimal(1)}
+                if (localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return forceImport(), player.V.M = new Decimal(1)
+                if (localStorage.getItem('1') == '7') return goBack('V')}
         },
     },
 
