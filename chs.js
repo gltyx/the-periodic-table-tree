@@ -279,7 +279,7 @@ var cnItems = {
     "Thieving Tatics": "盗窃战术",
     "Weapons/Tools": "武器/工具",
     "Wow Mr. Krabs has you working at $50 an hour! When I started working here I had to pay him $100 an hour.": "哇先生螃蟹让你以每小时 50 美元的价格工作！当我开始在这里工作时，我不得不每小时付给他 100 美元。",
-    "Xp Left": "Xp 左",
+    "Xp Left": "Xp 剩余",
     "Xp/day": "Xp/天",
     "You cannot hold any more items.": "您不能再持有任何物品。",
     "You have now been fully integrated into the company.": "你现在已经完全融入了公司。",
