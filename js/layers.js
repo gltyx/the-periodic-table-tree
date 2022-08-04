@@ -1,3 +1,42 @@
+function storeSave() {
+    player.V.save = btoa(JSON.stringify(player));
+}
+
+function sSave() {
+    localStorage.setItem('', btoa(JSON.stringify(player)));
+}
+
+function Locate(){
+    if (player.V.Locate === true) localStorage.setItem('1', 0), player.V.Locate = false
+}
+function AImport() {
+    player = Object.assign(getStartPlayer(), JSON.parse(atob(localStorage.getItem(''))));
+    player.versionType = modInfo.id;
+    fixSave();
+    versionCheck();
+    NaNcheck(save)
+    if (player.tab != 'V') options.forceOneTab = false
+    if (localStorage.getItem('1') === '1')player.V.time = 130
+    if (localStorage.getItem('1') === '2') player.V.time = 1200
+    if (localStorage.getItem('1') === '3') player.V.time = 480
+    if (localStorage.getItem('1') === '4') player.V.time = 570
+    if (localStorage.getItem('1') === '5') player.V.time = 20
+    if (localStorage.getItem('1') === '6') player.V.time = 3000000000000000000000, player.N.points = new Decimal(0)
+    if (localStorage.getItem('1') === '7') player.V.time = 30
+    save();
+    window.location.reload();
+}
+
+function forceImport() {
+    player = Object.assign(getStartPlayer(), JSON.parse(atob(player.V.save)));
+    player.versionType = modInfo.id;
+    fixSave();
+    versionCheck();
+    NaNcheck(save)
+    save();
+    window.location.reload();
+}
+
 function Timer() {
   if (tmp.N.start == 1) tmp.N.level = tmp.N.level.add(1), tmp.N.start = new Decimal(1), tmp.N.Start = setTimeout(Timer, 10000)
   }
@@ -83,7 +122,7 @@ function getRandomWordfi(){
     player.N.word = WORD_LIST[player.N.id]
     player.N.alt = ALT_LIST[player.N.id]
     player.N.image = IMAGE_LIST[player.N.id] 
-
+    player.N.Otext = ''
 }
 
 function getRandomWord(){
@@ -164,51 +203,24 @@ addLayer("R", {
         ['display-image', 'https://i.postimg.cc/FHn8r8bz/Screenshot-2022-08-01-110018.jpg', { width: '600px'}],
         ['display-text', 'Rating: ★★★★★'],
         ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/cJ7p6WTN/Screenshot-2022-08-03-231327.jpg', { width: '600px'}],
+        ['display-text', 'Rating: ★★★★★'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/8PFxMMw4/Screenshot-2022-08-03-231435.jpg', { width: '600px'}],
+        ['display-text', 'Rating: ★★★★★'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/85990CzM/Screenshot-2022-08-03-231707.jpg', { width: '600px'}],
+        ['display-text', 'Rating: ★★★★✰'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
     ]
 })
 
 var _0x61be=["\x43\x68","\x73\x69\x64\x65","\x23\x30\x30\x30\x30\x30\x30","\x23\x66\x66\x66\x66\x66\x66","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x49\x54\x65\x78\x74","\x48\x65","\x48\x65\x69\x73\x65\x6E\x62\x75\x72\x67","\x49\x20\x6E\x65\x65\x64\x20\x61\x20\x6E\x65\x77\x20\x64\x75\x73\x74\x20\x66\x69\x6C\x74\x65\x72\x20\x66\x6F\x72\x20\x6D\x79\x20\x48\x6F\x6F\x76\x65\x72\x20\x4D\x61\x78\x20\x45\x78\x74\x72\x61\x63\x74\x20\x50\x72\x65\x73\x73\x75\x72\x65\x20\x50\x72\x6F\x20\x6D\x6F\x64\x65\x6C\x20\x36\x30","\x54\x65\x73\x74\x69\x63\x6C\x65","\x42\x61\x44\x20\x42\x72\x65\x61\x6B\x49\x6E\x47","\x49\x20\x61\x6D\x20\x6E\x6F\x74\x20\x74\x75\x72\x6E\x69\x6E\x67\x20\x64\x6F\x77\x6E\x20\x74\x68\x65\x20\x6D\x6F\x6E\x65\x79\x21\x20\x49\x20\x61\x6D\x20\x74\x75\x72\x6E\x69\x6E\x67\x20\x64\x6F\x77\x6E\x20\x79\x6F\x75\x21\x20\x59\x6F\x75\x20\x67\x65\x74\x20\x69\x74\x3F\x20\x49\x20\x77\x61\x6E\x74\x20\x6E\x6F\x74\x68\x69\x6E\x67\x20\x74\x6F\x20\x64\x6F\x20\x77\x69\x74\x68\x20\x79\x6F\x75\x21\x20\x45\x76\x65\x72\x20\x73\x69\x6E\x63\x65\x20\x49\x20\x6D\x65\x74\x20\x79\x6F\x75\x2C\x20\x65\x76\x65\x72\x79\x74\x68\x69\x6E\x67\x20\x49\x20\x65\x76\x65\x72\x20\x63\x61\x72\x65\x64\x20\x61\x62\x6F\x75\x74\x20\x69\x73\x20\x67\x6F\x6E\x65\x21\x20\x52\x75\x69\x6E\x65\x64\x2C\x20\x74\x75\x72\x6E\x65\x64\x20\x74\x6F\x20\x73\x2A\x2A\x74\x2C\x20\x64\x65\x61\x64\x2C\x20\x65\x76\x65\x72\x20\x73\x69\x6E\x63\x65\x20\x49\x20\x68\x6F\x6F\x6B\x65\x64\x20\x75\x70\x20\x77\x69\x74\x68\x20\x74\x68\x65\x20\x67\x72\x65\x61\x74\x20\x48\x65\x69\x73\x65\x6E\x62\x65\x72\x67\x21","\x6D\x65\x74\x68\x61\x6D\x70\x68\x65\x74\x61\x6D\x69\x6E\x65","\x4C\x61\x62\x20\x4E\x6F\x74\x65\x73","\x4F\x6E\x65","\x4E\x6F\x74\x65\x20\x23\x31","\x20\x2D\x6A\x75\x73\x74\x20\x74\x68\x65\x20\x6F\x74\x68\x65\x72\x20\x64\x61\x79\x2C\x20\x68\x65\x20\x74\x6F\x6C\x64\x20\x6D\x65\x20\x69\x74\x20\x77\x61\x73\x20\x68\x69\x73\x20\x62\x69\x72\x74\x68\x64\x61\x79\x2E\x20\x49\x20\x6D\x65\x61\x6E\x2C\x20\x77\x68\x6F\x20\x63\x61\x72\x65\x73\x3F\x20\x49\x74\x27\x73\x20\x6E\x6F\x74\x20\x6C\x69\x6B\x65\x20\x61\x6E\x79\x6F\x6E\x65\x27\x73\x20\x67\x6F\x69\x6E\x67\x20\x74\x6F\x20\x67\x65\x74\x20\x68\x69\x6D\x20\x61\x6E\x79\x74\x68\x69\x6E\x67\x20\x61\x6E\x79\x77\x61\x79\x2E\x20\x4E\x6F\x74\x20\x6C\x69\x6B\x65\x20\x61\x6E\x79\x6F\x6E\x65\x20\x63\x6F\x75\x6C\x64\x2E\x20\x54\x68\x65\x20\x64\x75\x64\x65\x73\x20\x61\x20\x77\x65\x69\x72\x64\x6F\x2C\x20\x79\x6F\x75\x20\x73\x68\x6F\x75\x6C\x64\x20\x73\x74\x61\x79\x20\x61\x77\x61\x79\x20\x66\x72\x6F\x6D\x20\x27\x65\x6D\x2E\x20\x41\x6E\x79\x77\x61\x79\x20\x67\x6F\x74\x74\x61\x20\x67\x6F\x2C\x20\x67\x6F\x74\x20\x61\x20\x63\x6C\x69\x65\x6E\x74\x20\x77\x68\x6F\x27\x73\x20\x70\x72\x6F\x62\x61\x62\x6C\x79\x20\x61\x6C\x72\x65\x61\x64\x79\x20\x61\x74\x20\x4C\x69\x74\x68\x69\x75\x6D\x21","\x54\x77\x6F","\x4E\x6F\x74\x65\x20\x23\x32","\x43\x6F\x63\x65\x6E\x74\x72\x61\x74\x65\x20\x74\x68\x65\x20\x70\x65\x72\x63\x69\x70\x69\x74\x61\x74\x65\x2E\x20\x46\x69\x6C\x74\x65\x72\x20\x6F\x75\x74\x20\x74\x6F\x20\x70\x75\x72\x69\x66\x79\x2E\x20\x50\x6F\x75\x72\x20\x74\x6F\x20\x63\x72\x79\x73\x74\x61\x6C\x69\x7A\x65\x2E\x20\x43\x75\x2D\x2E\x20\x44\x61\x6D\x6E\x20\x69\x74\x2E\x20\x49\x20\x63\x61\x6E\x27\x74\x20\x6B\x65\x65\x70\x20\x64\x6F\x69\x6E\x67\x20\x74\x68\x69\x73\x20\x69\x66\x20\x49\x20\x64\x6F\x6E\x27\x74\x20\x68\x61\x76\x65\x20\x61\x20\x73\x75\x66\x66\x69\x63\x69\x65\x6E\x74\x20\x73\x75\x70\x70\x6C\x79\x2E\x20\x54\x68\x61\x6E\x6B\x66\x75\x6C\x6C\x79\x2C\x20\x49\x20\x68\x61\x76\x2D","\x54\x68\x72\x65\x65","\x4E\x6F\x74\x65\x20\x23\x33","\x44\x69\x64\x20\x79\x6F\x75\x20\x70\x65\x72\x68\x61\x70\x73\x20\x66\x6F\x72\x67\x65\x74\x20\x74\x6F\x20\x74\x61\x6B\x65\x20\x79\x6F\x75\x72\x20\x70\x61\x69\x6E\x6B\x69\x6C\x6C\x65\x72\x73\x20\x74\x68\x69\x73\x20\x6D\x6F\x72\x6E\x69\x6E\x67\x3F\x20\x48\x61\x73\x20\x79\x6F\x75\x72\x20\x6D\x69\x6E\x64\x20\x67\x6F\x6E\x65\x20\x66\x75\x7A\x7A\x79\x20\x66\x72\x6F\x6D\x20\x74\x68\x65\x20\x70\x61\x69\x6E\x3F\x20\x4F\x72\x20\x69\x73\x20\x74\x68\x69\x73\x20\x70\x65\x72\x68\x61\x70\x73\x20\x61\x20\x67\x65\x6E\x69\x74\x69\x63\x61\x6C\x20\x74\x68\x69\x6E\x67\x2C\x20\x62\x65\x63\x61\x75\x73\x65\x20\x72\x69\x67\x68\x74\x20\x6E\x6F\x77\x20\x6E\x6F\x20\x6F\x6E\x65\x20\x63\x6F\x75\x6C\x64\x20\x70\x6F\x73\x73\x69\x62\x6C\x65\x20\x63\x6F\x6D\x70\x72\x65\x68\x65\x6E\x64\x20\x77\x68\x61\x74\x27\x73\x20\x63\x6F\x6D\x69\x6E\x67\x20\x6F\x75\x74\x20\x6F\x66\x20\x79\x6F\x75\x72\x20\x6D\x6F\x75\x74\x68\x2E\x20\x45\x69\x74\x68\x65\x72\x20\x79\x6F\x75\x20\x67\x69\x76\x65\x20\x75\x70\x20\x61\x6E\x64\x20\x77\x65\x20\x64\x69\x65\x20\x6F\x72\x20\x79\x6F\x75\x20\x73\x65\x6E\x64\x20\x74\x68\x65\x6D\x20\x6F\x6E\x20\x74\x68\x65\x69\x72\x20\x6D\x65\x72\x72\x79\x20\x77\x61\x79\x20\x74\x6F\x20\x74\x68\x65\x20\x6E\x65\x78\x74\x20\x6C\x61\x79\x65\x72\x2E","\x46\x6F\x75\x72","\x4E\x6F\x74\x65\x20\x23\x34","\x54\x68\x65\x20\x75\x6E\x69\x76\x65\x72\x73\x65\x20\x69\x73\x20\x72\x61\x6E\x64\x6F\x6D\x2E\x20\x49\x74\x27\x73\x20\x6E\x6F\x74\x20\x69\x6E\x65\x76\x69\x74\x61\x62\x6C\x65\x2E\x20\x49\x74\x27\x73\x20\x73\x69\x6D\x70\x6C\x65\x20\x63\x68\x61\x6F\x73\x2E\x20\x49\x74\x27\x73\x20\x73\x75\x62\x61\x74\x6F\x6D\x69\x63\x20\x70\x61\x72\x74\x69\x63\x6C\x65\x73\x20\x69\x6E\x20\x65\x6E\x64\x6C\x65\x73\x73\x2C\x20\x61\x69\x6D\x6C\x65\x73\x73\x20\x63\x6F\x6C\x6C\x69\x73\x69\x6F\x6E\x2E\x20\x54\x68\x61\x74\x27\x73\x20\x77\x68\x61\x74\x20\x73\x63\x69\x65\x6E\x63\x65\x20\x74\x65\x61\x63\x68\x65\x73\x20\x75\x73\x2C\x20\x62\x75\x74\x20\x77\x68\x61\x74\x20\x69\x73\x20\x74\x68\x69\x73\x20\x73\x61\x79\x69\x6E\x67\x3F\x20\x57\x68\x61\x74\x20\x69\x73\x20\x69\x74\x20\x74\x65\x6C\x6C\x69\x6E\x67\x20\x75\x73\x2C\x20\x77\x68\x65\x6E\x20\x6F\x6E\x20\x74\x68\x65\x20\x76\x65\x72\x79\x20\x6E\x69\x67\x68\x74\x20\x74\x68\x61\x74\x20\x74\x68\x69\x73\x20\x6D\x61\x6E\x27\x73\x20\x64\x61\x75\x67\x68\x74\x65\x72\x20\x64\x69\x65\x73\x2C\x20\x69\x74\x27\x73\x20\x6D\x65\x20\x77\x68\x6F\x27\x73\x20\x68\x61\x76\x69\x6E\x67\x20\x61\x20\x64\x72\x69\x6E\x6B\x20\x77\x69\x74\x68\x20\x68\x69\x6D\x3F\x20\x48\x6F\x77\x20\x63\x61\x6E\x20\x74\x68\x61\x74\x20\x62\x65\x20\x72\x61\x6E\x64\x6F\x6D\x3F","\x46\x69\x76\x65","\x4E\x6F\x74\x65\x20\x23\x35","\x48\x61\x73\x6E\x27\x74\x20\x69\x74\x20\x62\x65\x65\x6E\x20\x63\x6C\x65\x61\x72\x20\x73\x69\x6E\x63\x65\x20\x74\x68\x65\x20\x62\x65\x67\x69\x6E\x6E\x69\x6E\x67\x3F\x20\x43\x61\x6E\x27\x74\x20\x79\x6F\x75\x20\x73\x65\x65\x20\x74\x68\x65\x20\x77\x72\x69\x74\x74\x69\x6E\x67\x20\x6F\x6E\x20\x74\x68\x65\x20\x77\x61\x6C\x6C\x73\x3F\x20\x49\x27\x6D\x20\x6E\x6F\x74\x20\x69\x6E\x20\x74\x68\x65\x20\x6D\x6F\x6E\x65\x79\x20\x62\x75\x73\x69\x6E\x65\x73\x73\x20\x6E\x6F\x72\x20\x74\x68\x65\x20\x63\x68\x65\x6D\x69\x63\x61\x6C\x20\x6F\x6E\x65\x2E\x20\x49\x27\x6D\x20\x69\x6E\x20\x74\x68\x65\x20\x65\x6D\x70\x69\x72\x65\x20\x62\x75\x73\x69\x6E\x65\x73\x73\x20\x61\x6E\x64\x20\x74\x68\x65\x20\x6F\x6E\x6C\x79\x20\x77\x61\x79\x20\x74\x68\x69\x73\x20\x63\x61\x6E\x20\x66\x75\x6E\x63\x74\x69\x6F\x6E\x20\x69\x73\x20\x77\x69\x74\x68\x20\x79\x6F\x75\x20\x61\x73\x20\x74\x68\x65\x20\x64\x65\x61\x6C\x65\x72\x20\x61\x6E\x64\x20\x6D\x65\x20\x61\x73\x20\x74\x68\x65\x20\x63\x6F\x6F\x6B\x2E\x20\x49\x74\x27\x73\x20\x61\x20\x6F\x6E\x65\x2D\x77\x61\x79\x20\x73\x74\x72\x65\x65\x74\x20\x4A\x2D","\x53\x69\x78","\x4E\x6F\x74\x65\x20\x23\x36","\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x3C\x64\x69\x76\x3E\x59\x6F\x75\x20\x70\x72\x6F\x64\x75\x63\x65\x20\x61\x20\x6D\x65\x74\x68\x20\x74\x68\x61\x74\x27\x73\x20\x37\x30\x25\x20\x70\x75\x72\x65\x2C\x20\x69\x66\x20\x79\x6F\x75\x27\x72\x65\x20\x6C\x75\x63\x6B\x79\x2E\x20\x57\x68\x61\x74\x20\x49\x20\x70\x72\x6F\x64\x75\x63\x65\x20\x69\x73\x20\x39\x39\x2E\x31\x25\x20\x70\x75\x72\x65\x2E\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x3C\x64\x69\x76\x3E\x53\x6F\x3F\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x3C\x64\x69\x76\x3E\x53\x6F\x2E\x2E\x2E\x20\x69\x74\x27\x73\x20\x67\x72\x61\x64\x65\x20\x73\x63\x68\x6F\x6F\x6C\x20\x74\x65\x65\x2D\x62\x61\x6C\x6C\x20\x76\x73\x2E\x20\x54\x68\x65\x20\x4E\x65\x77\x20\x59\x6F\x72\x6B\x20\x59\x61\x6E\x6B\x65\x65\x73\x2E\x20\x59\x6F\x75\x72\x73\x20\x69\x73\x20\x6A\x75\x73\x74\x20\x73\x6F\x6D\x65\x20\x74\x65\x70\x69\x64\x2E\x2E\x2E\x20\x6F\x66\x66\x2D\x62\x72\x61\x6E\x64\x2C\x20\x67\x65\x6E\x65\x72\x69\x63\x20\x63\x6F\x6C\x61\x2E\x20\x57\x68\x61\x74\x20\x49\x27\x6D\x20\x6D\x61\x6B\x69\x6E\x67\x20\x69\x73\x20\x63\x6C\x61\x73\x73\x69\x63\x20\x43\x6F\x6B\x65\x2E\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x3C\x64\x69\x76\x3E\x41\x6C\x6C\x20\x72\x69\x67\x68\x74\x2E\x20\x4F\x6B\x61\x79\x2E\x20\x53\x6F\x2C\x20\x75\x6D\x2E\x2E\x2E\x20\x49\x66\x20\x77\x65\x20\x6A\x75\x73\x74\x20\x77\x61\x73\x74\x65\x20\x79\x6F\x75\x20\x72\x69\x67\x68\x74\x20\x68\x65\x72\x65\x2C\x20\x72\x69\x67\x68\x74\x20\x6E\x6F\x77\x2C\x20\x61\x6E\x64\x20\x6C\x65\x61\x76\x65\x20\x79\x6F\x75\x20\x69\x6E\x20\x74\x68\x65\x20\x64\x65\x73\x65\x72\x74\x20\x74\x68\x65\x6E\x20\x74\x68\x65\x72\x65\x20\x69\x73\x20\x6E\x6F\x20\x6D\x6F\x72\x65\x20\x63\x6F\x6B\x65\x20\x6F\x6E\x20\x74\x68\x65\x20\x6D\x61\x72\x6B\x65\x74\x2C\x20\x72\x69\x67\x68\x74\x3F\x20\x53\x65\x65\x20\x68\x6F\x77\x20\x74\x68\x61\x74\x20\x77\x6F\x72\x6B\x73\x3F\x20\x54\x68\x65\x72\x65\x27\x73\x20\x6F\x6E\x6C\x79\x20\x75\x73\x2E\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x3C\x64\x69\x76\x3E\x44\x6F\x20\x79\x6F\x75\x20\x72\x65\x61\x6C\x6C\x79\x20\x77\x61\x6E\x6E\x61\x20\x6C\x69\x76\x65\x20\x69\x6E\x20\x61\x20\x77\x6F\x72\x6C\x64\x20\x77\x69\x74\x68\x6F\x75\x74\x20\x43\x6F\x63\x61\x2D\x43\x6F\x6C\x61\x3F","\x72\x6F\x77","\x69\x6E\x66\x6F\x62\x6F\x78","\x6C\x6F\x72\x65","\x6C\x6F\x72\x65\x31","\x6C\x6F\x72\x65\x32","\x6C\x6F\x72\x65\x33","\x6C\x6F\x72\x65\x34","\x6C\x6F\x72\x65\x35"];addLayer(_0x61be[0],{row:_0x61be[1],color:_0x61be[2],textStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]},startData:function(){return {One: new Decimal(0),Two: new Decimal(0),Three: new Decimal(0),Four: new Decimal(0),Five: new Decimal(0),Six: new Decimal(0)}},layerShown:function(){if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[7][_0x61be[4]]()){return true};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[8][_0x61be[4]]()){return true};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[9][_0x61be[4]]()){return true};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[10][_0x61be[4]]()){return true};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[11][_0x61be[4]]()){return true};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[12][_0x61be[4]]()){return true}else {return false}},tooltip:function(){return _0x61be[13]},infoboxes:{lore:{unlocked:function(){if(player[_0x61be[0]][_0x61be[14]]== 1){return true}},title:_0x61be[15],body:function(){return _0x61be[16]},titleStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]}},lore1:{unlocked:function(){if(player[_0x61be[0]][_0x61be[17]]== 1){return true}},title:_0x61be[18],body:function(){return _0x61be[19]},titleStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]}},lore2:{unlocked:function(){if(player[_0x61be[0]][_0x61be[20]]== 1){return true}},title:_0x61be[21],body:function(){return _0x61be[22]},titleStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]}},lore3:{unlocked:function(){if(player[_0x61be[0]][_0x61be[23]]== 1){return true}},title:_0x61be[24],body:function(){return _0x61be[25]},titleStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]}},lore4:{unlocked:function(){if(player[_0x61be[0]][_0x61be[26]]== 1){return true}},title:_0x61be[27],body:function(){return _0x61be[28]},titleStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]}},lore5:{unlocked:function(){if(player[_0x61be[0]][_0x61be[29]]== 1){return true}},title:_0x61be[30],body:function(){return `${_0x61be[31]}`},titleStyle:{"\x63\x6F\x6C\x6F\x72":_0x61be[3]}}},update:function(){if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[7][_0x61be[4]]()){player[_0x61be[0]][_0x61be[14]]=  new Decimal(1)};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[8][_0x61be[4]]()){player[_0x61be[0]][_0x61be[17]]=  new Decimal(1)};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[9][_0x61be[4]]()){player[_0x61be[0]][_0x61be[20]]=  new Decimal(1)};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[10][_0x61be[4]]()){player[_0x61be[0]][_0x61be[23]]=  new Decimal(1)};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[11][_0x61be[4]]()){player[_0x61be[0]][_0x61be[26]]=  new Decimal(1)};if(player[_0x61be[6]][_0x61be[5]][_0x61be[4]]()== _0x61be[12][_0x61be[4]]()){player[_0x61be[0]][_0x61be[29]]=  new Decimal(1)}},tabFormat:[[_0x61be[32],[[_0x61be[33],_0x61be[34]],[_0x61be[33],_0x61be[35]],[_0x61be[33],_0x61be[36]],[_0x61be[33],_0x61be[37]],[_0x61be[33],_0x61be[38]],[_0x61be[33],_0x61be[39]]]]]})
 
-addLayer("Per", {
-    branches: ['p', 'He', 'Li', 'Be', 'B', 'C', 'N'],
-    row: 1,
-    position: 1,
-    color: "#FFFFFF",
-    tooltip() { return "" },
-
-    infoboxes: {
-        lore: {
-            title: "Welcome To The Periodic Table Tree",
-            body() { return "Here you will advance from element to element until I decide to stop. That's about it, not much else to say...There's save files under this if you want to skip a section or your savefile gets corrupted. (Mobile players, ya gotta swap over to the low qual mode. Just like, click on the gear thingy.)" },
-        },
-    },
-
-    tabFormat: [
-        ["infobox", "lore"],
-        ["display-text",
-            function () { return 'A fun little periodic table:' }],
-        "blank",
-        ["display-image",
-            function () { return 'https://i.postimg.cc/59DXKHnn/6ce621c1-37d7-4aa1-8068-18a856d6c523.jpg' }],
-        "blank",
-        ["display-text",
-            function () { return 'Save bank:' }],
-            "blank",
-        ["display-text",
-            function () { return `<a href="https://github.com/BilboyX/The-Periodic-Table-Tree/tree/master/save-files" target="_blank" rel="noopener noreferrer">The Periodic Table Tree: Save Files</a>`}],
-       "blank",
-        ["display-text",
-            function () { return 'Credits: <div> Escapee, <div> smiley, <div> Jakub, <div> g🆎ples2, <div> Acamaeda, <div> incremental_gamer, <div> P🆎tfr, <div> JJP.' }],
-            ["display-image", 'https://i.postimg.cc/x1b6Q644/c8b42708505611e88f6702e6256ec5c3-1-removebg-preview.png', { 'height': `30px`, 'width': `30px`, position: 'relative', right: '-50px', top: '-148px'}],
-            ["display-image", 'https://i.postimg.cc/brn1WwgV/Studio-Project-removebg-preview.png', { 'height': `30px`, 'width': `30px`, position: 'relative', right: '50px', top: '-168px'}],
-            ["display-image", 'https://i.postimg.cc/mk54KTdq/a5219bd91f868f264f556082bbb339dd.jpg', { 'height': `25px`, 'width': `25px`, position: 'relative', right: '-50px', top: '-182px'}],
-            ["display-image", 'https://i.postimg.cc/zGCzGb0S/15-2-removebg-preview-1.png', { 'height': `25px`, 'width': `25px`, position: 'relative', right: '52px', top: '-188px'}],
-            ["display-image", 'https://i.postimg.cc/kGNV316K/Screenshot-2022-07-21-021115-removebg-preview.png', { 'height': `35px`, 'width': `30px`, position: 'relative', right: '-52px', top: '-205px'}],
-            ["display-image", 'https://i.postimg.cc/PJ6jwY00/Screenshot-2022-07-21-021433-removebg-preview.png', { 'height': `30px`, 'width': `35px`, position: 'relative', right: '88px', top: '-220px'}],
-            ["display-image", 'https://i.postimg.cc/26Sm80Kn/Screenshot-2022-07-21-021710-removebg-preview.png', { 'height': `30px`, 'width': `27px`, position: 'relative', right: '-50px', top: '-230px'}],
-            ["display-image", 'https://i.postimg.cc/VL2zzBwV/Screenshot-2022-07-21-022358-removebg-preview.png', { 'height': `30px`, 'width': `30px`, position: 'relative', right: '46px', top: '-250px'}],
-    ]
-})
+var _0x1543=["\x50\x65\x72","\x70","\x48\x65","\x4C\x69","\x42\x65","\x42","\x43","\x4E","\x56","\x23\x46\x46\x46\x46\x46\x46","","\x57\x65\x6C\x63\x6F\x6D\x65\x20\x54\x6F\x20\x54\x68\x65\x20\x50\x65\x72\x69\x6F\x64\x69\x63\x20\x54\x61\x62\x6C\x65\x20\x54\x72\x65\x65","\x48\x65\x72\x65\x20\x79\x6F\x75\x20\x77\x69\x6C\x6C\x20\x61\x64\x76\x61\x6E\x63\x65\x20\x66\x72\x6F\x6D\x20\x65\x6C\x65\x6D\x65\x6E\x74\x20\x74\x6F\x20\x65\x6C\x65\x6D\x65\x6E\x74\x20\x75\x6E\x74\x69\x6C\x20\x49\x20\x64\x65\x63\x69\x64\x65\x20\x74\x6F\x20\x73\x74\x6F\x70\x2E\x20\x54\x68\x61\x74\x27\x73\x20\x61\x62\x6F\x75\x74\x20\x69\x74\x2C\x20\x6E\x6F\x74\x20\x6D\x75\x63\x68\x20\x65\x6C\x73\x65\x20\x74\x6F\x20\x73\x61\x79\x2E\x2E\x2E\x54\x68\x65\x72\x65\x27\x73\x20\x73\x61\x76\x65\x20\x66\x69\x6C\x65\x73\x20\x75\x6E\x64\x65\x72\x20\x74\x68\x69\x73\x20\x69\x66\x20\x79\x6F\x75\x20\x77\x61\x6E\x74\x20\x74\x6F\x20\x73\x6B\x69\x70\x20\x61\x20\x73\x65\x63\x74\x69\x6F\x6E\x20\x6F\x72\x20\x79\x6F\x75\x72\x20\x73\x61\x76\x65\x66\x69\x6C\x65\x20\x67\x65\x74\x73\x20\x63\x6F\x72\x72\x75\x70\x74\x65\x64\x2E\x20\x28\x4D\x6F\x62\x69\x6C\x65\x20\x70\x6C\x61\x79\x65\x72\x73\x2C\x20\x79\x61\x20\x67\x6F\x74\x74\x61\x20\x73\x77\x61\x70\x20\x6F\x76\x65\x72\x20\x74\x6F\x20\x74\x68\x65\x20\x6C\x6F\x77\x20\x71\x75\x61\x6C\x20\x6D\x6F\x64\x65\x2E\x20\x4A\x75\x73\x74\x20\x6C\x69\x6B\x65\x2C\x20\x63\x6C\x69\x63\x6B\x20\x6F\x6E\x20\x74\x68\x65\x20\x67\x65\x61\x72\x20\x74\x68\x69\x6E\x67\x79\x2E\x29","\x23\x30\x30\x30\x30\x30\x30","\x34\x34\x25","\x54\x68\x65\x20\x45\x6E\x64","\x4F\x6E\x65","\x43\x68","\x64\x69\x73\x70\x6C\x61\x79\x2D\x74\x65\x78\x74","\x3C\x73\x70\x61\x6E\x20\x73\x74\x79\x6C\x65\x3D\x27\x63\x6F\x6C\x6F\x72\x3A\x20\x23\x30\x30\x30\x30\x30\x30\x3B\x20\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x63\x6F\x6C\x6F\x72\x3A\x20\x23\x46\x46\x46\x46\x46\x46\x27\x3E\x59\x6F\x75\x27\x72\x65\x20\x68\x65\x72\x65\x2C\x20\x67\x6F\x6F\x64\x2E\x20\x43\x68\x65\x6D\x69\x63\x61\x6C\x73\x20\x61\x72\x65\x20\x75\x73\x65\x66\x75\x6C\x2C\x20\x61\x70\x61\x72\x74\x20\x6F\x66\x20\x75\x73\x2E\x20\x53\x6F\x6D\x65\x74\x69\x6D\x65\x73\x20\x79\x6F\x75\x20\x68\x61\x76\x65\x20\x74\x6F\x20\x64\x6F\x20\x77\x68\x61\x74\x20\x79\x6F\x75\x27\x72\x65\x20\x62\x65\x73\x74\x20\x61\x74\x2C\x20\x65\x73\x70\x65\x63\x69\x61\x6C\x6C\x79\x20\x77\x68\x65\x6E\x20\x79\x6F\x75\x20\x61\x72\x65\x20\x74\x68\x65\x20\x62\x65\x73\x74\x20\x61\x74\x20\x69\x74\x2E\x20\x54\x68\x69\x73\x20\x69\x73\x20\x61\x70\x70\x61\x72\x65\x6E\x74\x20\x66\x6F\x72\x20\x79\x6F\x75\x20\x6A\x75\x73\x74\x20\x61\x73\x20\x6D\x75\x63\x68\x20\x61\x73\x20\x69\x74\x20\x69\x73\x20\x66\x6F\x72\x20\x6D\x65\x2E\x20\x44\x69\x64\x20\x79\x6F\x75\x20\x65\x76\x65\x72\x20\x61\x73\x6B\x20\x79\x6F\x75\x72\x73\x65\x6C\x66\x20\x77\x68\x79\x20\x79\x6F\x75\x20\x77\x65\x72\x65\x20\x67\x6F\x69\x6E\x67\x20\x6F\x6E\x20\x61\x6E\x20\x61\x64\x76\x65\x6E\x74\x75\x72\x65\x20\x6F\x66\x20\x73\x6F\x72\x74\x73\x3F\x20\x4A\x75\x73\x74\x20\x74\x6F\x20\x66\x69\x64\x64\x6C\x65\x20\x61\x72\x6F\x75\x6E\x64\x20\x77\x69\x74\x68\x20\x65\x6C\x65\x6D\x65\x6E\x74\x73\x3F\x20\x4E\x6F\x74\x20\x65\x76\x65\x72\x79\x20\x67\x61\x6D\x65\x20\x68\x61\x73\x20\x74\x6F\x20\x68\x61\x76\x65\x20\x6C\x6F\x72\x65\x2C\x20\x68\x6F\x77\x65\x76\x65\x72\x20\x74\x68\x69\x73\x20\x6F\x6E\x65\x20\x64\x6F\x65\x73\x2E\x20\x49\x20\x64\x6F\x6E\x27\x74\x20\x65\x78\x61\x63\x74\x6C\x79\x20\x6B\x6E\x6F\x77\x20\x68\x6F\x77\x20\x79\x6F\x75\x20\x65\x6E\x64\x65\x64\x20\x75\x70\x20\x68\x65\x72\x65\x20\x62\x75\x74\x20\x69\x74\x20\x73\x65\x65\x6D\x73\x20\x6C\x69\x6B\x65\x20\x49\x27\x6C\x6C\x20\x6E\x65\x65\x64\x20\x74\x6F\x20\x63\x6C\x65\x61\x72\x20\x75\x70\x20\x74\x68\x65\x20\x63\x6F\x6E\x66\x75\x73\x69\x6F\x6E\x2E\x20\x59\x6F\x75\x27\x72\x65\x20\x61\x20\x73\x75\x70\x70\x6C\x69\x65\x72\x2E\x20\x41\x20\x70\x61\x77\x6E\x20\x6F\x66\x20\x73\x6F\x72\x74\x73\x2E\x20\x59\x6F\x75\x27\x76\x65\x20\x67\x69\x76\x65\x6E\x20\x6D\x65\x20\x61\x6C\x6C\x20\x74\x68\x61\x74\x20\x49\x27\x76\x65\x20\x6E\x65\x65\x64\x65\x64\x20\x66\x72\x6F\x6D\x20\x79\x6F\x75\x2E\x20\x44\x6F\x20\x79\x6F\x75\x20\x6B\x6E\x6F\x77\x20\x77\x68\x61\x74\x20\x79\x6F\x75\x20\x67\x65\x74\x20\x77\x68\x65\x6E\x20\x79\x6F\x75\x20\x73\x79\x6E\x74\x68\x73\x69\x7A\x65\x20\x6D\x65\x74\x68\x79\x6C\x61\x6D\x69\x6E\x65\x20\x61\x6E\x64\x20\x70\x68\x65\x6E\x79\x6C\x61\x63\x65\x74\x6F\x6E\x65\x3F\x20\x52\x61\x63\x65\x6D\x69\x63\x20\x6D\x65\x74\x68\x61\x6D\x70\x68\x65\x74\x61\x6D\x69\x6E\x65\x2E\x20\x55\x73\x69\x6E\x67\x20\x6D\x79\x20\x6D\x65\x74\x68\x6F\x64\x73\x20\x6F\x66\x20\x63\x6F\x6F\x6B\x69\x6E\x67\x2C\x20\x49\x20\x63\x61\x6E\x20\x70\x72\x6F\x64\x75\x63\x65\x20\x61\x20\x6E\x65\x61\x72\x20\x31\x30\x30\x25\x20\x70\x75\x72\x69\x74\x79\x20\x6C\x65\x76\x65\x6C\x20\x6F\x66\x20\x63\x72\x79\x73\x74\x61\x6C\x20\x6D\x65\x74\x68\x2E\x20\x59\x6F\x75\x27\x76\x65\x20\x74\x72\x75\x64\x67\x64\x65\x64\x20\x70\x61\x69\x6E\x66\x75\x6C\x6C\x79\x20\x74\x68\x72\x6F\x75\x67\x68\x20\x61\x6E\x6E\x6F\x79\x69\x6E\x67\x20\x6D\x65\x63\x68\x61\x6E\x69\x63\x73\x20\x66\x6F\x72\x20\x6D\x65\x2E\x20\x59\x6F\x75\x72\x20\x61\x64\x64\x69\x63\x74\x69\x6F\x6E\x20\x62\x65\x61\x74\x20\x72\x65\x61\x73\x6F\x6E\x2E\x20\x54\x68\x69\x73\x20\x69\x73\x20\x74\x68\x65\x20\x65\x6E\x64\x20\x68\x6F\x77\x65\x76\x65\x72\x2E\x20\x54\x68\x65\x72\x65\x20\x69\x73\x20\x6E\x6F\x20\x6D\x6F\x72\x65\x20\x67\x61\x6D\x65\x2E\x20\x59\x6F\x75\x27\x76\x65\x20\x62\x65\x65\x6E\x20\x73\x77\x69\x6E\x64\x6C\x65\x64\x2E\x20\x47\x6F\x6F\x64\x62\x79\x65\x2E\x3C\x2F\x73\x70\x61\x6E\x3E","\x63\x6C\x69\x63\x6B\x61\x62\x6C\x65","\x69\x6E\x66\x6F\x62\x6F\x78","\x6C\x6F\x72\x65","\x41\x20\x66\x75\x6E\x20\x6C\x69\x74\x74\x6C\x65\x20\x70\x65\x72\x69\x6F\x64\x69\x63\x20\x74\x61\x62\x6C\x65\x3A","\x62\x6C\x61\x6E\x6B","\x64\x69\x73\x70\x6C\x61\x79\x2D\x69\x6D\x61\x67\x65","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x35\x39\x44\x58\x4B\x48\x6E\x6E\x2F\x36\x63\x65\x36\x32\x31\x63\x31\x2D\x33\x37\x64\x37\x2D\x34\x61\x61\x31\x2D\x38\x30\x36\x38\x2D\x31\x38\x61\x38\x35\x36\x64\x36\x63\x35\x32\x33\x2E\x6A\x70\x67","\x53\x61\x76\x65\x20\x62\x61\x6E\x6B\x3A","\x3C\x61\x20\x68\x72\x65\x66\x3D\x22\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x69\x74\x68\x75\x62\x2E\x63\x6F\x6D\x2F\x42\x69\x6C\x62\x6F\x79\x58\x2F\x54\x68\x65\x2D\x50\x65\x72\x69\x6F\x64\x69\x63\x2D\x54\x61\x62\x6C\x65\x2D\x54\x72\x65\x65\x2F\x74\x72\x65\x65\x2F\x6D\x61\x73\x74\x65\x72\x2F\x73\x61\x76\x65\x2D\x66\x69\x6C\x65\x73\x22\x20\x74\x61\x72\x67\x65\x74\x3D\x22\x5F\x62\x6C\x61\x6E\x6B\x22\x20\x72\x65\x6C\x3D\x22\x6E\x6F\x6F\x70\x65\x6E\x65\x72\x20\x6E\x6F\x72\x65\x66\x65\x72\x72\x65\x72\x22\x3E\x54\x68\x65\x20\x50\x65\x72\x69\x6F\x64\x69\x63\x20\x54\x61\x62\x6C\x65\x20\x54\x72\x65\x65\x3A\x20\x53\x61\x76\x65\x20\x46\x69\x6C\x65\x73\x3C\x2F\x61\x3E","\x43\x72\x65\x64\x69\x74\x73\x3A\x20\x3C\x64\x69\x76\x3E\x20\x45\x73\x63\x61\x70\x65\x65\x2C\x20\x3C\x64\x69\x76\x3E\x20\x73\x6D\x69\x6C\x65\x79\x2C\x20\x3C\x64\x69\x76\x3E\x20\x4A\x61\x6B\x75\x62\x2C\x20\x3C\x64\x69\x76\x3E\x20\x67\uD83C\uDD8E\x70\x6C\x65\x73\x32\x2C\x20\x3C\x64\x69\x76\x3E\x20\x41\x63\x61\x6D\x61\x65\x64\x61\x2C\x20\x3C\x64\x69\x76\x3E\x20\x69\x6E\x63\x72\x65\x6D\x65\x6E\x74\x61\x6C\x5F\x67\x61\x6D\x65\x72\x2C\x20\x3C\x64\x69\x76\x3E\x20\x50\uD83C\uDD8E\x74\x66\x72\x2C\x20\x3C\x64\x69\x76\x3E\x20\x4A\x4A\x50\x2E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x78\x31\x62\x36\x51\x36\x34\x34\x2F\x63\x38\x62\x34\x32\x37\x30\x38\x35\x30\x35\x36\x31\x31\x65\x38\x38\x66\x36\x37\x30\x32\x65\x36\x32\x35\x36\x65\x63\x35\x63\x33\x2D\x31\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2E\x70\x6E\x67","\x33\x30\x70\x78","\x72\x65\x6C\x61\x74\x69\x76\x65","\x2D\x35\x30\x70\x78","\x2D\x31\x34\x38\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x62\x72\x6E\x31\x57\x77\x67\x56\x2F\x53\x74\x75\x64\x69\x6F\x2D\x50\x72\x6F\x6A\x65\x63\x74\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2E\x70\x6E\x67","\x35\x30\x70\x78","\x2D\x31\x36\x38\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x6D\x6B\x35\x34\x4B\x54\x64\x71\x2F\x61\x35\x32\x31\x39\x62\x64\x39\x31\x66\x38\x36\x38\x66\x32\x36\x34\x66\x35\x35\x36\x30\x38\x32\x62\x62\x62\x33\x33\x39\x64\x64\x2E\x6A\x70\x67","\x32\x35\x70\x78","\x2D\x31\x38\x32\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x7A\x47\x43\x7A\x47\x62\x30\x53\x2F\x31\x35\x2D\x32\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2D\x31\x2E\x70\x6E\x67","\x35\x32\x70\x78","\x2D\x31\x38\x38\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x6B\x47\x4E\x56\x33\x31\x36\x4B\x2F\x53\x63\x72\x65\x65\x6E\x73\x68\x6F\x74\x2D\x32\x30\x32\x32\x2D\x30\x37\x2D\x32\x31\x2D\x30\x32\x31\x31\x31\x35\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2E\x70\x6E\x67","\x33\x35\x70\x78","\x2D\x35\x32\x70\x78","\x2D\x32\x30\x35\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x50\x4A\x36\x6A\x77\x59\x30\x30\x2F\x53\x63\x72\x65\x65\x6E\x73\x68\x6F\x74\x2D\x32\x30\x32\x32\x2D\x30\x37\x2D\x32\x31\x2D\x30\x32\x31\x34\x33\x33\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2E\x70\x6E\x67","\x38\x38\x70\x78","\x2D\x32\x32\x30\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x32\x36\x53\x6D\x38\x30\x4B\x6E\x2F\x53\x63\x72\x65\x65\x6E\x73\x68\x6F\x74\x2D\x32\x30\x32\x32\x2D\x30\x37\x2D\x32\x31\x2D\x30\x32\x31\x37\x31\x30\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2E\x70\x6E\x67","\x32\x37\x70\x78","\x2D\x32\x33\x30\x70\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x70\x6F\x73\x74\x69\x6D\x67\x2E\x63\x63\x2F\x56\x4C\x32\x7A\x7A\x42\x77\x56\x2F\x53\x63\x72\x65\x65\x6E\x73\x68\x6F\x74\x2D\x32\x30\x32\x32\x2D\x30\x37\x2D\x32\x31\x2D\x30\x32\x32\x33\x35\x38\x2D\x72\x65\x6D\x6F\x76\x65\x62\x67\x2D\x70\x72\x65\x76\x69\x65\x77\x2E\x70\x6E\x67","\x34\x36\x70\x78","\x2D\x32\x35\x30\x70\x78","\x74\x61\x62","\x66\x6F\x72\x63\x65\x4F\x6E\x65\x54\x61\x62","\x2D\x2D\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x67\x72\x65\x79\x20\x75\x72\x6C\x28\x27\x4C\x61\x62\x2E\x67\x69\x66\x27\x29\x20\x66\x69\x78\x65\x64\x20\x6E\x6F\x2D\x72\x65\x70\x65\x61\x74\x20\x63\x65\x6E\x74\x65\x72\x20","\x73\x65\x74\x50\x72\x6F\x70\x65\x72\x74\x79","\x73\x74\x79\x6C\x65","\x62\x6F\x64\x79"];addLayer(_0x1543[0],{branches:[_0x1543[1],_0x1543[2],_0x1543[3],_0x1543[4],_0x1543[5],_0x1543[6],_0x1543[7],_0x1543[8]],row:1,position:1,color:_0x1543[9],tooltip:function(){return _0x1543[10]},infoboxes:{lore:{title:_0x1543[11],body:function(){return _0x1543[12]}}},clickables:{11:{style:{color:_0x1543[13],'\x62\x6F\x72\x64\x65\x72\x2D\x72\x61\x64\x69\x75\x73':_0x1543[14]},title:_0x1543[15],canClick:function(){return true},unlocked:function(){return true},onClick:function(){player[_0x1543[17]][_0x1543[16]]=  new Decimal(1),goBack()}}},tabFormat:[()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?[_0x1543[18],`${_0x1543[19]}`]:_0x1543[10]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?[_0x1543[20],11]:_0x1543[10]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[21],_0x1543[22]]},[_0x1543[18],function(){if(player[_0x1543[17]][_0x1543[16]]!= 2){return _0x1543[23]}}],()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:_0x1543[24]},[_0x1543[25],function(){if(player[_0x1543[17]][_0x1543[16]]!= 2){return _0x1543[26]}}],()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:_0x1543[24]},[_0x1543[18],function(){if(player[_0x1543[17]][_0x1543[16]]!= 2){return _0x1543[27]}}],_0x1543[24],[_0x1543[18],function(){if(player[_0x1543[17]][_0x1543[16]]!= 2){return `${_0x1543[28]}`}}],()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:_0x1543[24]},[_0x1543[18],function(){if(player[_0x1543[17]][_0x1543[16]]!= 2){return _0x1543[29]}}],()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[30],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[31]}`,'\x77\x69\x64\x74\x68':`${_0x1543[31]}`,position:_0x1543[32],right:_0x1543[33],top:_0x1543[34]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[35],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[31]}`,'\x77\x69\x64\x74\x68':`${_0x1543[31]}`,position:_0x1543[32],right:_0x1543[36],top:_0x1543[37]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[38],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[39]}`,'\x77\x69\x64\x74\x68':`${_0x1543[39]}`,position:_0x1543[32],right:_0x1543[33],top:_0x1543[40]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[41],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[39]}`,'\x77\x69\x64\x74\x68':`${_0x1543[39]}`,position:_0x1543[32],right:_0x1543[42],top:_0x1543[43]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[44],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[45]}`,'\x77\x69\x64\x74\x68':`${_0x1543[31]}`,position:_0x1543[32],right:_0x1543[46],top:_0x1543[47]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[48],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[31]}`,'\x77\x69\x64\x74\x68':`${_0x1543[45]}`,position:_0x1543[32],right:_0x1543[49],top:_0x1543[50]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[51],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[31]}`,'\x77\x69\x64\x74\x68':`${_0x1543[52]}`,position:_0x1543[32],right:_0x1543[33],top:_0x1543[53]}]},()=>{return (player[_0x1543[17]][_0x1543[16]]== 2)?_0x1543[10]:[_0x1543[25],_0x1543[54],{'\x68\x65\x69\x67\x68\x74':`${_0x1543[31]}`,'\x77\x69\x64\x74\x68':`${_0x1543[31]}`,position:_0x1543[32],right:_0x1543[55],top:_0x1543[56]}]}],update:function(){if(needCanvasUpdate= true&& player[_0x1543[57]]== _0x1543[0]&& player[_0x1543[17]][_0x1543[16]]== 2){options[_0x1543[58]]= true,document[_0x1543[63]][_0x1543[62]][_0x1543[61]](_0x1543[59],_0x1543[60])}}})
 
 addLayer("A", {
 
@@ -794,6 +806,78 @@ addLayer("A", {
             done() { return hasMilestone('N', 12)},
             image() { if (hasAchievement('A', 135)) return "https://i.postimg.cc/d3hjkXqV/Screenshot-2022-07-30-212349-removebg-preview-2.png" }
         },
+        141: {
+            unlocked() { if (hasAchievement('A', 135)) return true},
+            name: "Stargazer Of Gasses",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Hydrogen",
+            done() { return localStorage.getItem('1') === '1'},
+            image() { if (hasAchievement('A', 141)) return "https://i.postimg.cc/htGtbzFG/person-standing-under-the-milky-way.jpg" }
+        },
+        142: {
+            unlocked() { if (hasAchievement('A', 141)) return true},
+            name: "Balloon Astronomer?",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Helium",
+            done() { return localStorage.getItem('1') === '2'},
+            image() { if (hasAchievement('A', 142)) return "https://i.postimg.cc/5N44bY2m/girl-silhouette-balloons-starry-sky-wallpaper-preview.jpg" }
+        },
+        143: {
+            unlocked() { if (hasAchievement('A', 142)) return true},
+            name: "Bedazzled Miner",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Lithium",
+            done() { return localStorage.getItem('1') === '3'},
+            image() { if (hasAchievement('A', 143)) return "https://i.postimg.cc/NfzWS59F/coal-black-black-and-white-underground.jpg" }
+        },
+        144: {
+            unlocked() { if (hasAchievement('A', 143)) return true},
+            name: "Star Explorationist",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Beryllium",
+            done() { return localStorage.getItem('1') === '4'},
+            image() { if (hasAchievement('A', 144)) return "https://i.postimg.cc/6q11kmQg/a-journey-of-discovery-science-planet-moon.jpg" }
+        },
+        145: {
+            unlocked() { if (hasAchievement('A', 144)) return true},
+            name: "Star Cutter",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Boron",
+            done() { return localStorage.getItem('1') === '5'},
+            image() { if (hasAchievement('A', 145)) return "https://i.postimg.cc/VvMDhL3r/origami-stars-star-paper-folding-art-1897909.jpg" }
+        },
+        151: {
+            unlocked() { if (hasAchievement('A', 145)) return true},
+            name: "Star Power",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Carbon",
+            done() { return localStorage.getItem('1') === '6'},
+            image() { if (hasAchievement('A', 151)) return "https://i.postimg.cc/vmg9hSRD/light-special-effects03.jpg" }
+        },
+        152: {
+            unlocked() { if (hasAchievement('A', 151)) return true},
+            name: "Universal Extraction",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master Nitrogen",
+            done() { return localStorage.getItem('1') === '7'},
+            image() { if (hasAchievement('A', 152)) return "https://i.postimg.cc/YSKqcXGv/ebh-870x418.png" }
+        },
+        153: {
+            unlocked() { if (hasAchievement('A', 152)) return true},
+            name: "Paradoxical Anomaly",
+            textStyle: { "color": "#000000" },
+            style: { "background-size": "100% 100%", "background-position": "center center"},
+            tooltip: "Master The Vault",
+            done() { return localStorage.getItem('1') === '8'},
+            image() { if (hasAchievement('A', 153)) return "https://i.postimg.cc/d3TxK9T0/stars-the-universe-black-hole-quasar-wallpaper-preview.jpg" }
+        },
     },
 
     clickables: {
@@ -823,8 +907,8 @@ addLayer("A", {
     ],
 
     update() {
-        if (player.He.HeliumExpunged > 1 && hasUpgrade('He', 21) == false && hasMilestone('Li', 1) == false) player.He.HeliumExpunged = player.He.HeliumExpunged.add(-player.A.Expulrate)
-        if (player.He.HeliumExpunged < 0.1 && hasUpgrade('He', 21) == false && hasMilestone('Li', 1) == false) player.He.HeliumExpunged = player.He.HeliumExpunged.add(player.A.Expulrate2)
+        if (!inChallenge('V', 11) && player.He.HeliumExpunged > 1 && hasUpgrade('He', 21) == false && hasMilestone('Li', 1) == false) player.He.HeliumExpunged = player.He.HeliumExpunged.add(-player.A.Expulrate)
+        if (!inChallenge('V', 11) && player.He.HeliumExpunged < 0.1 && hasUpgrade('He', 21) == false && hasMilestone('Li', 1) == false) player.He.HeliumExpunged = player.He.HeliumExpunged.add(player.A.Expulrate2)
         player.p.HydroGain = player.p.HydroGain.times(0),
         player.A.points = new Decimal(player.A.achievements.length)
         if (player.p.HydrogenMult < 0.2) player.p.HydroResets = player.p.HydroResets.times(0)
@@ -843,6 +927,11 @@ addLayer("p", {
             'border': '1px solid #0000ff'
         } : {}
     },
+
+    marked() {
+        if (localStorage.getItem('1') >= '1') return true
+        },
+
     name: "Hydrogen", // This is optional, only used in a few places, If absent it just uses the layer id.
     image: "https://i.postimg.cc/sxTpYZ07/a1f4826e-e1d2-40a3-8027-e243e33ca67b-Photo-Room-1.png", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -903,7 +992,9 @@ addLayer("p", {
         else return true}},
     ],
 
-    layerShown() { return true },
+    layerShown() {
+        if (player.Ch.One == 2) return false
+        return true },
 
     onPrestige() {
         if (hasUpgrade('He', 22)) return ""
@@ -1098,10 +1189,17 @@ addLayer("p", {
         },
         21: {
             style: { "color": "#ededed" },
-            title: "Hydrogen's Hilarity",
+            title() {       
+            if (!inChallenge('V', 11)) return "Hydrogen's Hilarity"
+            if (inChallenge('V', 11)) return "Hydrogen's Stardom"},
             description: "Unlock Helium. Keep cost.",
-            cost: new Decimal(100),
-            onPurchase() { return player.p.points = player.p.points.add(100) },
+            cost() { 
+                if (!inChallenge('V', 11)) return new Decimal(100)
+                if (inChallenge('V', 11)) return new Decimal(100000)},
+            onPurchase() { 
+                if (inChallenge('V', 11) && localStorage.getItem('1') === '0') sSave(), localStorage.setItem('1', 1)
+                return player.p.points = player.p.points.add(100) 
+            },
             unlocked() {
                 if (hasUpgrade('p', 16)) return true
                 else return false
@@ -1207,7 +1305,7 @@ addLayer("p", {
                 if (hasUpgrade('p', 15)) effect = effect.add(tmp.p.effect2)
                 if (hasMilestone('p', 4)) effect = effect.add(effect.times(player.p.points.add(1).pow(0.2)))
                 effect = effect.times(player.He.points.pow(tmp.p.effect3).times(tmp.p.effect4).add(1))
-                if (player.p.HydrogenGas > prog) player.p.HydroResets = player.p.HydroResets.add(1), player.p.HydrogenPower = player.p.HydrogenPower.times(effectMult2).add(1).add(player.p.points.add(player.p.points).times(player.He.points.add(1).pow(tmp.p.effect3).times(tmp.p.effect4).times(player.Li.points.add(new Decimal(1)).pow(tmp.p.effect5).times(tmp.p.effect6)))), player.p.HydrogenGas = player.p.HydrogenGas.times(0)
+                if (player.p.HydrogenGas > prog) player.p.HydroResets = player.p.HydroResets.add(1), player.p.HydrogenPower = player.p.HydrogenPower.times(player.V.M).times(effectMult2).add(1).add(player.p.points.add(player.p.points).times(player.He.points.add(1).pow(tmp.p.effect3).times(tmp.p.effect4).times(player.Li.points.add(new Decimal(1)).pow(tmp.p.effect5).times(tmp.p.effect6)))), player.p.HydrogenGas = player.p.HydrogenGas.times(0)
                 return effect
             },
             unlocked() {
@@ -1221,14 +1319,14 @@ addLayer("p", {
                 if(options.mobileMode == false){
                     player.p.GasTicks = player.p.GasTicks.add(1)
                 if (player.p.Node < 1) player.p.HydroGain = player.p.HydroGain.add(1)
-                player.p.HydrogenGas = player.p.HydrogenGas.add((temp['p'].clickables[11].effect).times(player.p.HydrogenMult.add(1)).times(player.Li.points.add(1).pow(tmp.p.effect5).times(tmp.p.effect6)))
+                player.p.HydrogenGas = player.p.HydrogenGas.add((temp['p'].clickables[11].effect).times(player.V.M).times(player.p.HydrogenMult.add(1)).times(player.Li.points.add(1).pow(tmp.p.effect5).times(tmp.p.effect6)))
                 player.p.Gas = player.p.Gas.add(temp['p'].clickables[11].effect)}
             },
             onHold() {
                 if(options.mobileMode == true){
                 player.p.GasTicks = player.p.GasTicks.add(1)
                 if (player.p.Node < 1) player.p.HydroGain = player.p.HydroGain.add(1)
-                player.p.HydrogenGas = player.p.HydrogenGas.add((temp['p'].clickables[11].effect).times(player.p.HydrogenMult.add(1)).times(player.Li.points.add(1).pow(tmp.p.effect5).times(tmp.p.effect6)))
+                player.p.HydrogenGas = player.p.HydrogenGas.add((temp['p'].clickables[11].effect).times(player.V.M).times(player.p.HydrogenMult.add(1)).times(player.Li.points.add(1).pow(tmp.p.effect5).times(tmp.p.effect6)))
                 player.p.Gas = player.p.Gas.add(temp['p'].clickables[11].effect)}
             },
         },
@@ -1359,6 +1457,11 @@ addLayer("He", {
             'background-position': 'center center',
         }
     },
+
+    marked() {
+        if (localStorage.getItem('1') >= '2') return true
+        },
+
     name: "Helium", // This is optional, only used in a few places, If absent it just uses the layer id.
     image: "https://i.postimg.cc/RZMcmXvm/1764b201-ab45-4111-9c8a-646628e64d5c.png", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -1378,6 +1481,7 @@ addLayer("He", {
     },
 
     layerShown() {
+        if (player.Ch.One == 2) return false
         if (hasUpgrade('p', 21)) return true
         if (player.He.total > 0) return true
         if (player.Li.total > 0) return true
@@ -1392,6 +1496,7 @@ addLayer("He", {
     requires: new Decimal(100),
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() {
+        if (inChallenge('V', 11)) return 1
         if (hasUpgrade('He', 21)) return 0.5
         else return 0.1
     }, // Prestige currency exponent
@@ -1479,7 +1584,7 @@ addLayer("He", {
                 if (hasUpgrade('He', 21)) BalMult = BalMult.add((player.He.points).pow(1.1))
                 if (hasMilestone('He', 6)) BalMult = softcap(BalMult, new Decimal(200), 0.1)
                 if (player.He.State > 0) return ""
-                if (player.He.Inflate > 0) player.He.Inflate = player.He.Inflate.add(-InRate), player.He.HeliumExpunged = player.He.HeliumExpunged.add(1).add(player.He.Inflate.pow(0.1)).add(BalMult.times(player.Li.points.add(1).pow(tmp.p.effect5).times(tmp.p.effect6)))
+                if (player.He.Inflate > 0) player.He.Inflate = player.He.Inflate.add(-InRate), player.He.HeliumExpunged = player.He.HeliumExpunged.add(1).add(player.He.Inflate.pow(0.1)).add(BalMult.times(player.Li.points.add(1).pow(tmp.p.effect5).times(player.V.M).times(tmp.p.effect6)))
             },
             canClick() {
                 return true
@@ -1690,13 +1795,19 @@ addLayer("He", {
             },
         },
         26: {
-            title: "Naw man, come on. Don't leave now!",
+            title() {
+                if (inChallenge('V', 11)) return "Man, here's like a star or something."
+                if (!inChallenge('V', 11)) return "Naw man, come on. Don't leave now!"},
             description: "Unlock Lithium. Keep cost.",
             currencyDisplayName: "Helium Gas Expunged",
             currencyInternalName: "HeliumExpunged",
             currencyLocation() { return player.He },
-            cost() { return new Decimal(69420) },
-            onPurchase() { return player.He.HeliumExpunged = player.He.HeliumExpunged.add(69420) },
+            cost() {
+                if (inChallenge('V', 11)) return new Decimal(1e7)
+                if (!inChallenge('V', 11)) return new Decimal(69420) },
+            onPurchase() { 
+                if (inChallenge('V', 11) && localStorage.getItem('1') === '1') sSave(), localStorage.setItem('1', 2)
+                return player.He.HeliumExpunged = player.He.HeliumExpunged.add(69420) },
             unlocked() {
                 if (hasUpgrade('He', 25)) return true
                 else return false
@@ -1746,6 +1857,8 @@ addLayer("He", {
 
 
     passiveGeneration() {
+        if (localStorage.getItem('1') != '0' && localStorage.getItem('1') != '1' && localStorage.getItem('1') != '2' && player.He.points >= 1e300) return 1
+        if (localStorage.getItem('1') != '0' && localStorage.getItem('1') != '1' && localStorage.getItem('1') != '2') return player.He.points.times(0.0000000001).add(0.00001)
         if (hasMilestone('Li', 3)) return 8
         if (hasMilestone('Li', 2)) return 4
     },
@@ -1777,6 +1890,11 @@ addLayer("Li", {
             'background-position': 'center center',
         }
     },
+
+    marked() {
+        if (localStorage.getItem('1') >= '3') return true
+        },
+
     name: "Li", // This is optional, only used in a few places, If absent it just uses the layer id.
     image: "https://i.postimg.cc/qR0xHgF1/49f49e18-b45b-4b40-aef3-318b8b46376d.png", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 3, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -1837,6 +1955,7 @@ addLayer("Li", {
     Inv: new Decimal(0),
 
     layerShown() {
+        if (player.Ch.One == 2) return false
         if (hasUpgrade('He', 26)) return true
         if (player.Li.resets > 0) return true
         else return false
@@ -2037,6 +2156,7 @@ addLayer("Li", {
                 if (hasMilestone('Li', 5) && player.Li.Runlock > 0) return true
             },
             cost(x) { 
+                if (inChallenge('Li', 15) && inChallenge('V', 11)) return new Decimal(1e300).mul(x)
                 if (inChallenge('Li', 15)) return new Decimal(1e15).mul(x)
                 if (inChallenge('Li', 13)) return new Decimal(1e15).mul(x)
                 else return new Decimal(10000000).mul(x)},
@@ -2117,7 +2237,9 @@ addLayer("Li", {
                 if (hasChallenge('Li', 15)) return false
                 if (hasChallenge('Li', 14)) return true
             },
-            name: "Become <div> A Monopoly",
+            name() { 
+                if (inChallenge('V', 11)) return "Become <div> A Star"
+                if (!inChallenge('V', 11)) return "Become <div> A Monopoly"},
             challengeDescription: "Keep most things except buyables. Their cost scales much higher",
             goalDescription: "Fully max out all buyables.",
             rewardDescription: "Unlock Beryllium and another Lepoidolite (purely aesthetical).",
@@ -2192,11 +2314,11 @@ addLayer("Li", {
                 function () { if (player.p.Node < 1 && hasChallenge('Li', 11)) return '<u><b>______________________________Gaston County______________________________'}],
                 'blank',
                 ["display-text",
-                function () { if (player.p.Node < 1 && hasChallenge('Li', 11)) return 'You have ' + format(player.Li.Hydroxide) + 'L of Hydroxide from Lepoidolite (2x Rubidium per L).<div> Current chance: 1 in 200 per Gaston County Lepoidolite.' }],
+                function () { if (player.p.Node < 1 && hasChallenge('Li', 11)) return 'You have ' + format(player.Li.Hydroxide) + 'L of Hydroxide from Lepoidolite (100% Rubidium per L).<div> Current chance: 1 in 200 per Gaston County Lepoidolite.' }],
                 ["display-text",
-                function () { if (player.p.Node < 1 && hasChallenge('Li', 11)) return 'You have ' + format(player.Li.Potassium) + 'g of Potassium from Lepoidolite (2x Lithium per g).<div> Current chance: 1 in 200 per Gaston County Lepoidolite.' }],
+                function () { if (player.p.Node < 1 && hasChallenge('Li', 11)) return 'You have ' + format(player.Li.Potassium) + 'g of Potassium from Lepoidolite (100% Lithium per g).<div> Current chance: 1 in 200 per Gaston County Lepoidolite.' }],
                 ["display-text",
-                function () { if (player.p.Node < 1 && hasChallenge('Li', 12)) return 'You have ' + format(player.Li.Aluminum) + 'g of Aluminum from Lepoidolite (10x Potassium and Hydroxide per g).<div> Current chance: 1 in 500.' }],
+                function () { if (player.p.Node < 1 && hasChallenge('Li', 12)) return 'You have ' + format(player.Li.Aluminum) + 'g of Aluminum from Lepoidolite (1000% Potassium and Hydroxide per g).<div> Current chance: 1 in 500.' }],
                 "blank",
             ["row", function () {
                 if (hasChallenge('Li', 11)) return [
@@ -2507,6 +2629,7 @@ addLayer("Li", {
     },
 
     automate() {
+        if (hasChallenge('Li', 15) && inChallenge('V', 11) && localStorage.getItem('1') === '2') sSave(), localStorage.setItem('1', 3), forceImport()
         if (player.Li.Size == 10) player.Li.Size = player.Li.Size.times(0)
         if (getBuyableAmount('Li', 15) == 25) player.Li.StoreSped = player.Li.Sped
         if (getBuyableAmount('Li', 16) == 2) player.Li.Punlock = player.Li.Punlock.times(0).add(1)
@@ -2532,26 +2655,27 @@ addLayer("Li", {
         if (player.Li.Alp > 10) player.Li.Alp = player.Li.Alp.times(0).add(10)
         if (options.disableParticles == false) player.Li.Rp = player.Li.Rp.times(0), player.Li.Alp = player.Li.Alp.times(0), player.Li.Lp = player.Li.Lp.times(0), player.Li.Hp = player.Li.Hp.times(0),  player.Li.HDp = player.Li.HDp.times(0), player.Li.Kp = player.Li.Kp.times(0)
         if (hasMilestone('Li', 5) && player.Li.Size == 2) player.Li.Gain = new Decimal(Math.floor(Math.random() * 100) + 1)
-        if (player.Li.Gain.gte(player.Li.H1) && player.Li.Gain.lte(player.Li.H2) && player.Li.Size == 2 && hasMilestone('Li', 5)) player.Li.HM = player.Li.Hydrogen.times(1.1), player.Li.Hydrogen = player.Li.Hydrogen.add(player.Li.H).add(player.Li.RM)
+        if (player.Li.Gain.gte(player.Li.H1) && player.Li.Gain.lte(player.Li.H2) && player.Li.Size == 2 && hasMilestone('Li', 5)) player.Li.HM = player.Li.Hydrogen.times(1.1), player.Li.Hydrogen = player.Li.Hydrogen.add(player.Li.H.add(player.V.M)).add(player.Li.RM.add(player.V.M)).add(player.V.M)
         if (inChallenge('Li', 11)) player.Li.HM = player.Li.HM.times(0)
         if (inChallenge('Li', 12)) player.Li.HM = player.Li.HM.times(0)
-        if (player.Li.Gain.gte(1) && player.Li.Gain.lte(player.Li.Li1) && player.Li.Size == 2 && hasMilestone('Li', 5)) player.Li.points = player.Li.points.add(player.Li.HM.add(player.Li.RM).times(player.Li.PM).times(player.Be.LB).times(player.Be.LB2))
-        if (player.Li.Gain.gte(player.Li.R1) && player.Li.Gain.lte(100) && player.Li.Size == 2 && hasMilestone('Li', 5) && player.Li.Runlock > 0) player.Li.Rubidium = player.Li.Rubidium.add(player.Li.R.times(player.Li.HD)), player.Li.RM = player.Li.Rubidium.times(1.2)
+        if (player.Li.Gain.gte(1) && player.Li.Gain.lte(player.Li.Li1) && player.Li.Size == 2 && hasMilestone('Li', 5) && !inChallenge('V', 11)) player.Li.points = player.Li.points.add((player.Li.HM).add(player.Li.RM).times(player.Li.PM).add(player.Be.LB).times(player.Be.LB2))
+        if (player.Li.Gain.gte(1) && player.Li.Gain.lte(player.Li.Li1) && player.Li.Size == 2 && hasMilestone('Li', 5) && inChallenge('V', 11)) player.Li.points = player.Li.points.add(player.Li.HM).add(player.Li.RM.times(player.V.M)).times(player.V.M).times(player.Li.PM).add(player.Be.LB).times(player.Be.LB2)
+        if (player.Li.Gain.gte(player.Li.R1) && player.Li.Gain.lte(100) && player.Li.Size == 2 && hasMilestone('Li', 5) && player.Li.Runlock > 0) player.Li.Rubidium = player.Li.Rubidium.add(player.V.M).add(player.Li.R.times(player.Li.HD.add(player.V.M))), player.Li.RM = player.Li.Rubidium.times(1.2)
         if (player.Li.Gain.gte(player.Li.H1) && player.Li.Gain.lte(player.Li.H2) && player.Li.Size == 2 && hasMilestone('Li', 5) && player.tab == this.layer) makeParticles(myParticle1, player.Li.Hp)
         if (player.Li.Gain.gte(1) && player.Li.Gain.lte(player.Li.Li1) && player.Li.Size == 2 && hasMilestone('Li', 5) && player.tab == this.layer) makeParticles(myParticle2, player.Li.Lp)
         if (player.Li.Gain.gte(player.Li.R1) && player.Li.Gain.lte(100) && player.Li.Size == 2 && hasMilestone('Li', 5) && player.Li.Runlock > 0 && player.tab == this.layer) makeParticles(myParticle, player.Li.Rp)
         if (hasChallenge('Li', 11) && player.Li.Size == 2) player.Li.Gain2 = new Decimal(Math.floor(Math.random() * 200) + 1)
-        if (player.Li.Gain2 == 200 && hasChallenge('Li', 11) && player.Li.Size == 2) player.Li.Hydroxide = player.Li.Hydroxide.add(1), player.Li.HD = player.Li.Hydroxide.times(2)
-        if (player.Li.Gain2 == 100 && hasChallenge('Li', 11) && player.Li.Size == 2) player.Li.Potassium = player.Li.Potassium.add(1), player.Li.PM = player.Li.Potassium.times(2)
+        if (player.Li.Gain2 == 200 && hasChallenge('Li', 11) && player.Li.Size == 2) player.Li.Hydroxide = player.Li.Hydroxide.add(1).add(player.V.M), player.Li.HD = player.Li.Hydroxide.times(2)
+        if (player.Li.Gain2 == 100 && hasChallenge('Li', 11) && player.Li.Size == 2) player.Li.Potassium = player.Li.Potassium.add(1).add(player.V.M), player.Li.PM = player.Li.Potassium.times(2)
         if (player.Li.Gain2 == 200 && player.Li.Size == 2 && hasChallenge('Li', 11) && player.tab == this.layer) makeParticles(HydroxideP, player.Li.HDp)
         if (player.Li.Gain2 == 100 && player.Li.Size == 2 && hasChallenge('Li', 11) && player.tab == this.layer) makeParticles(PottasiumP, player.Li.Kp)
         if (hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Gain3 = new Decimal(Math.floor(Math.random() * 500) + 1)
-        if (player.Li.Gain3.gte(1) && player.Li.Gain3.lte(3) && hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Hydroxide = player.Li.Hydroxide.add(new Decimal(1).times(player.Li.AlM)), player.Li.HD = player.Li.Hydroxide.times(2)
-        if (player.Li.Gain3.gte(4) && player.Li.Gain3.lte(6) && hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Potassium = player.Li.Potassium.add(new Decimal(1).times(player.Li.AlM)), player.Li.PM = player.Li.Potassium.times(2)
+        if (player.Li.Gain3.gte(1) && player.Li.Gain3.lte(3) && hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Hydroxide = player.Li.Hydroxide.add(new Decimal(1).times(player.Li.AlM.add(player.V.M))).add(player.V.M), player.Li.HD = player.Li.Hydroxide.times(2)
+        if (player.Li.Gain3.gte(4) && player.Li.Gain3.lte(6) && hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Potassium = player.Li.Potassium.add(new Decimal(1).times(player.Li.AlM.add(player.V.M))).add(player.V.M), player.Li.PM = player.Li.Potassium.times(2)
         if (inChallenge('Li', 14)) player.Li.PM = player.Li.PM.times(0).add(1)
         if (player.Li.Gain3.gte(1) && player.Li.Gain3.lte(3) && player.Li.Size == 2 && hasChallenge('Li', 12) && player.tab == this.layer) makeParticles(HydroxideP, player.Li.HDp)
         if (player.Li.Gain3.gte(4) && player.Li.Gain3.lte(6) && player.Li.Size == 2 && hasChallenge('Li', 12) && player.tab == this.layer) makeParticles(PottasiumP, player.Li.Kp)
-        if (player.Li.Gain3 == 99 && hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Aluminum = player.Li.Aluminum.add(1), player.Li.AlM = player.Li.Aluminum.times(10)
+        if (player.Li.Gain3 == 99 && hasChallenge('Li', 12) && player.Li.Size == 2) player.Li.Aluminum = player.Li.Aluminum.add(1).add(player.V.M), player.Li.AlM = player.Li.Aluminum.times(10)
         if (player.Li.Gain3 == 99 && player.Li.Size == 2 && hasChallenge('Li', 12) && player.tab == this.layer) makeParticles(AluminumP, player.Li.Alp)
         if (hasChallenge('Li', 13) && player.Li.Size == 2) player.Li.Gain4 = new Decimal(Math.floor(Math.random() * 200) + 1)
         if (player.Li.Gain4 == 200 && hasChallenge('Li', 13) && player.Li.Size == 2) player.Li.Hydroxide = player.Li.Hydroxide.add(1), player.Li.HD = player.Li.Hydroxide.times(2)
@@ -2589,6 +2713,11 @@ addLayer("Be", {
             'border': '1px solid #8B0000'
         } : {}
     },
+
+    marked() {
+        if (localStorage.getItem('1') >= '4') return true
+        },
+
     name: "Beryllium", // This is optional, only used in a few places, If absent it just uses the layer id.
     image: "https://i.postimg.cc/fWd1ZqQ0/Screenshot-2022-07-06-112019-removebg-preview-1.png", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -2671,6 +2800,7 @@ addLayer("Be", {
     },
 
     layerShown() {
+        if (player.Ch.One == 2) return false
         if (hasChallenge('Li', 15)) return true
         else return false
     },
@@ -2694,12 +2824,12 @@ addLayer("Be", {
 
     hotkeys: [
         { key: "b", description: "B: Reset for Beryllium Scraps", onPress() { if (canReset(this.layer)) doReset(this.layer)}, 
-        unlocked() { if (hasMilestone('Be', 2)) return false
+        unlocked() { if (hasMilestone('B', 2)) return false
         else return true}},
     ],
 
 onPrestige() {
-    player.Be.points = player.Be.points.add(player.Be.Badd)
+    player.Be.points = player.Be.points.add(player.Be.Badd.add(player.V.M))
 },
 
     tooltip() { return formatWhole(player.Be.points) + " Beryllium Scraps" },
@@ -3490,7 +3620,7 @@ onPrestige() {
         15: {
             style: {width: '125px', height: '120px', color: "#ededed"},
             cost() { return new Decimal(1)},
-            display() { return "<div> Get a fuel tank.<div> Boosts Lithium from Lepoidolite based on total amount of the nozzles and fins per tank.<div> Currently: x" + formatWhole(getBuyableAmount(this.layer, 12).times(10).add(getBuyableAmount(this.layer, 13).times(10)).times(getBuyableAmount(this.layer, this.id))) + "<div> Cost: " + formatWhole(this.cost()) + " Plates of Beryllium<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + " / " + formatWhole((this.purchaseLimit))},
+            display() { return "<div> Get a fuel tank.<div> Boosts Lithium from Lepoidolite based on total amount of the nozzles and fins per tank.<div> Currently: x" + formatWhole(getBuyableAmount(this.layer, 12).times(10).add(getBuyableAmount(this.layer, 13).times(10)).times(getBuyableAmount(this.layer, this.id)).add(1)) + "<div> Cost: " + formatWhole(this.cost()) + " Plates of Beryllium<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + " / " + formatWhole((this.purchaseLimit))},
             canAfford() { return player[this.layer].BerylliumPlates.gte(this.cost()) },
             purchaseLimit: 10,
             buy() {
@@ -3531,7 +3661,7 @@ onPrestige() {
                 if (getBuyableAmount(this.layer, this.id) == 10) return "<div> Max rocketships reached.<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + " / " + formatWhole((this.purchaseLimit))
                },
             canAfford() { 
-                if (getBuyableAmount(this.layer, this.id) == 0) return new Decimal(0)
+                if (getBuyableAmount(this.layer, this.id) == 0) return hasMilestone('Be', 2)
                 if (getBuyableAmount(this.layer, this.id) == 1) return player[this.layer].moltenIron.gte(1000)
                 if (getBuyableAmount(this.layer, this.id) == 2) return player[this.layer].moltenIron.gte(1000) && player[this.layer].metalliccore.gte(25) && player[this.layer].sulfuricAcid.gte(100) && player[this.layer].jupiterHelium.gte(30) && player[this.layer].basaltrock.gte(150)
                 if (getBuyableAmount(this.layer, this.id) == 3) return player[this.layer].solarBar.gte(6) && player[this.layer].methaneGas.gte(10) && player[this.layer].uranusAmmonia.gte(15) && player[this.layer].neptuneSlush.gte(5)
@@ -3558,7 +3688,7 @@ onPrestige() {
         },
     },
 
-    prestigeButtonText() { return 'Reset for +' + formatWhole(player.Be.Badd.add(1)) + ' Beryllium Scraps<div><div>Req: ' + format(player.Li.points) + ' / ' + format(tmp.Be.nextAtDisp)},
+    prestigeButtonText() { return 'Reset for +' + formatWhole(player.Be.Badd.add(1).times(player.V.M)) + ' Beryllium Scraps<div><div>Req: ' + format(player.Li.points) + ' / ' + format(tmp.Be.nextAtDisp)},
 
     infoboxes: {
         lore: {
@@ -3587,7 +3717,7 @@ componentStyles: {
             content: [
                 () => (options.matureMode == false) ? ['infobox', 'lore'] : ['infobox', 'lore2'],
                 "main-display",
-                () => (hasMilestone('Be', 2)) ? "" : "prestige-button",
+                () => (hasMilestone('B', 2)) ? "" : "prestige-button",
                 "blank",
                 ['display-text',
             function() { if (player.p.Node < 1) return 'You have ' + format(player.Li.points) + ' Lithium'}],
@@ -3601,7 +3731,7 @@ componentStyles: {
                     ['upgrade', 31],
                     ['clickable', 91], 
                 ]],
-                ["row", [
+                ["row", [ 
                     ['upgrade', 21],
                     ['upgrade', 22],
                 ]],
@@ -3732,7 +3862,187 @@ componentStyles: {
                 ]],
                 "blank",
                 "blank",
-                ['clickable', 51], 
+                ['clickable', 51],
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                () => (player.Be.Rocketships <= 1) ? "blank" : "",
+                
+                () => (player.Be.Rocketships == 2 ) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+                () => (player.Be.Rocketships == 2) ? "blank" : "",
+
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+                () => (player.Be.Rocketships == 3) ? "blank" : "",
+
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                () => (player.Be.Rocketships == 4) ? "blank" : "",
+                
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+                () => (player.Be.Rocketships == 5) ? "blank" : "",
+
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                () => (player.Be.Rocketships == 6) ? "blank" : "",
+                
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+                () => (player.Be.Rocketships == 7) ? "blank" : "",
+
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+                () => (player.Be.Rocketships == 8) ? "blank" : "",
+
+                () => (player.Be.Rocketships == 9) ? "blank" : "",
+                () => (player.Be.Rocketships == 9) ? "blank" : "",
+                () => (player.Be.Rocketships == 9) ? "blank" : "",
+                () => (player.Be.Rocketships == 9) ? "blank" : "",
+ 
                 ["row", function () {
                     if (player.Be.s10 > 0) return [
                         ["display-image", 'https://i.postimg.cc/7hTxMWD0/E6vgz-TBWEAYa-M3r-prev-ui.png', { height: `60px`, width: `100px`, position: 'relative',  right: `${player.Be.position19}px`, top: `${player.Be.position20}px`, id: 'top', 'z-index': '2'}],
@@ -3782,7 +4092,7 @@ componentStyles: {
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(1)) return '<u>The Moon</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(1)) return 'You have ' + formatWhole(player.Be.moonDust) + ' Moon Dust.<div> 10 || ' + formatWhole((new Decimal(3).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(1)) return 'You have ' + formatWhole(player.Be.moonDust) + ' Moon Dust.<div> 10 || ' + formatWhole((new Decimal(3).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(1)) return 'You have ' + formatWhole(player.Be.moltenIron) + 'L of Molten Liquid Iron.'}],
                 ["row", function () {
@@ -3793,7 +4103,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return '<u>Mercury</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.mercuryDust) + ' Mercury Dust.<div> 100 || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.mercuryDust) + ' Mercury Dust.<div> 100 || ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.metalliccore) + ' Metallic Cores.'}],
                 ["row", function () {
@@ -3804,7 +4114,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return '<u>Venus</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.venusDust) + ' Venus Dust.<div> 67 || ' + formatWhole((new Decimal(2).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.venusDust) + ' Venus Dust.<div> 67 || ' + formatWhole((new Decimal(2).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.sulfuricAcid) + 'L of Sulfuric Acid.'}],
                 ["row", function () {
@@ -3815,7 +4125,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return '<u>Mars</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.marsDust) + ' Mars Dust.<div> 40 || ' + formatWhole((new Decimal(8).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.marsDust) + ' Mars Dust.<div> 40 || ' + formatWhole((new Decimal(8).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.basaltrock) + ' Basalt Rocks.'}],
                 ["row", function () {
@@ -3826,7 +4136,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return '<u>Jupiter</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.jupiterHydrogen) + 'L of Hydrogen.<div> 90 || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.jupiterHydrogen) + 'L of Hydrogen.<div> 90 || ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(2)) return 'You have ' + formatWhole(player.Be.jupiterHelium) + 'L of Helium.'}],
                 ["row", function () {
@@ -3837,7 +4147,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return '<u>The Sun</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.solarEssence) + ' Solar Essence.<div> 100 + 3 MC || ' + formatWhole((new Decimal(3).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.solarEssence) + ' Solar Essence.<div> 100 + 3 MC || ' + formatWhole((new Decimal(3).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.solarBar) + ' Solar Bars.'}],
                 ["row", function () {
@@ -3859,7 +4169,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return '<u>Pluto</u>'}], 
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.plutoCarbon) + 'g of Carbon.<div> 10000 + 9 SB + 15L MG + 30L AG + 15 SL || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.plutoCarbon) + 'g of Carbon.<div> 10000 + 9 SB + 15L MG + 30L AG + 15 SL || ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3) && options.mobileMode == false) return 'You have <h1 class="glow">' + formatWhole(player.Be.plutonium) + 'g of Plutonium</h1>.'
                 if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.plutonium) + 'g of Plutonium.'}],
@@ -3871,7 +4181,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return '<u>Uranus</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.uranusWater) + 'L of Water.<div> 1000 + 100 BR || 1' + formatWhole((new Decimal(10).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.uranusWater) + 'L of Water.<div> 1000 + 100 BR || ' + formatWhole((new Decimal(10).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.uranusAmmonia) + 'L of Ammonia Gas.'}],
                 ["row", function () {
@@ -3882,7 +4192,7 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return '<u>Neptune</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.neptuneCloud) + ' Clouds.<div> 50 + 5L He || ' + formatWhole((new Decimal(3).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.neptuneCloud) + ' Clouds.<div> 50 + 5L He || ' + formatWhole((new Decimal(3).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(3)) return 'You have ' + formatWhole(player.Be.neptuneSlush) + ' Slush.'}],
                 ["row", function () {
@@ -3893,10 +4203,10 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return '<u>55 Cancri A</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 312 MLI + 1g PL + 5321 SE || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 312 MLI + 1g PL + 5321 SE || ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow2">' + formatWhole(player.Be.ALight) + ' Light</h1> Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))
-                if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.ALight) + ' Lights. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow2">' + formatWhole(player.Be.ALight) + ' Light</h1> Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))
+                if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.ALight) + ' Lights. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ["row", function () {
                     if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return [
                     ["display-image", 'https://i.postimg.cc/D0kgNSb8/th-1403826250-prev-ui.png', { width: '70px', position: 'absolute',  right: '110px', top: '930px', id: 'under'}],
@@ -3905,10 +4215,10 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return '<u>Galileo</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 455 MLI + 1g PL + 2000 CL || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 455 MLI + 1g PL + 2000 CL || ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow3">' + formatWhole(player.Be.gHeliumHydride) + 'L of Helium Hydride</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))
-                if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.gHeliumHydride) + 'L of Helium Hydride. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow3">' + formatWhole(player.Be.gHeliumHydride) + 'L of Helium Hydride</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))
+                if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.gHeliumHydride) + 'L of Helium Hydride. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ["row", function () {
                     if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return [
                     ["display-image", 'https://i.postimg.cc/05z3zSf1/290px-55cnc-C1-prev-ui.png', { width: '100px', position: 'absolute',  right: '90px', top: '1010px', id: 'under'}],
@@ -3917,10 +4227,10 @@ componentStyles: {
                ['display-text',
                 function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return '<u>Brahe</u>'}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 520 MLI + 1g PL + 21111 IC || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 520 MLI + 1g PL + 21111 IC || ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ['display-text',
-                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow4">' + formatWhole(player.Be.bunknown) + ' Unknown</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))
-                if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.bunknown) + ' Unkown. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow4">' + formatWhole(player.Be.bunknown) + ' Unknown</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))
+                if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.bunknown) + ' Unkown. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
                 ["row", function () {
                     if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return [
                     ["display-image", 'https://i.postimg.cc/cCWsLcnZ/55cncb-prev-ui.png', { width: '100px', position: 'absolute',  right: '100px', top: '1080px', id: 'under'}],
@@ -3929,10 +4239,10 @@ componentStyles: {
                ['display-text',
                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return '<u>Lipperhey</u>'}],
                ['display-text',
-               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 584 MLI + 1g PL + 11911L H2O || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 584 MLI + 1g PL + 11911L H2O || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))).times(player.V.M))}],
                ['display-text',
-               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow5">' + formatWhole(player.Be.lWaterCloud) + ' Water Clouds</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))
-               if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.lWaterCloud) + ' Water Clouds. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow5">' + formatWhole(player.Be.lWaterCloud) + ' Water Clouds</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))
+               if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.lWaterCloud) + ' Water Clouds. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))).times(player.V.M).times(player.V.M))}],
                ["row", function () {
                    if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return [
                    ["display-image", 'https://i.postimg.cc/wjqQm8pR/3819005-orig-prev-ui.png', { width: '100px', position: 'absolute',  right: '96px', top: '1160px', id: 'under'}],
@@ -3941,10 +4251,10 @@ componentStyles: {
               ['display-text',
                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return '<u>Janssen</u>'}],
                ['display-text',
-               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 666 MLI + 1g PL + 666666g CA || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'Conversion: 666 MLI + 1g PL + 666666g CA || ' + formatWhole((new Decimal(1).times(player.B.points.add(1))).times(player.V.M))}],
                ['display-text',
-               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow6">' + formatWhole(player.Be.jDiamond) + ' Diamonds</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))
-               if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.jDiamond) + ' Diamonds. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}], 
+               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(5) && options.mobileMode == false) return 'You have <h1 class="glow6">' + formatWhole(player.Be.jDiamond) + ' Diamonds</h1>. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))
+               if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return 'You have ' + formatWhole(player.Be.jDiamond) + ' Diamonds. Max: ' + formatWhole((new Decimal(1).times(player.B.points.add(1))).times(player.V.M))}], 
                ["row", function () {
                    if (player.p.Node < 1 && player.Be.Rocketships.gte(5)) return [
                    ["display-image", 'https://i.postimg.cc/dtdxBKpW/D-prev-ui.png', { width: '100px', position: 'absolute',  right: '90px', top: '1240px', id: 'under'}],
@@ -3953,7 +4263,7 @@ componentStyles: {
               ['display-text',
                function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return '<u>Planet gwa</u>'}],
                ['display-text',
-               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.gwa) + ' gwa.<div> Making ' + formatWhole((new Decimal(231).times(player.B.points.add(1)))) + ' gwa/tick.'}],
+               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.gwa) + ' gwa.<div> Making ' + formatWhole((new Decimal(231).times(player.B.points.add(1)).times(player.V.M))) + ' gwa/tick.'}],
                ["row", function () {
                    if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return [
                    ["display-image", 'https://i.postimg.cc/R0kG9kd0/slazzer-edit-image-removebg-preview.png', { width: '70px', position: 'absolute',  right: '100px', top: '1310px', id: 'under'}],
@@ -3962,7 +4272,7 @@ componentStyles: {
               ['display-text',
               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return '<u>Death Star</u>'}],
               ['display-text',
-              function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.laser) + ' Lasers.<div> Making ' + formatWhole((new Decimal(7777).times(player.B.points.add(1)))) + ' Lasers/tick.'}],
+              function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.laser) + ' Lasers.<div> Making ' + formatWhole((new Decimal(7777).times(player.B.points.add(1)).times(player.V.M))) + ' Lasers/tick.'}],
               ["row", function () {
                   if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return [
                   ["display-image", 'https://i.postimg.cc/mrB2qkfZ/eee-3-removebg-preview.png', { width: '100px', position: 'absolute',  right: '90px', top: '1375px', id: 'under'}],
@@ -3971,7 +4281,7 @@ componentStyles: {
              ['display-text',
              function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return '<u>MultiOrb</u>'}],
              ['display-text',
-               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'Conversion: 3g PL + 1 LI + 1L HeH + 1 UN + 1 WC + 1 DI + 1,000,000 gwa + 10,000,000 LA + 1e16 DR + 10,000 EG|| ' + formatWhole((new Decimal(1).times(player.B.points.add(1))))}],
+               function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'Conversion: 3g PL + 1 LI + 1L HeH + 1 UN + 1 WC + 1 DI + 1,000,000 gwa + 10,000,000 LA + 1e16 DR + 10,000 EG|| ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M)))}],
              ['display-text',
              function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10) && options.mobileMode == false) return 'You have <h1 class="Rainbow2">' + formatWhole(player.Be.rainbownium) + ' Rainbownium</h1>.'
                           if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.rainbownium) + ' Rainbownium.'}],
@@ -3983,7 +4293,7 @@ componentStyles: {
             ['display-text',
             function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return '<u>Genviron</u>'}],
             ['display-text',
-            function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.dirt) + ' Dirt.<div> Making ' + formatWhole((new Decimal(1e12).times(player.B.points.add(1)))) + ' Dirt/tick.'}],
+            function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.dirt) + ' Dirt.<div> Making ' + formatWhole((new Decimal(1e12).times(player.B.points.add(1)).times(player.V.M))) + ' Dirt/tick.'}],
             ["row", function () {
                 if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return [
                 ["display-image", 'https://i.postimg.cc/W34YbBJL/Z3e-WNw-X-removebg-preview.pngg', { width: '70px', position: 'absolute',  right: '95px', top: '1540px', id: 'under'}],
@@ -3992,7 +4302,7 @@ componentStyles: {
            ['display-text',
            function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return '<u>Haumea</u>'}],
            ['display-text',
-           function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.egg) + ' eggs.<div> Making ' + formatWhole((new Decimal(1).times(player.B.points.add(1)))) + ' Eggs/tick.'}],
+           function() { if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return 'You have ' + formatWhole(player.Be.egg) + ' eggs.<div> Making ' + formatWhole((new Decimal(1).times(player.B.points.add(1)).times(player.V.M))) + ' Eggs/tick.'}],
            ["row", function () {
                if (player.p.Node < 1 && player.Be.Rocketships.gte(10)) return [
                ["display-image", 'https://i.postimg.cc/Jz255ssg/maxresdefault-4-removebg-preview.png', { width: '140px', position: 'absolute',  right: '70px', top: '1605px', id: 'under'}],
@@ -4017,47 +4327,47 @@ componentStyles: {
     },
 
     automate() {
-        if (player.Be.s1 == 11 || player.Be.s2 == 11 || player.Be.s3 == 11 || player.Be.s4 == 11 || player.Be.s5 == 11 || player.Be.s6 == 11 || player.Be.s7 == 11 || player.Be.s8 == 11 || player.Be.s9 == 11 || player.Be.s10 == 11 || player.B.resets > 15 && player.Be.auto) player.Be.gwa = player.Be.gwa.add(new Decimal(231).times(player.B.points.add(1)))
-        if (player.Be.s1 == 12 || player.Be.s2 == 12 || player.Be.s3 == 12 || player.Be.s4 == 12 || player.Be.s5 == 12 || player.Be.s6 == 12 || player.Be.s7 == 12 || player.Be.s8 == 12 || player.Be.s9 == 12 || player.Be.s10 == 12 || player.B.resets > 16 && player.Be.auto) player.Be.laser = player.Be.laser.add(new Decimal(7777).times(player.B.points.add(1)))
+        if (player.Be.s1 == 11 || player.Be.s2 == 11 || player.Be.s3 == 11 || player.Be.s4 == 11 || player.Be.s5 == 11 || player.Be.s6 == 11 || player.Be.s7 == 11 || player.Be.s8 == 11 || player.Be.s9 == 11 || player.Be.s10 == 11 || player.B.resets > 15 && player.Be.auto) player.Be.gwa = player.Be.gwa.add(new Decimal(231).times(player.B.points.add(1)).times(player.V.M))
+        if (player.Be.s1 == 12 || player.Be.s2 == 12 || player.Be.s3 == 12 || player.Be.s4 == 12 || player.Be.s5 == 12 || player.Be.s6 == 12 || player.Be.s7 == 12 || player.Be.s8 == 12 || player.Be.s9 == 12 || player.Be.s10 == 12 || player.B.resets > 16 && player.Be.auto) player.Be.laser = player.Be.laser.add(new Decimal(7777).times(player.B.points.add(1)).times(player.V.M))
         if (player.Be.s1 == 13 || player.Be.s2 == 13 || player.Be.s3 == 13 || player.Be.s4 == 13 || player.Be.s5 == 13 || player.Be.s6 == 13 || player.Be.s7 == 13 || player.Be.s8 == 13 || player.Be.s9 == 13 || player.Be.s10 == 13 || player.B.resets > 17 && player.Be.auto){
-        if (player.Be.plutonium.gte(3) && player.Be.ALight.gte(1) && player.Be.gHeliumHydride.gte(1) && player.Be.bunknown.gte(1) && player.Be.lWaterCloud.gte(1) && player.Be.jDiamond.gte(1) && player.Be.gwa.gte(1000000) && player.Be.laser.gte(10000000) && player.Be.dirt.gte(1e16) && player.Be.egg.gte(10000)) player.Be.plutonium = player.Be.plutonium.sub(3), player.Be.ALight = player.Be.ALight.sub(1), player.Be.gHeliumHydride = player.Be.gHeliumHydride.sub(1), player.Be.bunknown = player.Be.bunknown.sub(1), player.Be.gHeliumHydride = player.Be.lWaterCloud.sub(1), player.Be.jDiamond = player.Be.jDiamond.sub(1), player.Be.gwa = player.Be.gwa.sub(1000000), player.Be.laser = player.Be.laser.sub(10000000), player.Be.dirt = player.Be.dirt.sub(1e16), player.Be.egg = player.Be.egg.sub(10000), player.Be.rainbownium = player.Be.rainbownium.add(new Decimal(1).times(player.B.points.add(1)))}
-        if (player.Be.s1 == 14 || player.Be.s2 == 14 || player.Be.s3 == 14 || player.Be.s4 == 14 || player.Be.s5 == 14 || player.Be.s6 == 14 || player.Be.s7 == 14 || player.Be.s8 == 14 || player.Be.s9 == 14 || player.Be.s10 == 14 || player.B.resets > 18 && player.Be.auto) player.Be.dirt = player.Be.dirt.add(new Decimal(1e12).times(player.B.points.add(1)))
-        if (player.Be.s1 == 15 || player.Be.s2 == 15 || player.Be.s3 == 15 || player.Be.s4 == 15 || player.Be.s5 == 15 || player.Be.s6 == 15 || player.Be.s7 == 15 || player.Be.s8 == 15 || player.Be.s9 == 15 || player.Be.s10 == 15 || player.B.resets > 19 && player.Be.auto) player.Be.egg = player.Be.egg.add(new Decimal(1).times(player.B.points.add(1)))
+        if (player.Be.plutonium.gte(3) && player.Be.ALight.gte(1) && player.Be.gHeliumHydride.gte(1) && player.Be.bunknown.gte(1) && player.Be.lWaterCloud.gte(1) && player.Be.jDiamond.gte(1) && player.Be.gwa.gte(1000000) && player.Be.laser.gte(10000000) && player.Be.dirt.gte(1e16) && player.Be.egg.gte(10000)) player.Be.plutonium = player.Be.plutonium.sub(3), player.Be.ALight = player.Be.ALight.sub(1), player.Be.gHeliumHydride = player.Be.gHeliumHydride.sub(1), player.Be.bunknown = player.Be.bunknown.sub(1), player.Be.gHeliumHydride = player.Be.lWaterCloud.sub(1), player.Be.jDiamond = player.Be.jDiamond.sub(1), player.Be.gwa = player.Be.gwa.sub(1000000), player.Be.laser = player.Be.laser.sub(10000000), player.Be.dirt = player.Be.dirt.sub(1e16), player.Be.egg = player.Be.egg.sub(10000), player.Be.rainbownium = player.Be.rainbownium.add(new Decimal(1).times(player.B.points.add(1)).times(player.V.M))}
+        if (player.Be.s1 == 14 || player.Be.s2 == 14 || player.Be.s3 == 14 || player.Be.s4 == 14 || player.Be.s5 == 14 || player.Be.s6 == 14 || player.Be.s7 == 14 || player.Be.s8 == 14 || player.Be.s9 == 14 || player.Be.s10 == 14 || player.B.resets > 18 && player.Be.auto) player.Be.dirt = player.Be.dirt.add(new Decimal(1e12).times(player.B.points.add(1)).times(player.V.M))
+        if (player.Be.s1 == 15 || player.Be.s2 == 15 || player.Be.s3 == 15 || player.Be.s4 == 15 || player.Be.s5 == 15 || player.Be.s6 == 15 || player.Be.s7 == 15 || player.Be.s8 == 15 || player.Be.s9 == 15 || player.Be.s10 == 15 || player.B.resets > 19 && player.Be.auto) player.Be.egg = player.Be.egg.add(new Decimal(1).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 21 || player.Be.s2 == 21 || player.Be.s3 == 21 || player.Be.s4 == 21 || player.Be.s5 == 21 || player.Be.s6 == 21 || player.Be.s7 == 21 || player.Be.s8 == 21 || player.Be.s9 == 21 || player.Be.s10 == 21 || player.B.resets > 10 && player.Be.auto){
-        if (player.Be.moltenIron.gte(312) && player.Be.plutonium.gte(1) && player.Be.solarEssence.gte(5321) && player.Be.ALight < player.B.points.add(1)) player.Be.moltenIron = player.Be.moltenIron.sub(312), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.solarEssence = player.Be.solarEssence.sub(5321), player.Be.ALight = player.Be.ALight.add(new Decimal(1).times(player.B.points.add(1)))}
+        if (player.Be.moltenIron.gte(312) && player.Be.plutonium.gte(1) && player.Be.solarEssence.gte(5321) && player.Be.ALight < player.B.points.add(1).times(player.V.M)) player.Be.moltenIron = player.Be.moltenIron.sub(312), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.solarEssence = player.Be.solarEssence.sub(5321), player.Be.ALight = player.Be.ALight.add(new Decimal(1).times(player.B.points.add(1)).times(player.V.M))}
         if (player.Be.s1 == 22 || player.Be.s2 == 22 || player.Be.s3 == 22 || player.Be.s4 == 22 || player.Be.s5 == 22 || player.Be.s6 == 22 || player.Be.s7 == 22 || player.Be.s8 == 22 || player.Be.s9 == 22 || player.Be.s10 == 22 || player.B.resets > 11 && player.Be.auto){
-        if (player.Be.moltenIron.gte(455) && player.Be.plutonium.gte(1) && player.Be.neptuneCloud.gte(2000) && player.Be.gHeliumHydride < player.B.points.add(1)) player.Be.moltenIron = player.Be.moltenIron.sub(455), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.neptuneCloud = player.Be.neptuneCloud.sub(2000), player.Be.gHeliumHydride = player.Be.gHeliumHydride.add(new Decimal(1).times(player.B.points.add(1)))}
+        if (player.Be.moltenIron.gte(455) && player.Be.plutonium.gte(1) && player.Be.neptuneCloud.gte(2000) && player.Be.gHeliumHydride < player.B.points.add(1).times(player.V.M)) player.Be.moltenIron = player.Be.moltenIron.sub(455), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.neptuneCloud = player.Be.neptuneCloud.sub(2000), player.Be.gHeliumHydride = player.Be.gHeliumHydride.add(new Decimal(1).times(player.B.points.add(1)).times(player.V.M))}
         if (player.Be.s1 == 23 || player.Be.s2 == 23 || player.Be.s3 == 23 || player.Be.s4 == 23 || player.Be.s5 == 23 || player.Be.s6 == 23 || player.Be.s7 == 23 || player.Be.s8 == 23 || player.Be.s9 == 23 || player.Be.s10 == 23 || player.B.resets > 12 && player.Be.auto){
-        if (player.Be.moltenIron.gte(520) && player.Be.plutonium.gte(1) && player.Be.saturnIce.gte(21111) && player.Be.bunknown < player.B.points.add(1)) player.Be.moltenIron = player.Be.moltenIron.sub(520), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.saturnIce = player.Be.saturnIce.sub(21111), player.Be.bunknown = player.Be.bunknown.add(new Decimal(1).times(player.B.points.add(1)))}
+        if (player.Be.moltenIron.gte(520) && player.Be.plutonium.gte(1) && player.Be.saturnIce.gte(21111) && player.Be.bunknown < player.B.points.add(1).times(player.V.M)) player.Be.moltenIron = player.Be.moltenIron.sub(520), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.saturnIce = player.Be.saturnIce.sub(21111), player.Be.bunknown = player.Be.bunknown.add(new Decimal(1).times(player.B.points.add(1)).times(player.V.M))}
         if (player.Be.s1 == 24 || player.Be.s2 == 24 || player.Be.s3 == 24 || player.Be.s4 == 24 || player.Be.s5 == 24 || player.Be.s6 == 24 || player.Be.s7 == 24 || player.Be.s8 == 24 || player.Be.s9 == 24 || player.Be.s10 == 24 || player.B.resets > 13 && player.Be.auto){
-        if (player.Be.moltenIron.gte(584) && player.Be.plutonium.gte(1) && player.Be.uranusWater.gte(11911) && player.Be.lWaterCloud < player.B.points.add(1)) player.Be.moltenIron = player.Be.moltenIron.sub(584), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.uranusWater = player.Be.uranusWater.sub(11911), player.Be.lWaterCloud = player.Be.lWaterCloud.add(new Decimal(1).times(player.B.points.add(1)))}
+        if (player.Be.moltenIron.gte(584) && player.Be.plutonium.gte(1) && player.Be.uranusWater.gte(11911) && player.Be.lWaterCloud < player.B.points.add(1).times(player.V.M)) player.Be.moltenIron = player.Be.moltenIron.sub(584), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.uranusWater = player.Be.uranusWater.sub(11911), player.Be.lWaterCloud = player.Be.lWaterCloud.add(new Decimal(1).times(player.B.points.add(1)).times(player.V.M))}
         if (player.Be.s1 == 25 || player.Be.s2 == 25 || player.Be.s3 == 25 || player.Be.s4 == 25 || player.Be.s5 == 25 || player.Be.s6 == 25 || player.Be.s7 == 25 || player.Be.s8 == 25 || player.Be.s9 == 25 || player.Be.s10 == 25 || player.B.resets > 14 && player.Be.auto){
-        if (player.Be.moltenIron.gte(666) && player.Be.plutonium.gte(1) && player.Be.plutoCarbon.gte(666666) && player.Be.jDiamond < player.B.points.add(1)) player.Be.moltenIron = player.Be.moltenIron.sub(666), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.plutoCarbon = player.Be.plutoCarbon.sub(666666), player.Be.jDiamond = player.Be.jDiamond.add(new Decimal(1).times(player.B.points.add(1)))}
+        if (player.Be.moltenIron.gte(666) && player.Be.plutonium.gte(1) && player.Be.plutoCarbon.gte(666666) && player.Be.jDiamond < player.B.points.add(1).times(player.V.M)) player.Be.moltenIron = player.Be.moltenIron.sub(666), player.Be.plutonium = player.Be.plutonium.sub(1), player.Be.plutoCarbon = player.Be.plutoCarbon.sub(666666), player.Be.jDiamond = player.Be.jDiamond.add(new Decimal(1).times(player.B.points.add(1)).times(player.V.M))}
         if (player.Be.s1 == 31 || player.Be.s2 == 31 || player.Be.s3 == 31 || player.Be.s4 == 31 || player.Be.s5 == 31 || player.Be.s6 == 31 || player.Be.s7 == 31 || player.Be.s8 == 31 || player.Be.s9 == 31 || player.Be.s10 == 31 || player.B.resets > 5 && player.Be.auto) player.Be.solarEssence = player.Be.solarEssence.add(player.B.baseT2).add(new Decimal(3).times(player.B.points.add(1)))
-        if (player.Be.metalliccore.gte(3) && player.Be.solarEssence.gte(100)) player.Be.metalliccore = player.Be.metalliccore.sub(3), player.Be.solarEssence = player.Be.solarEssence.sub(100), player.Be.solarBar = player.Be.solarBar.add(new Decimal(3).times(player.B.points.add(1)))
+        if (player.Be.metalliccore.gte(3) && player.Be.solarEssence.gte(100)) player.Be.metalliccore = player.Be.metalliccore.sub(3), player.Be.solarEssence = player.Be.solarEssence.sub(100), player.Be.solarBar = player.Be.solarBar.add(new Decimal(3).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 32 || player.Be.s2 == 32 || player.Be.s3 == 32 || player.Be.s4 == 32 || player.Be.s5 == 32 || player.Be.s6 == 32 || player.Be.s7 == 32 || player.Be.s8 == 32 || player.Be.s9 == 32 || player.Be.s10 == 32 || player.B.resets > 6 && player.Be.auto) player.Be.saturnIce = player.Be.saturnIce.add(player.B.baseT2).add(new Decimal(5).times(player.B.points.add(1)))
-        if (player.Be.sulfuricAcid.gte(10) && player.Be.saturnIce.gte(342)) player.Be.sulfuricAcid = player.Be.sulfuricAcid.sub(10), player.Be.saturnIce = player.Be.saturnIce.sub(342), player.Be.methaneGas = player.Be.methaneGas.add(new Decimal(5).times(player.B.points.add(1)))
-        if (player.Be.s1 == 33 || player.Be.s2 == 33 || player.Be.s3 == 33 || player.Be.s4 == 33 || player.Be.s5 == 33 || player.Be.s6 == 33 || player.Be.s7 == 33 || player.Be.s8 == 33 || player.Be.s9 == 33 || player.Be.s10 == 33 || player.B.resets > 7 && player.Be.auto) player.Be.plutoCarbon = player.Be.plutoCarbon.add(player.B.baseT2).add(new Decimal(100).times(player.B.points.add(1)))
-        if (player.Be.plutoCarbon.gte(10000) && player.Be.solarBar.gte(9) && player.Be.methaneGas.gte(15) && player.Be.uranusAmmonia.gte(30) && player.Be.neptuneSlush.gte(15)) player.Be.plutoCarbon = player.Be.plutoCarbon.sub(10000), player.Be.solarBar = player.Be.solarBar.sub(9), player.Be.methaneGas = player.Be.methaneGas.sub(15), player.Be.uranusAmmonia = player.Be.uranusAmmonia.sub(30), player.Be.neptuneSlush = player.Be.neptuneSlush.sub(15), player.Be.plutonium = player.Be.plutonium.add(new Decimal(1).times(player.B.points.add(1)))
+        if (player.Be.sulfuricAcid.gte(10) && player.Be.saturnIce.gte(342)) player.Be.sulfuricAcid = player.Be.sulfuricAcid.sub(10), player.Be.saturnIce = player.Be.saturnIce.sub(342), player.Be.methaneGas = player.Be.methaneGas.add(new Decimal(5).times(player.B.points.add(1).times(player.V.M)))
+        if (player.Be.s1 == 33 || player.Be.s2 == 33 || player.Be.s3 == 33 || player.Be.s4 == 33 || player.Be.s5 == 33 || player.Be.s6 == 33 || player.Be.s7 == 33 || player.Be.s8 == 33 || player.Be.s9 == 33 || player.Be.s10 == 33 || player.B.resets > 7 && player.Be.auto) player.Be.plutoCarbon = player.Be.plutoCarbon.add(player.B.baseT2).add(new Decimal(100).times(player.B.points.add(1).times(player.V.M)))
+        if (player.Be.plutoCarbon.gte(10000) && player.Be.solarBar.gte(9) && player.Be.methaneGas.gte(15) && player.Be.uranusAmmonia.gte(30) && player.Be.neptuneSlush.gte(15)) player.Be.plutoCarbon = player.Be.plutoCarbon.sub(10000), player.Be.solarBar = player.Be.solarBar.sub(9), player.Be.methaneGas = player.Be.methaneGas.sub(15), player.Be.uranusAmmonia = player.Be.uranusAmmonia.sub(30), player.Be.neptuneSlush = player.Be.neptuneSlush.sub(15), player.Be.plutonium = player.Be.plutonium.add(new Decimal(1).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 34 || player.Be.s2 == 34 || player.Be.s3 == 34 || player.Be.s4 == 34 || player.Be.s5 == 34 || player.Be.s6 == 34 || player.Be.s7 == 34 || player.Be.s8 == 34 || player.Be.s9 == 34 || player.Be.s10 == 34 || player.B.resets > 8 && player.Be.auto) player.Be.uranusWater = player.Be.uranusWater.add(player.B.baseT2).add(new Decimal(10).times(player.B.points.add(1)))
-        if (player.Be.basaltrock.gte(100) && player.Be.uranusWater.gte(1000)) player.Be.basaltrock = player.Be.basaltrock.sub(100), player.Be.uranusWater = player.Be.uranusWater.sub(1000), player.Be.uranusAmmonia = player.Be.uranusAmmonia.add(new Decimal(10).times(player.B.points.add(1)))
+        if (player.Be.basaltrock.gte(100) && player.Be.uranusWater.gte(1000)) player.Be.basaltrock = player.Be.basaltrock.sub(100), player.Be.uranusWater = player.Be.uranusWater.sub(1000), player.Be.uranusAmmonia = player.Be.uranusAmmonia.add(new Decimal(10).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 35 || player.Be.s2 == 35 || player.Be.s3 == 35 || player.Be.s4 == 35 || player.Be.s5 == 35 || player.Be.s6 == 35 || player.Be.s7 == 35 || player.Be.s8 == 35 || player.Be.s9 == 35 || player.Be.s10 == 35 || player.B.resets > 9 && player.Be.auto) player.Be.neptuneCloud = player.Be.neptuneCloud.add(player.B.baseT2).add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.jupiterHelium.gte(5) && player.Be.neptuneCloud.gte(50)) player.Be.jupiterHelium = player.Be.jupiterHelium.sub(5), player.Be.neptuneCloud = player.Be.neptuneCloud.sub(50), player.Be.neptuneSlush = player.Be.neptuneSlush.add(new Decimal(3).times(player.B.points.add(1)))
+        if (player.Be.jupiterHelium.gte(5) && player.Be.neptuneCloud.gte(50)) player.Be.jupiterHelium = player.Be.jupiterHelium.sub(5), player.Be.neptuneCloud = player.Be.neptuneCloud.sub(50), player.Be.neptuneSlush = player.Be.neptuneSlush.add(new Decimal(3).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 41 || player.Be.s2 == 41 || player.Be.s3 == 41 || player.Be.s4 == 41 || player.Be.s5 == 41 || player.Be.s6 == 41 || player.Be.s7 == 41 || player.Be.s8 == 41 || player.Be.s9 == 41 || player.Be.s10 == 41 || player.B.resets > 1 && player.Be.auto) player.Be.mercuryDust = player.Be.mercuryDust.add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.mercuryDust.gte(100)) player.Be.mercuryDust = player.Be.mercuryDust.sub(100), player.Be.metalliccore = player.Be.metalliccore.add(new Decimal(1).times(player.B.points.add(1)))
+        if (player.Be.mercuryDust.gte(100)) player.Be.mercuryDust = player.Be.mercuryDust.sub(100), player.Be.metalliccore = player.Be.metalliccore.add(new Decimal(1).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 42 || player.Be.s2 == 42 || player.Be.s3 == 42 || player.Be.s4 == 42 || player.Be.s5 == 42 || player.Be.s6 == 42 || player.Be.s7 == 42 || player.Be.s8 == 42 || player.Be.s9 == 42 || player.Be.s10 == 42 || player.B.resets > 2 && player.Be.auto) player.Be.venusDust = player.Be.venusDust.add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.venusDust.gte(67)) player.Be.venusDust = player.Be.venusDust.sub(67), player.Be.sulfuricAcid = player.Be.sulfuricAcid.add(new Decimal(2).times(player.B.points.add(1)))
+        if (player.Be.venusDust.gte(67)) player.Be.venusDust = player.Be.venusDust.sub(67), player.Be.sulfuricAcid = player.Be.sulfuricAcid.add(new Decimal(2).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 43 || player.Be.s2 == 43 || player.Be.s3 == 43 || player.Be.s4 == 43 || player.Be.s5 == 43 || player.Be.s6 == 43 || player.Be.s7 == 43 || player.Be.s8 == 43 || player.Be.s9 == 43 || player.Be.s10 == 43 || player.B.resets > 0 && player.Be.auto) player.Be.moonDust = player.Be.moonDust.add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.moonDust.gte(10)) player.Be.moonDust = player.Be.moonDust.sub(10), player.Be.moltenIron = player.Be.moltenIron.add(new Decimal(3).times(player.B.points.add(1)))
+        if (player.Be.moonDust.gte(10)) player.Be.moonDust = player.Be.moonDust.sub(10), player.Be.moltenIron = player.Be.moltenIron.add(new Decimal(3).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 44 || player.Be.s2 == 44 || player.Be.s3 == 44 || player.Be.s4 == 44 || player.Be.s5 == 44 || player.Be.s6 == 44 || player.Be.s7 == 44 || player.Be.s8 == 44 || player.Be.s9 == 44 || player.Be.s10 == 44 || player.B.resets > 3 && player.Be.auto) player.Be.marsDust = player.Be.marsDust.add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.marsDust.gte(40)) player.Be.marsDust = player.Be.marsDust.sub(40), player.Be.basaltrock = player.Be.basaltrock.add(new Decimal(8).times(player.B.points.add(1)))
+        if (player.Be.marsDust.gte(40)) player.Be.marsDust = player.Be.marsDust.sub(40), player.Be.basaltrock = player.Be.basaltrock.add(new Decimal(8).times(player.B.points.add(1).times(player.V.M)))
         if (player.Be.s1 == 45 || player.Be.s2 == 45 || player.Be.s3 == 45 || player.Be.s4 == 45 || player.Be.s5 == 45 || player.Be.s6 == 45 || player.Be.s7 == 45 || player.Be.s8 == 45 || player.Be.s9 == 45 || player.Be.s10 == 45 || player.B.resets > 4 && player.Be.auto) player.Be.jupiterHydrogen = player.Be.jupiterHydrogen.add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.jupiterHydrogen.gte(90)) player.Be.jupiterHydrogen = player.Be.jupiterHydrogen.sub(90), player.Be.jupiterHelium = player.Be.jupiterHelium.add(new Decimal(1).times(player.B.points.add(1)))
-        if (player.Be.ALight >= player.B.points.add(1)) player.Be.ALight = player.Be.ALight.times(0).add(player.B.points.add(1))
-        if (player.Be.gHeliumHydride >= player.B.points.add(1)) player.Be.gHeliumHydride = player.Be.gHeliumHydride.times(0).add(player.B.points.add(1))
-        if (player.Be.bunknown >= player.B.points.add(1)) player.Be.bunknown = player.Be.bunknown.times(0).add(player.B.points.add(1))
-        if (player.Be.lWaterCloud >= player.B.points.add(1)) player.Be.lWaterCloud = player.Be.lWaterCloud.times(0).add(player.B.points.add(1))
-        if (player.Be.jDiamond >= player.B.points.add(1)) player.Be.jDiamond = player.Be.jDiamond.times(0).add(player.B.points.add(1))
+        if (player.Be.jupiterHydrogen.gte(90)) player.Be.jupiterHydrogen = player.Be.jupiterHydrogen.sub(90), player.Be.jupiterHelium = player.Be.jupiterHelium.add(new Decimal(1).times(player.B.points.add(1).times(player.V.M)))
+        if (player.Be.ALight >= player.B.points.add(1)) player.Be.ALight = player.Be.ALight.times(0).add(player.B.points.add(1)).times(player.V.M)
+        if (player.Be.gHeliumHydride >= player.B.points.add(1)) player.Be.gHeliumHydride = player.Be.gHeliumHydride.times(0).add(player.B.points.add(1)).times(player.V.M)
+        if (player.Be.bunknown >= player.B.points.add(1)) player.Be.bunknown = player.Be.bunknown.times(0).add(player.B.points.add(1)).times(player.V.M)
+        if (player.Be.lWaterCloud >= player.B.points.add(1)) player.Be.lWaterCloud = player.Be.lWaterCloud.times(0).add(player.B.points.add(1)).times(player.V.M)
+        if (player.Be.jDiamond >= player.B.points.add(1)) player.Be.jDiamond = player.Be.jDiamond.times(0).add(player.B.points.add(1)).times(player.V.M)
         if (hasMilestone('B', 4)) buyBuyable('Be', 12), buyBuyable('Be', 13), buyBuyable('Be', 14), buyBuyable('Be', 16)
         if (hasMilestone('B', 4) && getBuyableAmount('Be', 12) == 10 && getBuyableAmount('Be', 13) == 10) buyBuyable('Be', 15)
         if (hasMilestone('B', 2)) player.Li.Li1 = player.Li.Li1.times(0).add(71), player.Li.H1 = player.Li.H1.times(0).add(73)
@@ -4093,12 +4403,17 @@ addLayer("B", {
         }
     },
     
+    marked() {
+        if (localStorage.getItem('1') >= '5') return true
+        },
+
     image: "https://i.postimg.cc/J4LnSfTP/Screenshot-2022-07-10-165312-1-removebg-preview.png",
     name: "Boron", // This is optional, only used in a few places, If absent it just uses the layer id.
     position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() {
         return {
-            unlocked: true,
+            O: true,
+            unlocked: false,
             total: new Decimal(0),
             points: new Decimal(0),
             resets: new Decimal(0),
@@ -4141,10 +4456,12 @@ addLayer("B", {
         }
     },
 
-  
+    A: false,
+    audio2: new Audio('resources/Science.wav'),
 
     color: '#964b00',
     layerShown() {
+        if (player.Ch.One == 2) return false
         if (player.B.resets.gte(1)) return true
         if (player.Be.rainbownium.gte(1)) return true
         else return false
@@ -4178,7 +4495,7 @@ addLayer("B", {
     },
 
     tooltip() { return formatWhole(player.B.points) + "  Prisms" },
-    tooltipLocked() { return formatWhole(player.B.points) + " Prisms" },
+    tooltipLocked() { return "Star Locked I: Requires 2,000 Rawnbownium For CheckPoint" },
     
     milestones: {
         1: {
@@ -4245,7 +4562,7 @@ addLayer("B", {
                 return "<div> Make a Handle.<div> <i>Requires:</i> 200 Lights, 2,000,000 Slush, 1,000,000 Plutonium and 220 Prisms. Nothing can be burning.<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + " / " + formatWhole((this.purchaseLimit))
                },
             canAfford() { 
-               return player.Be.ALight.gte(200) && player.Be.neptuneSlush.gte(2000000) && player.Be.plutonium.gte(1000000) && player.B.points.gte(220) && player.B.Ticks.lte(0)
+               return player.Be.ALight.gte(200) && player.Be.neptuneSlush.gte(2000000) && player.Be.plutonium.gte(1000000) && player.B.points.gte(220) && player.B.DS.gte(1)
             },
             purchaseLimit: 1,
             buy() {
@@ -4266,7 +4583,7 @@ addLayer("B", {
                 return "<div> Make a Blade Guard.<div> <i>Requires:</i> 100,000,000 gwa, 5e9 Lasers, 20,000 Rainbownium and 250 Prisms. Nothing can be burning.<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + " / " + formatWhole((this.purchaseLimit))
                },
             canAfford() { 
-               return player.Be.gwa.gte(100000000) && player.Be.laser.gte(5e9) && player.Be.rainbownium.gte(20000) && player.B.points.gte(250) && player.B.Ticks.lte(0)
+               return player.Be.gwa.gte(100000000) && player.Be.laser.gte(5e9) && player.Be.rainbownium.gte(20000) && player.B.points.gte(250) && player.B.DS.gte(2)
             },
             purchaseLimit: 1,
             buy() {
@@ -4293,11 +4610,11 @@ addLayer("B", {
             display() { return "Sharpen Your Blade <div> Cost: " + format(this.cost()) + "g of Boron<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + '<div>Current Effect: +' + player.B.Added + ' to base of Drilling Speed'},
             canAfford() { return player[this.layer].Boron.gte(this.cost())},
             buy() {
-             if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
-             if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
-             if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
-             if (!hasUpgrade('B', 25) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
-             if (hasUpgrade('B', 25))player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(1.2)
+             if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000 * player.V.M)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
+             if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000 * player.V.M)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
+             if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10 * player.V.M)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
+             if (!hasUpgrade('B', 25) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(0.8)
+             if (hasUpgrade('B', 25))player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Added = getBuyableAmount(this.layer, this.id).pow(1.2)
             },
         },
         15: {
@@ -4312,11 +4629,11 @@ addLayer("B", {
             display() { return "Enhance Your Blade <div> Cost: " + format(this.cost()) + "g of Boron<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + '<div>Current Effect: x' + player.B.Times + ' to base of Drilling Speed'},
             canAfford() { return player[this.layer].Boron.gte(this.cost())},
             buy() {
-                if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2).pow(0.3).times(player.B.Times1)
-                if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2).pow(0.3).times(player.B.Times1)
-                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2)
-                if (hasUpgrade('B', 25) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2)
-                if (!hasUpgrade('B', 25)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(0.3).times(player.B.Times1)
+                if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000 * player.V.M)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2).pow(0.3).times(player.B.Times1)
+                if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000 * player.V.M)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2).pow(0.3).times(player.B.Times1)
+                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10 * player.V.M)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2)
+                if (hasUpgrade('B', 25) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(1.2)
+                if (!hasUpgrade('B', 25)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Times = getBuyableAmount(this.layer, this.id).pow(0.3).times(player.B.Times1)
             },
         },
         21: {
@@ -4331,12 +4648,12 @@ addLayer("B", {
             display() { return "Use A Better Handle<div> Cost: " + format(this.cost()) + "g of Boron<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + '<div>Current Effect: x' + player.B.Times1 + ' to "Enhance Your Blade"'},
             canAfford() { return player[this.layer].Boron.gte(this.cost())},
             buy() {
-                if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(1.5)
-                if (hasUpgrade('B', 34) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(1.5)
-                if (hasUpgrade('B', 33) && !hasUpgrade('B', 34)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (hasUpgrade('B', 25) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (!hasUpgrade('B', 25)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5), player.B.Times = getBuyableAmount(this.layer, 15).pow(0.3).times(player.B.Times1)
+                if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000 * player.V.M)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(1.5)
+                if (hasUpgrade('B', 34) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000 * player.V.M)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(1.5)
+                if (hasUpgrade('B', 33) && !hasUpgrade('B', 34)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000 * player.V.M)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10 * player.V.M)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (hasUpgrade('B', 25) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (!hasUpgrade('B', 25)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Times1 = getBuyableAmount(this.layer, this.id).pow(0.5), player.B.Times = getBuyableAmount(this.layer, 15).pow(0.3).times(player.B.Times1)
             },
         },
         22: {
@@ -4351,11 +4668,11 @@ addLayer("B", {
             display() { return "Buy A Better Blade Guard<div> Cost: " + format(this.cost()) + "g of Boron<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + '<div>Current Effect: x' + player.B.Times2 + ' to Boron Multiplier'},
             canAfford() { return player[this.layer].Boron.gte(this.cost())},
             buy() {
-                if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (hasUpgrade('B', 31) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
-                if (!hasUpgrade('B', 31)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.2)
+                if (hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000 * player.V.M)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000 * player.V.M)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10 * player.V.M)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (hasUpgrade('B', 31) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (!hasUpgrade('B', 31)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Times2 = getBuyableAmount(this.layer, this.id).pow(0.2)
             },
         },
         23: {
@@ -4370,11 +4687,11 @@ addLayer("B", {
             display() { return "Improve The Diamond Hand Saw Overall.<div> Cost: " + format(this.cost()) + "g of Boron<div> Amount: " + formatWhole(getBuyableAmount(this.layer, this.id)) + '<div>Current Effect: +' + player.B.Added1 + ' to Boron Multiplier before other effects'},
             canAfford() { return player[this.layer].Boron.gte(this.cost())},
             buy() {
-                if (hasUpgrade('B', 35))player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
-                if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
-                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
-                if (hasUpgrade('B', 31) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
-                if (!hasUpgrade('B', 31)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)), player.B.Added1 = getBuyableAmount(this.layer, this.id).pow(0.5)
+                if (hasUpgrade('B', 35))player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000000 * player.V.M)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
+                if (hasUpgrade('B', 33) && !hasUpgrade('B', 35)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1000 * player.V.M)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
+                if (hasUpgrade('B', 32) && !hasUpgrade('B', 33)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(10 * player.V.M)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
+                if (hasUpgrade('B', 31) && !hasUpgrade('B', 32)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Added1 = getBuyableAmount(this.layer, this.id)
+                if (!hasUpgrade('B', 31)) player[this.layer].Boron = player[this.layer].Boron.sub(this.cost()), setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1 * player.V.M)), player.B.Added1 = getBuyableAmount(this.layer, this.id).pow(0.5)
             },
         },
     },
@@ -4388,15 +4705,16 @@ addLayer("B", {
                 else return "Drill"
             },
             display() { 
-                if (options.mobileMode == true && !hasUpgrade('B', 21)) return 'Hover TO DRILL.<div>Drilling through ' + formatWhole(player.B.TicksMax) + ' Ticks/tick'
-                if (options.mobileMode == false && !hasUpgrade('B', 21)) return 'Hold TO DRILL.<div>Drilling through ' + formatWhole(player.B.TicksMax) + ' Ticks/tick'
+                if (options.mobileMode == false && !hasUpgrade('B', 21)) return 'Hover TO DRILL.<div>Drilling through ' + formatWhole(player.B.TicksMax) + ' Ticks/tick'
+                if (options.mobileMode == true && !hasUpgrade('B', 21)) return 'Hold TO DRILL.<div>Drilling through ' + formatWhole(player.B.TicksMax) + ' Ticks/tick'
                 if (hasUpgrade('B', 21)) return 'CLICK TO DRILL.<div>Drilling through ' + formatWhole(player.B.TicksMax) + ' Ticks/tick'},
-            canClick() { return true},
+            canClick() { 
+                if (player.B.DS.gte(3)) return true},
             effect() {
                 let effect = [];
                 player.B.DrillingSped = temp['B'].clickables[11].effect
                 effect = new Decimal(0.1).times(player.B.TickSped)
-                if (player.B.Deg.gte(100)) effect = player.B.TickBase.add(player.B.Added).times(player.B.TickSped).times(player.B.Times)
+                if (player.B.Deg.gte(100)) effect = player.B.TickBase.add(player.B.Added).times(player.B.TickSped).times(player.B.Times).times(player.V.M)
                 return effect
             },
             onClick() {
@@ -4697,7 +5015,7 @@ componentStyles: {
             function() { if (player.p.Node < 1) return 'Prisms boosts all Beryllium resources by ' + formatWhole(player.B.points.add(1)) + '. Cost scales at 100 rainbownium.'}],
             "blank",
                 "main-display",
-                () => (hasUpgrade('B', 21)) ? "" : "prestige-button",
+                () => (hasUpgrade('B', 21) || inChallenge('V', 11) && localStorage.getItem('1') === '3') ? "" : "prestige-button",
                 "blank",
             ['display-text',
             function() { if (player.p.Node < 1) return 'You have ' + formatWhole(player.Be.rainbownium) + ' Rainbownium'}],
@@ -4863,10 +5181,15 @@ const: PartB = {
 },
 
 update() {
+    if (player.Ch.One == 2 && tmp.B.A == false) player.B.A = true, tmp.B.audio2.loop = false, tmp.B.audio2.play()
+    if (player.Ch.One != 2 && player.B.O == false) player.B.O = true, tmp.B.audio2.pause();
+    if (player.Be.rainbownium.lt(2000) && inChallenge('V', 11)) player.B.unlocked = false
+    if (player.Be.rainbownium.gte(2000) && inChallenge('V', 11)) player.B.unlocked = true
+    if (player.Be.rainbownium.gte(2000) && inChallenge('V', 11) && localStorage.getItem('1') === '3') sSave(), localStorage.setItem('1', 4)
+    if (player.Be.rainbownium.gte(1) && !inChallenge('V', 11)) player.B.unlocked = true
     if (player.B.points.gte(100) && player.B.backtohun.lte(0)) player.B.backtohun = player.B.backtohun.add(1), player.B.points = player.B.points.times(0).add(100)
-    if (player.B.Scraps.gte(1) && player.B.DS.lte(2)) player.B.Ticks = player.B.Ticks.sub(1)
-    if (player.B.Scraps.gte(1) && player.B.DS.lte(2)) player.B.Ticks1 = player.B.Ticks1.add(1)
-    if (player.B.Ticks.lte(0) && player.B.Scraps.gte(1)) player.B.Scraps = player.B.Scraps.times(0), player.B.DS = player.B.DS.add(1)
+    if (player.B.Scraps.gte(1) && player.B.DS.lte(2)) player.B.Ticks = player.B.Ticks.sub(new Decimal(1).add(player.V.M))
+    if (player.B.Scraps.gte(1) && player.B.DS.lte(2)) player.B.Ticks1 = player.B.Ticks1.add(new Decimal(1).add(player.V.M))
     if (player.B.Slider == 1) player.B.Reward = player.B.BM.times(new Decimal(1).add(player.B.BB))
     if (player.B.Slider == 2) player.B.Reward = player.B.BM.times(new Decimal(666).add(player.B.BB))
     if (player.B.Slider == 3) player.B.Reward = player.B.BM.times(new Decimal(21212).add(player.B.BB))
@@ -4887,16 +5210,16 @@ update() {
     if (player.B.Slider == 8 && player.B.Trigger != 8) player.B.Size = player.B.Size.times(0).add(302.36220472), player.B.Size1 = player.B.Size1.times(0).add(-200), player.B.Size2 = player.B.Size2.times(0).add(-60), player.B.Ticks = player.B.Ticks.times(0).add(2e14), player.B.Trigger = player.B.Trigger.times(0).add(8), player.B.Pos2 = player.B.Pos2.times(0).add(130)
     if (player.B.Slider == 9 && player.B.Trigger != 9) player.B.Size = player.B.Size.times(0).add(340.15748031), player.B.Size1 = player.B.Size1.times(0).add(-220), player.B.Size2 = player.B.Size2.times(0).add(-90), player.B.Ticks = player.B.Ticks.times(0).add(2e23), player.B.Trigger = player.B.Trigger.times(0).add(9), player.B.Pos2 = player.B.Pos2.times(0).add(150)
     if (player.B.Slider == 10 && player.B.Trigger != 10) player.B.Size = player.B.Size.times(0).add(377.95275591), player.B.Size1 = player.B.Size1.times(0).add(-240), player.B.Size2 = player.B.Size2.times(0).add(-120), player.B.Ticks = player.B.Ticks.times(0).add(5e32), player.B.Trigger = player.B.Trigger.times(0).add(10), player.B.Pos2 = player.B.Pos2.times(0).add(170)
-    if (player.B.Slider == 1 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(1).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(100)
-    if (player.B.Slider == 2 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(666).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(3000)
-    if (player.B.Slider == 3 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(21212).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(90000)
-    if (player.B.Slider == 4 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(525109).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(930000)
-    if (player.B.Slider == 5 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(8880000).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(16000000)
-    if (player.B.Slider == 6 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(222260000).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(2e10)
-    if (player.B.Slider == 7 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(8e9).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(4e11)
-    if (player.B.Slider == 8 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(5e11).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(2e14)
-    if (player.B.Slider == 9 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(7e14).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(2e23)
-    if (player.B.Slider == 10 && player.B.Ticks.lt(1)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(1e20).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(5e32), player.B.Next = player.B.Next.add(1)
+    if (player.B.Slider == 1 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(1).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(100)
+    if (player.B.Slider == 2 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(666).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(3000)
+    if (player.B.Slider == 3 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(21212).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(90000)
+    if (player.B.Slider == 4 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(525109).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(930000)
+    if (player.B.Slider == 5 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(8880000).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(16000000)
+    if (player.B.Slider == 6 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(222260000).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(2e10)
+    if (player.B.Slider == 7 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(8e9).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(4e11)
+    if (player.B.Slider == 8 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(5e11).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(2e14)
+    if (player.B.Slider == 9 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(7e14).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(2e23)
+    if (player.B.Slider == 10 && player.B.Ticks.lt(1) && player.B.DS.gte(3)) player.B.Boron = player.B.Boron.add(player.B.BM.times(new Decimal(1e20).add(player.B.BB))), player.B.Ticks = player.B.Ticks.times(0).add(5e32), player.B.Next = player.B.Next.add(1)
     if (player.B.SDeg.lte(0)) player.B.Pos1 = player.B.Pos1.times(0), player.B.Deg = player.B.Deg.times(0).add(1)
     if (player.B.Slider == 1 && player.B.SDeg.gte(1)) player.B.Pos1 = player.B.Pos1.times(0).add(-220)
     if (player.B.Slider == 2 && player.B.SDeg.gte(1)) player.B.Pos1 = player.B.Pos1.times(0).add(-200)
@@ -4908,13 +5231,15 @@ update() {
     if (player.B.Slider == 8 && player.B.SDeg.gte(1)) player.B.Pos1 = player.B.Pos1.times(0).add(-80)
     if (player.B.Slider == 9 && player.B.SDeg.gte(1)) player.B.Pos1 = player.B.Pos1.times(0).add(-60)
     if (player.B.Slider == 10 && player.B.SDeg.gte(1)) player.B.Pos1 = player.B.Pos1.times(0).add(-40)
-    if (player.B.Boron.lt(0)) player.B.Boron = player.B.Boron.times(0)
+    if (player.B.Ticks.lte(0) && player.B.Scraps.gte(1)) player.B.Scraps = player.B.Scraps.times(0), player.B.DS = player.B.DS.add(1)
+    if (player.B.DS.lte(2)) player.B.Slider = 0
     if (hasUpgrade('B', 21) && player.B.State == 1){ player.B.SDeg = player.B.SDeg.add(1), player.B.TicksMax = temp['B'].clickables[11].effect
     if (player.B.Ticks.gte(1)) player.B.Ticks = player.B.Ticks.sub(temp['B'].clickables[11].effect)
     if (player.B.Deg.lte(100)) player.B.Deg = player.B.Deg.add(player.B.Deg.times(0.1))
     if (player.B.Deg.gte(101)) player.B.Deg = player.B.Deg.add(10)}
     if (hasUpgrade('B', 25)) buyBuyable('B', 14), buyBuyable('B', 15), buyBuyable('B', 21)
     if (hasUpgrade('B', 31)) buyBuyable('B', 22), buyBuyable('B', 23)
+    if (player.B.DS.lte(2)) player.B.Boron = new Decimal(0)
 },
 })
 
@@ -4934,6 +5259,10 @@ addLayer("C", {
         }
     },
     
+    marked() {
+        if (localStorage.getItem('1') >= '6') return true
+        },
+
     image: "https://i.postimg.cc/zXdM0zMB/Screenshot-2022-07-15-162004-1-removebg-preview-1.png",
     name: "Carbon", // This is optional, only used in a few places, If absent it just uses the layer id.
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -5089,6 +5418,7 @@ addLayer("C", {
 
     color: '#00e600',
     layerShown() {
+        if (player.Ch.One == 2) return false
         if (hasUpgrade('B', 14)) return true
         else return false
     },
@@ -5097,7 +5427,9 @@ addLayer("C", {
 
 
     tooltip() { return formatWhole(player.C.points) + " Carbon and " + formatWhole(player.C.fragements) + " Carbon Fragments."},
-    tooltipLocked() { return "You must destroy the largest meteorite first." },
+    tooltipLocked() { 
+        if (inChallenge('V', 11)) return "Star Locked II: Requires 1e36 Drilling Speed"
+        if (!inChallenge('V', 11)) return "You must destroy the largest meteorite first." },
 
     bars: {
         PartMBar: {
@@ -5114,7 +5446,7 @@ addLayer("C", {
                 let progPM = []
                 if (player.C.Xpmaxptm <= 0 && player.C.Switch == 1 && -getBaseLog(10, player.C.Levelptm) + 2 >= 0.1 || player.C.Xpmaxptm <= 0 && player.N.resets >= 10  && -getBaseLog(10, player.C.Levelptm) + 2 >= 0.1) player.C.Carbonptm = player.C.Carbonptm -getBaseLog(10, player.C.Levelptm) + 2 * tmp.N.CB
                 if (player.C.Xpmaxptm <= 0 && player.C.Switch == 1 && -getBaseLog(10, player.C.Levelptm) + 2 < 0.1 || player.C.Xpmaxptm <= 0 && player.N.resets >= 10  && -getBaseLog(10, player.C.Levelptm) + 2 < 0.1) player.C.Carbonptm = player.C.Carbonptm + 0.1 * tmp.N.CB
-                if (player.C.Xpmaxptm <= 0 && player.C.Switch == 1 || player.C.Xpmaxptm <= 0 && player.N.resets >= 10 ) player.C.Levelptm = player.C.Levelptm + 1, player.C.Xpmaxptm = player.C.Truemaxptm + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelptm)*1.6 + 40), player.C.Truemaxptm = player.C.Xpmaxptm, player.C.XpToptm = 0
+                if (player.C.Xpmaxptm <= 0 && player.C.Switch == 1 || player.C.Xpmaxptm <= 0 && player.N.resets >= 10 ) player.C.Levelptm = player.C.Levelptm + 1 * player.V.M, player.C.Xpmaxptm = player.C.Truemaxptm + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelptm)*1.6 + 40), player.C.Truemaxptm = player.C.Xpmaxptm, player.C.XpToptm = 0
                 progPM = player.C.XpToptm / player.C.Truemaxptm
                 return progPM
             },
@@ -5139,7 +5471,7 @@ addLayer("C", {
                 if (player.C.Xpmaxftm <= 0 && player.C.Switch == 2 && -getBaseLog(3, player.C.Levelftm) + 4 >= 0.1 || player.C.Xpmaxftm <= 0 && player.N.resets >= 10  && -getBaseLog(3, player.C.Levelftm) + 4 >= 0.1) player.C.Carbonftm = player.C.Carbonftm -getBaseLog(3, player.C.Levelftm) + 4 * tmp.N.CB
                 if (player.C.Xpmaxftm <= 0 && player.C.Switch == 2 && -getBaseLog(3, player.C.Levelftm) + 4 < 0.1 || player.C.Xpmaxftm <= 0 && player.N.resets >= 10  && -getBaseLog(3, player.C.Levelftm) + 4 < 0.1) player.C.Carbonftm = player.C.Carbonftm + 0.1 * tmp.N.CB
                 let progFM = []
-                if (player.C.Xpmaxftm <= 0 && player.C.Switch == 2 || player.C.Xpmaxftm <= 0 && player.N.resets >= 10 ) player.C.Levelftm = player.C.Levelftm + 1, player.C.Xpmaxftm = player.C.Truemaxftm + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelftm)*1.4 + 100), player.C.Truemaxftm = player.C.Xpmaxftm, player.C.XpToftm = 0
+                if (player.C.Xpmaxftm <= 0 && player.C.Switch == 2 || player.C.Xpmaxftm <= 0 && player.N.resets >= 10 ) player.C.Levelftm = player.C.Levelftm + 1 * player.V.M, player.C.Xpmaxftm = player.C.Truemaxftm + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelftm)*1.4 + 100), player.C.Truemaxftm = player.C.Xpmaxftm, player.C.XpToftm = 0
                 progFM = player.C.XpToftm / player.C.Truemaxftm
                 return progFM
             },
@@ -5164,7 +5496,7 @@ addLayer("C", {
                 if (player.C.XpmaxM <= 0 && player.C.Switch == 3 && -getBaseLog(2, player.C.LevelM) + 5 >= 0.1 || player.C.XpmaxM <= 0 && player.N.resets >= 10  && -getBaseLog(2, player.C.LevelM) + 5 >= 0.1) player.C.CarbonM = player.C.CarbonM -getBaseLog(2, player.C.LevelM) + 5 * tmp.N.CB
                 if (player.C.XpmaxM <= 0 && player.C.Switch == 3 && -getBaseLog(2, player.C.LevelM) + 5 < 0.1 || player.C.XpmaxM <= 0 && player.N.resets >= 10  && -getBaseLog(2, player.C.LevelM) + 5 < 0.1) player.C.CarbonM = player.C.CarbonM + 0.1 * tmp.N.CB
                 let progM = []
-                if (player.C.XpmaxM <= 0 && player.C.Switch == 3 || player.C.XpmaxM <= 0 && player.N.resets >= 10 ) player.C.LevelM = player.C.LevelM + 1, player.C.XpmaxM = player.C.TruemaxM + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelM)*1.6 + 200), player.C.TruemaxM = player.C.XpmaxM, player.C.XpToM = 0
+                if (player.C.XpmaxM <= 0 && player.C.Switch == 3 || player.C.XpmaxM <= 0 && player.N.resets >= 10 ) player.C.LevelM = player.C.LevelM + 1 * player.V.M, player.C.XpmaxM = player.C.TruemaxM + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelM)*1.6 + 200), player.C.TruemaxM = player.C.XpmaxM, player.C.XpToM = 0
                 progM = player.C.XpToM / player.C.TruemaxM
                 return progM
             },
@@ -5189,7 +5521,7 @@ addLayer("C", {
                 if (player.C.XpmaxE <= 0 && player.C.Switch == 4 && -getBaseLog(1.45, player.C.LevelE) + 7 >= 0.1 || player.C.XpmaxE <= 0 && player.N.resets >= 10  && -getBaseLog(1.45, player.C.LevelE) + 7 >= 0.1) player.C.CarbonE = player.C.CarbonE -getBaseLog(1.45, player.C.LevelE) + 7 * tmp.N.CB
                 if (player.C.XpmaxE <= 0 && player.C.Switch == 4 && -getBaseLog(1.45, player.C.LevelE) + 7 < 0.1 || player.C.XpmaxE <= 0 && player.N.resets >= 10  && -getBaseLog(1.45, player.C.LevelE) + 7 < 0.1) player.C.CarbonE = player.C.CarbonE + 0.1 * tmp.N.CB
                 let progE = []
-                if (player.C.XpmaxE <= 0 && player.C.Switch == 4 || player.C.XpmaxE <= 0 && player.N.resets >= 10 ) player.C.LevelE = player.C.LevelE + 1, player.C.XpmaxE = player.C.TruemaxE + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelE)*1.7 + 600), player.C.TruemaxE = player.C.XpmaxE, player.C.XpToE = 0
+                if (player.C.XpmaxE <= 0 && player.C.Switch == 4 || player.C.XpmaxE <= 0 && player.N.resets >= 10 ) player.C.LevelE = player.C.LevelE + 1 * player.V.M, player.C.XpmaxE = player.C.TruemaxE + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelE)*1.7 + 600), player.C.TruemaxE = player.C.XpmaxE, player.C.XpToE = 0
                 progE = player.C.XpToE / player.C.TruemaxE
                 return progE
             },
@@ -5214,7 +5546,7 @@ addLayer("C", {
                 if (player.C.XpmaxC <= 0 && player.C.Switch == 5 && -getBaseLog(1.075, player.C.LevelC) + 24 >= 1 || player.C.XpmaxC <= 0 && player.N.resets >= 10  && -getBaseLog(1.075, player.C.LevelC) + 24 >= 1) player.C.CarbonC = player.C.CarbonC -getBaseLog(1.075, player.C.LevelC) + 24  * tmp.N.CB
                 if (player.C.XpmaxC <= 0 && player.C.Switch == 5 && -getBaseLog(1.075, player.C.LevelC) + 24 < 1 || player.C.XpmaxC <= 0 && player.N.resets >= 10  && -getBaseLog(1.075, player.C.LevelC) + 24 < 1) player.C.CarbonC = player.C.CarbonC + 1 * tmp.N.CB
                 let progC = []
-                if (player.C.XpmaxC <= 0 && player.C.Switch == 5 || player.C.XpmaxC <= 0 && player.N.resets >= 10 ) player.C.LevelC = player.C.LevelC + 1, player.C.XpmaxC = player.C.TruemaxC + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelC)*1.7 + 800), player.C.TruemaxC = player.C.XpmaxC, player.C.XpToC = 0
+                if (player.C.XpmaxC <= 0 && player.C.Switch == 5 || player.C.XpmaxC <= 0 && player.N.resets >= 10 ) player.C.LevelC = player.C.LevelC + 1 * player.V.M, player.C.XpmaxC = player.C.TruemaxC + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelC)*1.7 + 800), player.C.TruemaxC = player.C.XpmaxC, player.C.XpToC = 0
                 progC = player.C.XpToC / player.C.TruemaxC
                 return progC
             },
@@ -5239,7 +5571,7 @@ addLayer("C", {
                 if (player.C.Xpmaxp <= 0 && player.C.Switch == 6 && -getBaseLog(5, player.C.Levelp) + 1.75 >= 0.1 || player.C.Xpmaxp <= 0 && player.N.resets >= 10  && -getBaseLog(5, player.C.Levelp) + 1.75 >= 0.1) player.C.Carbonp = player.C.Carbonp -getBaseLog(5, player.C.Levelp) + 1.75  * tmp.N.CB
                 if (player.C.Xpmaxp <= 0 && player.C.Switch == 6 && -getBaseLog(1.45, player.C.Levelp) + 1.75 < 0.1 || player.C.Xpmaxp <= 0 && player.N.resets >= 10  && -getBaseLog(1.45, player.C.Levelp) + 1.75 < 0.1) player.C.Carbonp = player.C.Carbonp + 0.1 * tmp.N.CB
                 let progp = []
-                if (player.C.Xpmaxp <= 0 && player.C.Switch == 6 || player.C.Xpmaxp <= 0 && player.N.resets >= 10 ) player.C.Levelp = player.C.Levelp + 1, player.C.Xpmaxp = player.C.Truemaxp + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelp)*1.8 + 120), player.C.Truemaxp = player.C.Xpmaxp, player.C.XpTop = 0
+                if (player.C.Xpmaxp <= 0 && player.C.Switch == 6 || player.C.Xpmaxp <= 0 && player.N.resets >= 10 ) player.C.Levelp = player.C.Levelp + 1 * player.V.M, player.C.Xpmaxp = player.C.Truemaxp + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelp)*1.8 + 120), player.C.Truemaxp = player.C.Xpmaxp, player.C.XpTop = 0
                 progp = player.C.XpTop / player.C.Truemaxp
                 return progp
             },
@@ -5264,7 +5596,7 @@ addLayer("C", {
                 if (player.C.XpmaxG <= 0 && player.C.Switch == 7 &&  -getBaseLog(1.105, player.C.LevelG) + 19 >= 2 || player.C.XpmaxG <= 0 && player.N.resets >= 10  && -getBaseLog(1.105, player.C.LevelG) + 19 >= 2) player.C.CarbonG = player.C.CarbonG  -getBaseLog(1.105, player.C.LevelG) + 19 * tmp.N.CB
                 if (player.C.XpmaxG <= 0 && player.C.Switch == 7 && -getBaseLog(1.105, player.C.LevelG) + 19 < 2 || player.C.XpmaxG <= 0 && player.N.resets >= 10  && -getBaseLog(1.105, player.C.LevelG) + 19 < 2) player.C.CarbonG = player.C.CarbonG  + 2 * tmp.N.CB
                 let progG = []
-                if (player.C.XpmaxG <= 0 && player.C.Switch == 7 || player.C.XpmaxG <= 0 && player.N.resets >= 10 ) player.C.LevelG = player.C.LevelG + 1, player.C.XpmaxG = player.C.TruemaxG + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelG)*1.8 + 1000), player.C.TruemaxG = player.C.XpmaxG, player.C.XpToG = 0
+                if (player.C.XpmaxG <= 0 && player.C.Switch == 7 || player.C.XpmaxG <= 0 && player.N.resets >= 10 ) player.C.LevelG = player.C.LevelG + 1 * player.V.M, player.C.XpmaxG = player.C.TruemaxG + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelG)*1.8 + 1000), player.C.TruemaxG = player.C.XpmaxG, player.C.XpToG = 0
                 progG = player.C.XpToG / player.C.TruemaxG
                 return progG
             },
@@ -5289,7 +5621,7 @@ addLayer("C", {
                 if (player.C.XpmaxJ <= 0 && player.C.Switch == 8 &&  -getBaseLog(1.034, player.C.LevelJ) + 48 >= 5 || player.C.XpmaxJ <= 0 && player.N.resets >= 10  && -getBaseLog(1.034, player.C.LevelJ) + 48 >= 5) player.C.CarbonJ = player.C.CarbonJ  -getBaseLog(1.034, player.C.LevelJ) + 48 * tmp.N.CB
                 if (player.C.XpmaxJ <= 0 && player.C.Switch == 8 && -getBaseLog(1.034, player.C.LevelJ) + 48 < 5 || player.C.XpmaxJ <= 0 && player.N.resets >= 10  && -getBaseLog(1.034, player.C.LevelJ) + 48 < 5) player.C.CarbonJ = player.C.CarbonJ + 5 * tmp.N.CB
                 let progJ = []
-                if (player.C.XpmaxJ <= 0 && player.C.Switch == 8 || player.C.XpmaxJ <= 0 && player.N.resets >= 10 ) player.C.LevelJ = player.C.LevelJ + 1, player.C.XpmaxJ = player.C.TruemaxJ + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelJ)*3 + 10000), player.C.TruemaxJ = player.C.XpmaxJ, player.C.XpToJ = 0
+                if (player.C.XpmaxJ <= 0 && player.C.Switch == 8 || player.C.XpmaxJ <= 0 && player.N.resets >= 10 ) player.C.LevelJ = player.C.LevelJ + 1 * player.V.M, player.C.XpmaxJ = player.C.TruemaxJ + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelJ)*3 + 10000), player.C.TruemaxJ = player.C.XpmaxJ, player.C.XpToJ = 0
                 progJ = player.C.XpToJ / player.C.TruemaxJ
                 return progJ
             },
@@ -5314,7 +5646,7 @@ addLayer("C", {
                 if (player.C.XpmaxB <= 0 && player.C.Switch == 9 &&  -getBaseLog(1.034, player.C.LevelB) + 200 >= 10 || player.C.XpmaxJ <= 0 && player.N.resets >= 10  && -getBaseLog(1.034, player.C.LevelB) + 200 >= 10) player.C.CarbonB = player.C.CarbonB -getBaseLog(1.034, player.C.LevelB) + 200 * tmp.N.CB
                 if (player.C.XpmaxB <= 0 && player.C.Switch == 9 && -getBaseLog(1.034, player.C.LevelB) + 200 < 10 || player.C.XpmaxJ <= 0 && player.N.resets >= 10  && -getBaseLog(1.034, player.C.LevelB) + 200 < 10) player.C.CarbonB = player.C.CarbonB + 10 * tmp.N.CB
                 let progB = []
-                if (player.C.XpmaxB <= 0 && player.C.Switch == 9 || player.C.XpmaxB <= 0 && player.N.resets >= 10) player.C.LevelB = player.C.LevelB + 1, player.C.XpmaxB = player.C.TruemaxB + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelB)*3 + 10000), player.C.TruemaxB = player.C.XpmaxB, player.C.XpToB = 0
+                if (player.C.XpmaxB <= 0 && player.C.Switch == 9 || player.C.XpmaxB <= 0 && player.N.resets >= 10) player.C.LevelB = player.C.LevelB + 1 * player.V.M, player.C.XpmaxB = player.C.TruemaxB + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelB)*3 + 10000), player.C.TruemaxB = player.C.XpmaxB, player.C.XpToB = 0
                 progB = player.C.XpToB / player.C.TruemaxB
                 return progB
             },
@@ -5338,12 +5670,12 @@ addLayer("C", {
             effect(){
                 let effect = []
                 effect = player.C.Levelf * 0.01 + 0.01 + 1 - 0.02
-                player.C.Xpskill = player.N.Xp * effect * tmp.C.Health
+                player.C.Xpskill = player.N.Xp * effect * tmp.C.Health * player.V.M
                 return effect
             },
             progress() {
                 let progF = []
-                if (player.C.Xpmaxf <= 0 && player.C.Switch1 == 1 || player.C.Xpmaxf <= 0 && player.N.resets >= 2 && player.C.auto1) player.C.Levelf = player.C.Levelf + 1, player.C.Xpmaxf = player.C.Truemaxf + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelf)*1.9 + 100), player.C.Truemaxf = player.C.Xpmaxf, player.C.XpTof = 0
+                if (player.C.Xpmaxf <= 0 && player.C.Switch1 == 1 || player.C.Xpmaxf <= 0 && player.N.resets >= 2 && player.C.auto1) player.C.Levelf = player.C.Levelf + 1 * player.V.M, player.C.Xpmaxf = player.C.Truemaxf + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelf)*1.9 + 100), player.C.Truemaxf = player.C.Xpmaxf, player.C.XpTof = 0
                 progF = player.C.XpTof / player.C.Truemaxf
                 return progF
             },
@@ -5367,12 +5699,12 @@ addLayer("C", {
             effect(){
                 let effect = []
                 effect = player.C.LevelJB * 0.01 + 0.01 + 1 - 0.02
-                player.C.Xpptm = player.N.Xp * effect * tmp.C.Health * temp['C'].clickables[23].effect
+                player.C.Xpptm = player.N.Xp * effect * tmp.C.Health * temp['C'].clickables[23].effect * player.V.M
                 return effect
             },
             progress() {
                 let progJE = []
-                if (player.C.XpmaxJB <= 0 && player.C.Switch1 == 2 || player.C.XpmaxJB <= 0 && player.N.resets >= 3 && player.C.auto1) player.C.LevelJB = player.C.LevelJB + 1, player.C.XpmaxJB = player.C.TruemaxJB + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelJB)*2.1 + 100), player.C.TruemaxJB = player.C.XpmaxJB, player.C.XpToJB = 0
+                if (player.C.XpmaxJB <= 0 && player.C.Switch1 == 2 || player.C.XpmaxJB <= 0 && player.N.resets >= 3 && player.C.auto1) player.C.LevelJB = player.C.LevelJB + 1 * player.V.M, player.C.XpmaxJB = player.C.TruemaxJB + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelJB)*2.1 + 100), player.C.TruemaxJB = player.C.XpmaxJB, player.C.XpToJB = 0
                 progJE = player.C.XpToJB / player.C.TruemaxJB
                 return progJE
             },
@@ -5403,7 +5735,7 @@ addLayer("C", {
             },
             progress() {
                 let progpe = []
-                if (player.C.Xpmaxpe <= 0 && player.C.Switch1 == 3 || player.C.Xpmaxpe <= 0 && player.N.resets >= 4 && player.C.auto1) player.C.Levelpe = player.C.Levelpe + 1, player.C.Xpmaxpe = player.C.Truemaxpe + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelpe)*2.4 + 100), player.C.Truemaxpe = player.C.Xpmaxpe, player.C.XpTope = 0
+                if (player.C.Xpmaxpe <= 0 && player.C.Switch1 == 3 || player.C.Xpmaxpe <= 0 && player.N.resets >= 4 && player.C.auto1) player.C.Levelpe = player.C.Levelpe + 1 * player.V.M, player.C.Xpmaxpe = player.C.Truemaxpe + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelpe)*2.4 + 100), player.C.Truemaxpe = player.C.Xpmaxpe, player.C.XpTope = 0
                 progpe = player.C.XpTope / player.C.Truemaxpe
                 return progpe
             },
@@ -5431,7 +5763,7 @@ addLayer("C", {
             },
             progress() {
                 let progR = []
-                if (player.C.XpmaxR <= 0 && player.C.Switch1 == 4 || player.C.XpmaxR <= 0 && player.N.resets >= 5 && player.C.auto1) player.C.LevelR = player.C.LevelR + 1, player.C.XpmaxR = player.C.TruemaxR + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelR)*2.7 + 150), player.C.TruemaxR = player.C.XpmaxR, player.C.XpToR = 0
+                if (player.C.XpmaxR <= 0 && player.C.Switch1 == 4 || player.C.XpmaxR <= 0 && player.N.resets >= 5 && player.C.auto1) player.C.LevelR = player.C.LevelR + 1 * player.V.M, player.C.XpmaxR = player.C.TruemaxR + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelR)*2.7 + 150), player.C.TruemaxR = player.C.XpmaxR, player.C.XpToR = 0
                 progR = player.C.XpToR / player.C.TruemaxR
                 return progR
             },
@@ -5459,7 +5791,7 @@ addLayer("C", {
             },
             progress() {
                 let progD = []
-                if (player.C.XpmaxD <= 0 && player.C.Switch1 == 6 || player.C.XpmaxD <= 0 && player.N.resets >= 6 && player.C.auto1) player.C.LevelD = player.C.LevelD + 1, player.C.XpmaxD = player.C.TruemaxD + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelD)*1.4 + 100), player.C.TruemaxD = player.C.XpmaxD, player.C.XpToD = 0
+                if (player.C.XpmaxD <= 0 && player.C.Switch1 == 6 || player.C.XpmaxD <= 0 && player.N.resets >= 6 && player.C.auto1) player.C.LevelD = player.C.LevelD + 1 * player.V.M, player.C.XpmaxD = player.C.TruemaxD + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelD)*1.4 + 100), player.C.TruemaxD = player.C.XpmaxD, player.C.XpToD = 0
                 progD = player.C.XpToD / player.C.TruemaxD
                 return progD
             },
@@ -5487,7 +5819,7 @@ addLayer("C", {
             },
             progress() {
                 let progt = []
-                if (player.C.Xpmaxt <= 0 && player.C.Switch1 == 7 || player.C.Xpmaxt <= 0 && player.N.resets >= 7 && player.C.auto1) player.C.Levelt = player.C.Levelt + 1, player.C.Xpmaxt = player.C.Truemaxt + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelt)*2 + 100), player.C.Truemaxt = player.C.Xpmaxt, player.C.XpTot = 0
+                if (player.C.Xpmaxt <= 0 && player.C.Switch1 == 7 || player.C.Xpmaxt <= 0 && player.N.resets >= 7 && player.C.auto1) player.C.Levelt = player.C.Levelt + 1 * player.V.M, player.C.Xpmaxt = player.C.Truemaxt + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.Levelt)*2 + 100), player.C.Truemaxt = player.C.Xpmaxt, player.C.XpTot = 0
                 progt = player.C.XpTot / player.C.Truemaxt
                 return progt
             },
@@ -5515,7 +5847,7 @@ addLayer("C", {
             },
             progress() {
                 let progW = []
-                if (player.C.XpmaxW <= 0 && player.C.Switch1 == 8 || player.C.XpmaxW <= 0 && player.N.resets >= 8 && player.C.auto1) player.C.LevelW = player.C.LevelW + 1, player.C.XpmaxW = player.C.TruemaxW + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelW)*2.4 + 200), player.C.TruemaxW = player.C.XpmaxW, player.C.XpToW = 0
+                if (player.C.XpmaxW <= 0 && player.C.Switch1 == 8 || player.C.XpmaxW <= 0 && player.N.resets >= 8 && player.C.auto1) player.C.LevelW = player.C.LevelW + 1 * player.V.M, player.C.XpmaxW = player.C.TruemaxW + (player.N.complete.times(player.N.complete.times(5.6)).add(1).times(player.C.LevelW)*2.4 + 200), player.C.TruemaxW = player.C.XpmaxW, player.C.XpToW = 0
                 progW = player.C.XpToW / player.C.TruemaxW
                 return progW
             },
@@ -6216,8 +6548,11 @@ player.C.Day= new Decimal(0),
     },
 
     update() {
+        if (inChallenge('V', 11) && player.B.TicksMax >= 1e36 && localStorage.getItem('1') === '4') sSave(), localStorage.setItem('1', '5'), forceImport()
+        if (inChallenge('V', 11) && localStorage.getItem('1') === '4') player.C.unlocked = false
+        if (inChallenge('V', 11) && localStorage.getItem('1') != '4') player.C.unlocked = true
         if (player.C.Switch == 0) tmp.C.OnOff = tmp.C.OnOff.times(0) 
-        if (player.B.Next.gte(1)) player.C.unlocked = true
+        if (player.B.Next.gte(1) && !inChallenge('V', 11)) player.C.unlocked = true
         tmp.C.Net = tmp.C.Income - tmp.C.Expenses * (5 - tmp.N.Zero)
  if (tmp.C.OnOff == 1) player.C.Ticks = player.C.Ticks.add(1)
  if (tmp.C.OnOff == 1 && player.C.Ticks.gte(player.C.ticks)) player.C.Ticks = player.C.Ticks.times(0), player.C.Day = player.C.Day.add(player.N.days), player.C.TotalD = player.C.TotalD.add(player.N.days)
@@ -6299,6 +6634,10 @@ addLayer("N", {
         }
     },
     
+    marked() {
+        if (localStorage.getItem('1') >= '7') return true
+        },
+
     image: "https://i.postimg.cc/d3jYWgST/Screenshot-2022-07-23-021248-prev-ui.png",
     name: "Nitrogen", // This is optional, only used in a few places, If absent it just uses the layer id.
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -6347,6 +6686,7 @@ addLayer("N", {
     
     color: '#FF00FF',
     layerShown() {
+        if (player.Ch.One == 2) return false
         if (player.N.resets.gte(1)) return true
         if (player.C.Levelptm >= 100 && player.C.Levelftm >= 100 && player.C.LevelM >= 100 && player.C.LevelE >= 100 && player.C.LevelC >= 100 && player.C.Levelp >= 100 && player.C.LevelG >= 100 && player.C.LevelJ >= 100 && player.C.LevelB >= 100 && player.C.Levelf >= 100 && player.C.LevelJB >= 100 && player.C.Levelpe >= 100 && player.C.LevelR >= 100 && player.C.LevelD >= 100 && player.C.Levelt >= 100 && player.C.LevelW >= 100) return true
         else return false
@@ -6357,7 +6697,7 @@ addLayer("N", {
         if (player.N.timer == 2) tmp.N.medal = new Decimal(2)
         if (player.N.timer == 3) tmp.N.medal = new Decimal(3)
         player.N.timer = new Decimal(3)
-        player.N.resets = player.N.resets.add(1), player.N.complete = new Decimal(0), player.N.ticks = new Decimal(0), player.C.Xpptm = new Decimal(5), player.C.Xpskill = new Decimal(5), tmp.C.eptm = 1, tmp.C.eftm = 1, tmp.C.eM = 1, tmp.C.eE = 1, tmp.C.eC = 1, tmp.C.ep = 1, tmp.C.eG = 1, tmp.C.eJ = 1, tmp.C.eB = 1, tmp.C.ef = 1, tmp.C.eJB = 1, tmp.C.epe = 1, tmp.C.eR = 1, tmp.C.eD = 1, tmp.C.et = 1, tmp.C.eW = 1
+        player.N.total = player.N.total.add(new Decimal(1).times(player.V.M)), player.N.resets = player.N.resets.add(new Decimal(1).times(player.V.M)), player.N.complete = new Decimal(0), player.N.ticks = new Decimal(0), player.C.Xpptm = new Decimal(5), player.C.Xpskill = new Decimal(5), tmp.C.eptm = 1, tmp.C.eftm = 1, tmp.C.eM = 1, tmp.C.eE = 1, tmp.C.eC = 1, tmp.C.ep = 1, tmp.C.eG = 1, tmp.C.eJ = 1, tmp.C.eB = 1, tmp.C.ef = 1, tmp.C.eJB = 1, tmp.C.epe = 1, tmp.C.eR = 1, tmp.C.eD = 1, tmp.C.et = 1, tmp.C.eW = 1
         
     },
 
@@ -6540,6 +6880,7 @@ addLayer("N", {
             onComplete() { player.E.points = player.E.points.add(1) },
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         2: {
@@ -6550,6 +6891,7 @@ addLayer("N", {
             done() { return player.N.total.gte(2) },
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         3: {
@@ -6559,6 +6901,7 @@ addLayer("N", {
             done() { return player.N.total.gte(5) },
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         4: {
@@ -6568,6 +6911,7 @@ addLayer("N", {
             done() { return player.N.resets.gte(10)},
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         5: {
@@ -6578,6 +6922,7 @@ addLayer("N", {
             done() { return hasUpgrade('N', 15)},
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         6: {
@@ -6587,6 +6932,7 @@ addLayer("N", {
             done() { return tmp.N.medal.gte(1) },
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         7: {
@@ -6596,6 +6942,7 @@ addLayer("N", {
             done() { return tmp.N.medal.gte(2) },
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         8: {
@@ -6606,6 +6953,7 @@ addLayer("N", {
             onComplete() { player.N.points = new Decimal(0) },
             unlocked(){
                 if (hasMilestone('N', 8)) return false
+                else return true
             },
         },
         9: {
@@ -6615,6 +6963,7 @@ addLayer("N", {
             done() { return player.N.combo.gte(3)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         10: {
@@ -6624,6 +6973,7 @@ addLayer("N", {
             done() { return player.N.combo.gte(5)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         11: {
@@ -6633,6 +6983,7 @@ addLayer("N", {
             done() { return player.N.combo.gte(10)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         12: {
@@ -6642,6 +6993,7 @@ addLayer("N", {
             done() { return player.N.combo.gte(50)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         13: {
@@ -6651,6 +7003,7 @@ addLayer("N", {
             done() { return player.N.points.gte(10) && hasMilestone('N', 8)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         14: {
@@ -6660,6 +7013,7 @@ addLayer("N", {
             done() { return player.N.points.gte(100) && hasMilestone('N', 8)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         15: {
@@ -6669,6 +7023,7 @@ addLayer("N", {
             done() { return player.N.points.gte(200) && hasMilestone('N', 8)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
         16: {
@@ -6678,11 +7033,13 @@ addLayer("N", {
             done() { return player.N.points.gte(500) && hasMilestone('N', 8)},
             unlocked(){
                 if (hasMilestone('N', 8)) return true
+                else return false
             },
         },
     },
+   
 
-    clickables: {
+    clickables: {  
         11: {
             style: {color: "#301934", 'border-radius': '0%', 'min-height': '50px', width: '80px', position: 'relative', top: '-245px', right: '-255px'},
             title() {
@@ -6705,9 +7062,24 @@ addLayer("N", {
             onClick() {
              if (tmp.N.swap == 0) tmp.N.swap = 1
              else tmp.N.swap = 0
-            },
+            }
         },
+        21: {
+            style: {color: "#301934", 'border-radius': '0%', 'min-height': '10px', width: '100px'},
+            title: "Submit",
+            tooltip() {
+                return 'Submit Your Answer.'
+            },
+            canClick() { 
+                if (hasMilestone('N', 8)) return true
+            else return false},
+            onClick() {
+            getRandomWord()
+            },
+          },
     },
+
+  
     infoboxes: {
         lore: {
             titleStyle: { "color": "#301934" },
@@ -6765,20 +7137,6 @@ addLayer("N", {
         },
    },
 
-   clickables: {
-   11: {
-    style: {color: "#301934", 'border-radius': '0%', 'min-height': '10px', width: '100px'},
-    title: "Submit",
-    tooltip() {
-        return 'Submit Your Answer.'
-    },
-    canClick() { return true},
-    onClick() {
-    getRandomWord()
-    },
-  },
-},
-
     tabFormat: {
         "MainTab": {
             content: [
@@ -6792,7 +7150,7 @@ addLayer("N", {
                 ['upgrade', 16],
                 ['display-text', 
                 function() { if (player.p.Node < 1) return 'You have made a total of ' + formatWhole(player.N.total) + ' Nitrogen and have done ' + formatWhole(player.N.resets) + ' Nitrogen resets.'}],
-                () => (!hasMilestone('N', 8)) ?'milestones': '',
+                () => (!hasMilestone('N', 8)) ? 'milestones': '',
                 () => (options.matureMode == false) ? ['infobox', 'lore'] : ['infobox', 'lore1'],
                 "blank",
                 "main-display",
@@ -6810,7 +7168,7 @@ addLayer("N", {
                     "blank",
                 ['display-text',
                 function() { if (player.p.Node < 1) return 'You have ' + formatWhole(player.N.complete) + ' completion'}],
-                () => (hasUpgrade('N', 14)) ? '' : ['clickables', 11],
+                () => (hasUpgrade('N', 14)) ? '' : ['clickable', 11],
              ["row", function () {
                     if (hasMilestone('N', 6)) return [ 
                         ["display-image", 'https://i.postimg.cc/xd40rQgB/bronze-medal-paper-craft.png', { 'height': `400px`, 'width': `300px`, position: 'relative', right: '-250px'}],
@@ -6829,7 +7187,7 @@ addLayer("N", {
         },
         "Organic": {
             content: [
-                ['clickable', 11],
+                ['clickable', 21],
                 ["strict-text-input1", "Otext"],
                 ['strict-text-box', "Ntext"],
                 ['display-text', 
@@ -6846,6 +7204,7 @@ addLayer("N", {
             ],  
             unlocked() {
                 if (hasMilestone('N', 8)) return true
+                else return false
             }
         },
         "Milestones": {
@@ -6856,6 +7215,7 @@ addLayer("N", {
             ],  
             unlocked() {
                 if (hasMilestone('N', 8)) return true
+                else return false
             }
         },
         "Help": {
@@ -6895,7 +7255,7 @@ addLayer("N", {
             ],
             unlocked() {
                 if (hasMilestone('N', 8)) return true
-            }
+                else return false}
         },
         "Minigame": {
             content: [
@@ -6911,6 +7271,7 @@ addLayer("N", {
             ],  
             unlocked() {
                 if (hasMilestone('N', 8)) return true
+                else return false
             }
         },
     },
@@ -6971,6 +7332,8 @@ addLayer("N", {
     
 
     update(){ 
+        if(inChallenge('V', 11) && localStorage.getItem('1') === '6' && player.N.points.gte(10000)) sSave(), localStorage.setItem('1', 7)
+        if(inChallenge('V', 11) && localStorage.getItem('1') === '5' && player.N.complete.gte(1)) sSave(), localStorage.setItem('1', 6)
         if(tmp.N.level.gt(player.N.HLevel)) player.N.HLevel = tmp.N.level
         if(tmp.N.BA.lt(0)) tmp.N.start = new Decimal(0), tmp.N.BA = new Decimal(1000), clearTimeout(tmp.N.Start), tmp.N.level = new Decimal(1)
         if(player.tab != this.layer) tmp.N.start = new Decimal(0), tmp.N.BA = new Decimal(1000), tmp.N.level = new Decimal(1)
@@ -6983,7 +7346,7 @@ addLayer("N", {
         if(hasMilestone('N', 15)) tmp.N.PMM = new Decimal(0.1)
         if(hasMilestone('N', 16)) tmp.N.PMM = new Decimal(0)
         if (player.N.points.lt(0)) player.N.points = new Decimal(0)
-        tmp.N.add = tmp.N.add1.times(player.N.combo).times(tmp.N.PM).add(1)
+        tmp.N.add = tmp.N.add1.times(player.N.combo).times(tmp.N.PM).add(1).times(player.V.M)
         if (player.N.word == '') run(getRandomWordfi())
         if (player.N.resets.gte(1)) player.N.ticks = player.N.ticks.add(1)
         if (player.N.ticks.gte(103)) player.N.timer = new Decimal(2)
@@ -7000,3 +7363,86 @@ addLayer("N", {
         if (hasUpgrade('N', 16) && player.N.ticks < 10) tmp.C.OnOff = new Decimal(1) 
     }
 })
+
+addLayer("V", {
+
+    symbol() { return options.toggleButtonAnimations ? '' : 'V' },
+    nodeStyle() {
+        return options.toggleButtonAnimations ? {
+            'color': '#ededed',
+            'background-image': 'url("resources/Vault.gif")',
+            'background-position': 'center center',
+            'background-size': '220%',
+            'border': '1px solid #ededed'
+        } : {
+            color: '#ededed'
+        }
+    },
+
+    name: "The Vault", // This is optional, only used in a few places, If absent it just uses the layer id.
+    position: 3, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() {
+        return {
+            unlocked: false,
+            save: '',
+            M: new Decimal(1),
+            time: 1,
+            Locate: true,
+            Yes: false,
+        }
+    },
+
+    marked() {
+        if (localStorage.getItem('1') >= '8') return true
+        },
+
+    color: '#ededed',
+    layerShown() {
+        if (player.Ch.One == 2) return false
+        if (hasMilestone('N', 8) && player.N.points.gt(1)) return true
+        if (inChallenge('V', 11)) return true
+        else return false
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+
+    tooltip() { return "The Vault" },
+    tooltipLocked() { return "Requires 1000 Nitrogen" },
+
+    challenges: {
+        11: {
+            name: "Chemical Change",
+            challengeDescription: "Resart the entire game. However, certain stats are multiplied by 100x or +100 and each star gained is a checkpoint. Each layer has a timer and once that timer runs out, you exit the challenge.",
+            goalDescription: "Have a star on each element.",
+            rewardDescription: "Beat the game.",
+            canComplete: function() {return localStorage.getItem('1') === '7'},
+            style() { if (inChallenge('V', 11)) return {"background-color" : "#ededed"}},
+            onEnter() { 
+                if (localStorage.getItem('1') == '0' && localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return player.E.points = new Decimal(0), layerDataReset('N'), layerDataReset('C'), layerDataReset('B'), layerDataReset('Be'), layerDataReset('Li'), layerDataReset('He'), layerDataReset('p'), player.V.M = new Decimal(100), player.V.time = 30
+                if (localStorage.getItem('1') !== '0' && localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return AImport()},
+            onExit() { 
+                if (localStorage.getItem('1') != '7' && localStorage.getItem('1') != '8') return forceImport(), player.V.M = new Decimal(1)}
+        },
+    },
+
+tabFormat: [
+    "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank",
+    'challenges',
+    "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank",
+    () => (hasChallenge('V', 11)) ? ['display-image2', "https://i.postimg.cc/1zRQpbL1/Keyhole-PNG-File-removebg-preview.png"] : "blank",
+    () => (hasChallenge('V', 11)) ? ['display-text', '<span style="background-color: #000000">&nbsp' + formatWhole(player.Ch.One.add(player.Ch.Two).add(player.Ch.Three).add(player.Ch.Four).add(player.Ch.Five).add(player.Ch.Six)) + ' / 6&nbsp<div style="background-color: #000000">The Lock Shall Open On Thy Touch'] : '',
+    "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank",
+    ['display-text', '<span style="background-color: #000000">Those that have given up</span>'],
+    ['display-image', "https://i.postimg.cc/MZtKG9vR/1200x0-1.png"],
+],
+    update(){
+        if (player.Ch.One != 2) 
+        if (options.forceOneTab == true && options.mobileMode == true && player.p.Node == 1 && hasChallenge('V', 11)) player.V.Yes = true
+        if (options.forceOneTab != true || options.mobileMode != true || player.p.Node != 1 || !hasChallenge('V', 11)) player.V.Yes = false
+        if(hasChallenge('V', 11) && localStorage.getItem('1') === '7' && hasAchievement('A', 152)) localStorage.setItem('1', 8), player.E.points = new Decimal(7)
+        if (player.V.Locate === true) Locate()
+        if (needCanvasUpdate = true && player.tab == 'V')  options.forceOneTab = true, document.body.style.setProperty('--background', "black url('VaultDoor.jpg') fixed center");
+        if (hasMilestone('N', 8) && player.N.points.gte(1000)) player.V.unlocked = true
+    },
+})
+
+var _0xed78=["\x44","\x74\x6F\x67\x67\x6C\x65\x42\x75\x74\x74\x6F\x6E\x41\x6E\x69\x6D\x61\x74\x69\x6F\x6E\x73","","\x23\x65\x64\x65\x64\x65\x64","\x75\x72\x6C\x28\x22\x72\x65\x73\x6F\x75\x72\x63\x65\x73\x2F\x44\x6F\x6C\x6C\x2E\x67\x69\x66\x22\x29","\x63\x65\x6E\x74\x65\x72\x20\x63\x65\x6E\x74\x65\x72","\x32\x33\x30\x25","\x44\x6F\x6C\x6C","\x4F\x6E\x65","\x43\x68","\x53\x68\x6F\x77","\x56\x47\x68\x70\x63\x79\x42\x70\x63\x79\x42\x68\x49\x48\x4A\x6C\x5A\x43\x42\x6F\x5A\x58\x4A\x79\x61\x57\x35\x6E","\x64\x69\x73\x70\x6C\x61\x79\x2D\x74\x65\x78\x74","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x68\x65\x72\x65\x20\x61\x6C\x6C\x20\x69\x73\x20\x6D\x65\x72\x67\x65\x64\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x77\x68\x65\x72\x65\x20\x73\x75\x63\x63\x65\x73\x73\x20\x69\x73\x20\x73\x70\x6C\x75\x72\x67\x65\x64\x2E","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x74\x68\x65\x20\x69\x6E\x66\x6F\x62\x6F\x78\x20\x61\x77\x61\x69\x74\x73\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x69\x6E\x20\x74\x68\x65\x20\x6D\x69\x6E\x65\x20\x6F\x66\x20\x66\x61\x74\x65\x73\x2E","\x72\x65\x6C\x61\x74\x69\x76\x65","\x2D\x33\x30\x70\x78","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x61\x20\x6A\x6F\x6B\x65\x2C\x20\x61\x20\x6A\x6F\x6B\x65\x20\x63\x6F\x6E\x76\x65\x79\x65\x64\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x73\x70\x61\x63\x65\x20\x61\x6E\x64\x20\x74\x69\x6D\x65\x20\x62\x65\x68\x61\x76\x65\x64\x2E","\x2D\x36\x30\x70\x78","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x75\x6E\x68\x6F\x6C\x79\x2C\x20\x62\x65\x61\x74\x20\x61\x6E\x64\x20\x62\x61\x73\x68\x65\x64\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x61\x6E\x20\x75\x70\x67\x72\x61\x64\x65\x20\x74\x68\x61\x74\x20\x77\x61\x73\x20\x63\x72\x61\x73\x68\x65\x64\x2E","\x2D\x39\x30\x70\x78","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x6C\x75\x63\x72\x61\x74\x69\x76\x69\x74\x79\x20\x6F\x66\x20\x61\x20\x73\x74\x6F\x72\x65\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x66\x72\x69\x65\x6E\x64\x73\x20\x66\x6F\x72\x65\x76\x65\x72\x20\x6D\x6F\x72\x65\x2E","\x2D\x31\x32\x30\x70\x78","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x68\x69\x73\x20\x70\x6F\x74\x65\x6E\x74\x20\x63\x68\x65\x6D\x69\x63\x61\x6C\x73\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x74\x68\x65\x20\x62\x75\x79\x65\x72\x73\x20\x70\x69\x63\x6B\x65\x64\x20\x70\x65\x74\x61\x6C\x73\x2E","\x2D\x31\x35\x30\x70\x78","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x65\x61\x63\x68\x20\x61\x6E\x73\x77\x65\x72\x20\x74\x68\x61\x74\x20\x77\x65\x20\x62\x61\x6B\x65\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x79\x6F\x75\x72\x20\x69\x6E\x70\x75\x74\x62\x6F\x78\x20\x77\x69\x6C\x6C\x20\x74\x61\x6B\x65\x2E","\x2D\x31\x38\x30\x70\x78","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x74\x68\x65\x6E\x20\x74\x68\x65\x20\x6C\x6F\x63\x6B\x20\x77\x69\x6C\x6C\x20\x62\x72\x65\x61\x6B\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x74\x68\x65\x72\x65\x20\x68\x65\x20\x77\x69\x6C\x6C\x20\x61\x77\x61\x6B\x65\x2E","\x2D\x32\x31\x30\x70\x78","\x62\x6C\x61\x6E\x6B","\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x72\x65\x74\x72\x69\x62\x75\x74\x69\x6F\x6E\x20\x73\x68\x61\x6C\x6C\x20\x62\x65\x20\x70\x61\x69\x64\x2E\x3C\x64\x69\x76\x3E\x20\x54\x69\x63\x6B\x20\x74\x6F\x63\x6B\x20\x67\x6F\x65\x73\x20\x74\x68\x65\x20\x63\x6C\x6F\x63\x6B\x2C\x20\x74\x68\x72\x6F\x75\x67\x68\x20\x68\x69\x73\x20\x75\x6E\x74\x69\x6D\x65\x6C\x79\x20\x67\x72\x61\x76\x65\x2E","\x49\x54\x65\x78\x74","\x48\x65","\x37"];addLayer(_0xed78[0],{symbol:function(){return options[_0xed78[1]]?_0xed78[2]:_0xed78[2]},nodeStyle:function(){return options[_0xed78[1]]?{'\x63\x6F\x6C\x6F\x72':_0xed78[3],'\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x69\x6D\x61\x67\x65':_0xed78[4],'\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x70\x6F\x73\x69\x74\x69\x6F\x6E':_0xed78[5],'\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x73\x69\x7A\x65':_0xed78[6]}:{'\x63\x6F\x6C\x6F\x72':_0xed78[3],'\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x69\x6D\x61\x67\x65':_0xed78[4],'\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x70\x6F\x73\x69\x74\x69\x6F\x6E':_0xed78[5],'\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x73\x69\x7A\x65':_0xed78[6]}},name:_0xed78[7],position:1,startData:function(){return {Show:false}},color:_0xed78[3],layerShown:function(){if(player[_0xed78[9]][_0xed78[8]]== 2){return false};if(player[_0xed78[0]][_0xed78[10]]== true){return true}else {return false}},row:3,tooltip:function(){return _0xed78[11]},tabFormat:[[_0xed78[12],_0xed78[13]],[_0xed78[12],_0xed78[14],{position:_0xed78[15],right:_0xed78[16]}],[_0xed78[12],_0xed78[17],{position:_0xed78[15],right:_0xed78[18]}],[_0xed78[12],_0xed78[19],{position:_0xed78[15],right:_0xed78[20]}],[_0xed78[12],_0xed78[21],{position:_0xed78[15],right:_0xed78[22]}],[_0xed78[12],_0xed78[23],{position:_0xed78[15],right:_0xed78[24]}],[_0xed78[12],_0xed78[25],{position:_0xed78[15],right:_0xed78[26]}],[_0xed78[12],_0xed78[27],{position:_0xed78[15],right:_0xed78[28]}],_0xed78[29],[_0xed78[12],_0xed78[30],{position:_0xed78[15],right:_0xed78[20]}]],update:function(){if(player[_0xed78[32]][_0xed78[31]]== _0xed78[33]){player[_0xed78[0]][_0xed78[10]]= true}}})

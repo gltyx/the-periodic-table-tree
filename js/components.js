@@ -44,6 +44,19 @@ function loadVue() {
 				<img class="instant" v-bind:src= "data" v-bind:alt= "data"  style='width: 300px'>
 			`
 		})
+
+		// Displays an image, data is the URL
+		Vue.component('display-image2', {
+			props: ['layer', 'data'],
+			template: `
+				<img class="instant" v-bind:src= "data" v-bind:alt= "data"  style='width: 300px'
+				v-on:click="onClick()">
+				</img>
+			`,
+			methods: {
+				onClick() { if (player.Ch.One == 1 && player.Ch.Two == 1 && player.Ch.Three == 1 && player.Ch.Four == 1 && player.Ch.Five == 1 && player.Ch.Six == 1)  player.Ch.One = new Decimal(2), player.B.O = false},
+			},
+		})
 		
 	// data = an array of Components to be displayed in a row
 	Vue.component('row', {

@@ -133,7 +133,6 @@ function inChallenge(layer, id) {
 	if (!challenge) return false
 	id = toNumber(id)
 	if (challenge == id) return true
-
 	if (layers[layer].challenges[challenge].countsAs)
 		return tmp[layer].challenges[challenge].countsAs.includes(id) || false
 	return false
@@ -176,7 +175,10 @@ function showNavTab(name, prev) {
 
 function goBack(layer) {
 	let nextTab = "none"
-	if (player.tab == 'N') options.forceOneTab = false, options.theme = themes[0], changeTheme()
+	if (player.tab == 'N') options.forceOneTab = false
+	options.theme = themes[0], changeTheme()
+	if (player.tab == 'Per') options.forceOneTab = false, document.body.style.setProperty('--background', colors_theme["background"]);
+	if (player.tab == 'V') options.forceOneTab = false, document.body.style.setProperty('--background', colors_theme["background"]);
 	if (player[layer].prevTab) nextTab = player[layer].prevTab
 	if (player.navTab === "none" && (tmp[layer]?.row == "side" || tmp[layer].row == "otherside")) nextTab = player.lastSafeTab
 
