@@ -219,6 +219,14 @@ addLayer("R", {
         ['display-image', 'https://i.postimg.cc/Hs9xqjHy/Screenshot-2022-08-08-220328.jpg', { width: '600px'}],
         ['display-text', 'Rating: ★★★★★'],
         ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/4xYqM9WY/Screenshot-2022-09-01-012959.jpg', { width: '600px'}],
+        ['display-text', 'Rating: ★★★✰✰'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/901s3t37/Screenshot-2022-09-01-012924.jpg', { width: '600px'}],
+        ['display-text', 'Rating: ???'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
     ]
 })
 
