@@ -227,6 +227,16 @@ addLayer("R", {
         ['display-image', 'https://i.postimg.cc/901s3t37/Screenshot-2022-09-01-012924.jpg', { width: '600px'}],
         ['display-text', 'Rating: π'],
         ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/ZRJGFqxm/Screenshot-2022-09-23-153630.png', { width: '600px'}],
+        ['display-text', 'Rating: Ω'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/5tg7JS8c/Screenshot-2022-09-23-153754.png', { width: '600px'}],
+        ['display-text', 'Rating: ★★★★✪'],
+        ['display-text', '<u>' + '&nbsp'.repeat(70) + '</u>'],
+        "blank",
+        ['display-image', 'https://i.postimg.cc/wxWT4CPH/2418903356-Detailed-portrait-of-Bilbo-Baggins-from-the-lord-of-the-rings-movies-staring-seriously-r.png', { width: '600px'}],
     ]
 })
 
